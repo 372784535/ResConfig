@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{2ECAEE74-5810-DAB0-7618-60122BFC58D2}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/UI/BasicInformation.cs">
+    <Files>
+      <File FileName="Assets/script/UI/BasicInformation.cs" Line="107" Column="30" />
+      <File FileName="Assets/script/UI/HeroData.cs" Line="122" Column="97" />
+      <File FileName="Assets/script/Data/DataManage.cs" Line="99" Column="56" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ResConfig PreferredExecutionTarget="Unity.Editor" />
+  <MultiItemStartupConfigurations />
+</Properties>

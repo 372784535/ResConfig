@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio for Mac
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResConfig.Plugins", "ResConfig.Plugins.csproj", "{9B21D564-A394-16F8-EF47-2DA79A968A30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResConfig", "ResConfig.csproj", "{2ECAEE74-5810-DAB0-7618-60122BFC58D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResConfig.Editor", "ResConfig.Editor.csproj", "{0D4D3F71-3DC0-EDD1-9E33-ED3CC5676ED4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B21D564-A394-16F8-EF47-2DA79A968A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B21D564-A394-16F8-EF47-2DA79A968A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B21D564-A394-16F8-EF47-2DA79A968A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B21D564-A394-16F8-EF47-2DA79A968A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ECAEE74-5810-DAB0-7618-60122BFC58D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ECAEE74-5810-DAB0-7618-60122BFC58D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ECAEE74-5810-DAB0-7618-60122BFC58D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ECAEE74-5810-DAB0-7618-60122BFC58D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D4D3F71-3DC0-EDD1-9E33-ED3CC5676ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D4D3F71-3DC0-EDD1-9E33-ED3CC5676ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D4D3F71-3DC0-EDD1-9E33-ED3CC5676ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D4D3F71-3DC0-EDD1-9E33-ED3CC5676ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

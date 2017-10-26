@@ -7,30 +7,74 @@ using System.Text;
 using LitJson;
 
 public class DataManage : MonoBehaviour {
-    static JsonData _data;
-    public static JsonData Data
+    static JsonData _heroJsonData;
+    public static JsonData HeroJsonData
     {
         get
         {
-            if (_data == null)
+            if (_heroJsonData == null)
             {
-                _data = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                if (File.Exists(@"Assets/Res/JsonConfig/HeroData.json"))
+                {
+                    _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/HeroData.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _heroJsonData = new JsonData();
+                }
                 //print("数据："+data[0]["Id"]);
-                return _data;
+                return _heroJsonData;
             }
             else
             {
-                return _data;
+                return _heroJsonData;
             }
         }
         set
         {
             if(value!=null)
             {
-                _data = value;
+                _heroJsonData = value;
             }
         }
     }
+
+    static JsonData _basicInfoJsonData;
+    public static JsonData BasicInfoJsonData
+    {
+        get
+        {
+            if (_basicInfoJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/HeroBaseInfo.json"))
+                {
+                    _basicInfoJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroBaseInfo.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/HeroBaseInfo.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _basicInfoJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _basicInfoJsonData;
+            }
+            else
+            {
+                return _basicInfoJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _basicInfoJsonData = value;
+            }
+        }
+    }
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -40,35 +84,29 @@ public class DataManage : MonoBehaviour {
 		
 	}
 
-    public static bool HeroDataWriting( Dictionary<int, C_HeroData> heroData,int id)
+    public static bool HeroDataSave( Dictionary<int, C_HeroData> heroData,int id)
     {
         
-        if (Data.IsArray)
+        if (HeroJsonData.IsArray)
         {
-            for (int i = 0; i < Data.Count; i++)
+            for (int i = 0; i < HeroJsonData.Count; i++)
             {
-                if (Data[i]["Id"].ToInt32() == heroData[id].ID&&i!=id-1)
+                if (HeroJsonData[i]["Id"].ToInt32() == heroData[id].ID&&i!=id-1)
                 {
                     WindowControl.SetConsole("保存失败,英雄ID：" + heroData[id].ID + ",已经存在，请仔细填写");
                     return false;
                 }
-                else if (Data[i]["SkillConfigID"].ToInt32() == heroData[id].SkillConfigID&& i != id - 1)
+                else if (HeroJsonData[i]["SkillConfigId"].ToInt32() == heroData[id].SkillConfigID&& i != id - 1)
                 {
-                    WindowControl.SetConsole("保存失败,SkillConfigID（技能配置ID）：" + heroData[id].SkillConfigID + ",已经存在，请仔细填写");
+                    WindowControl.SetConsole("保存失败,SkillConfigId（技能配置ID）：" + heroData[id].SkillConfigID + ",已经存在，请仔细填写");
                     return false;
                 }
-                else if (Data[i]["ExclusiveEquipID"].ToInt32() == heroData[id].ExclusiveEquipID&& i != id - 1)
+                else if (HeroJsonData[i]["ExclusiveEquipId"].ToInt32() == heroData[id].ExclusiveEquipID&& i != id - 1)
                 {
-                    print("s1010101"+i);
-                    WindowControl.SetConsole("保存失败,ExclusiveEquipID（专属装备ID）：" + heroData[id].ExclusiveEquipID + ",已经存在，请仔细填写");
+                    WindowControl.SetConsole("保存失败,ExclusiveEquipId（专属装备ID）：" + heroData[id].ExclusiveEquipID + ",已经存在，请仔细填写");
                     return false;
                 }
-                else if (Data[i]["ByConfigID"].ToInt32() == heroData[id].ByConfigID&& i != id - 1)
-                {
-                    WindowControl.SetConsole("保存失败,ByConfigID（羁绊配置ID）：" + heroData[id].ByConfigID + ",已经存在，请仔细填写");
-                    return false;
-                }
-                else if (Data[i]["MessageConfigID"].ToInt32() == heroData[id].MessageConfigID&& i != id - 1)
+                else if (HeroJsonData[i]["MessageConfigId"].ToInt32() == heroData[id].MessageConfigID&& i != id - 1)
                 {
                     WindowControl.SetConsole("保存失败,MessageConfigID（信息配置ID）：" + heroData[id].MessageConfigID + ",已经存在，请仔细填写");
                     return false;
@@ -81,45 +119,69 @@ public class DataManage : MonoBehaviour {
         print("该数据状态"+id+"IsJson="+heroData[id].IsJson.ToString());
         if (!heroData[id].IsJson)
         {
-            print("新增:"+Data.IsArray);
-            Data.Add(heroData[id].getJsonData());//新增操作
+            print("新增:"+HeroJsonData.IsArray);
+            HeroJsonData.Add(heroData[id].getJsonData());//新增操作
 
         }
         else
         {
             print("修改");
-            Data[id - 1] = heroData[id].getJsonData();//修改操作
+            HeroJsonData[id - 1] = heroData[id].getJsonData();//修改操作
         }
-        File.WriteAllText(@"Assets/Res/JsonConfig/HeroData.json", Data.ToJsonFile());
+        File.WriteAllText(@"Assets/Res/JsonConfig/HeroData.json", HeroJsonData.ToJsonFile());
         WindowControl.SetConsole("保存成功");
         return true;
     }
 
     public static void HeroDataDel(int id)
     {
-        if (id <= Data.Count)
+        if (id <= HeroJsonData.Count)
         {
-            if(Data.Count==1)
+            if(HeroJsonData.Count==1)
             {
-                File.WriteAllText(@"Assets/Res/JsonConfig/HeroData.json", Data.ToJsonFile());
+                HeroJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/HeroData.json", "");
                 return;
             }
             JsonData jd = new JsonData();
             for (int i = 0; i < id - 1;i++)
             {
-                jd.Add(Data[i]);
+                jd.Add(HeroJsonData[i]);
             }
-            for (int i = id-1; i < Data.Count;i++)
+            for (int i = id-1; i < HeroJsonData.Count;i++)
             {
-                if (i == Data.Count - 1)
+                if (i == HeroJsonData.Count - 1)
                 {
                     break;
                 }
-                jd.Add(Data[i+1]);
+                jd.Add(HeroJsonData[i+1]);
             }
-            Data = jd;
-            File.WriteAllText(@"Assets/Res/JsonConfig/HeroData.json", Data.ToJsonFile());
+            HeroJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/HeroData.json", HeroJsonData.ToJsonFile());
         }
+    }
+
+    public static bool HeroMessageSave(C_HeroMessage heroMessage)
+    {
+        int pretreatmentIndex = -1; 
+        if(BasicInfoJsonData.IsArray)
+        {
+            for (int i = 0; i < BasicInfoJsonData.Count;i++)
+            {
+                if(BasicInfoJsonData["InfoId"].ToInt64() == heroMessage.InfoId)
+                {
+                    WindowControl.SetConsole("保存失败,信息ID：" + heroMessage.InfoId + ",已经存在，请仔细填写");
+                    return false;
+                }
+                if (BasicInfoJsonData["HeroId"].ToInt64() == heroMessage.HeroID)
+                {
+                    WindowControl.SetConsole("保存失败,英雄ID：" + heroMessage.HeroID + ",已经存在，请仔细填写");
+                    return false;
+                }
+
+            }
+        }
+        return true;
     }
 }
 
@@ -177,7 +239,10 @@ public class C_HeroData
     public int TowerActFrequency;
     public long SkillConfigID;
     public long ExclusiveEquipID;
-    public long ByConfigID;
+    public long ByConfigID1;
+    public long ByConfigID2;
+    public long ByConfigID3;
+    public long ByConfigID4;
     public long MessageConfigID;
 
     public bool IsJson = false;
@@ -188,7 +253,7 @@ public class C_HeroData
         temdata.Add("Id",ID);
         temdata.Add("Quality", (int)Quality);
         temdata.Add("Type", (int)Type);
-        temdata.Add("StarID", StarID);
+        temdata.Add("StarId", StarID);
         temdata.Add("Fighting", Fighting);
         temdata.Add("ExponentBit", ExponentBit);
         temdata.Add("Level", Level);
@@ -210,44 +275,15 @@ public class C_HeroData
         temdata.Add("VitalityBreakLevel",VitalityBreakLevel);
         temdata.Add("BaseStrikeDamage",BaseStrikeDamage);
         temdata.Add("TowerActFrequency",TowerActFrequency);
-        temdata.Add("SkillConfigID",SkillConfigID);
-        temdata.Add("ExclusiveEquipID",ExclusiveEquipID);
-        temdata.Add("ByConfigID",ByConfigID);
-        temdata.Add("MessageConfigID",MessageConfigID);
+        temdata.Add("SkillConfigId",SkillConfigID);
+        temdata.Add("ExclusiveEquipId",ExclusiveEquipID);
+        temdata.Add("ByConfigId1", ByConfigID1);
+        temdata.Add("ByConfigId2", ByConfigID2);
+        temdata.Add("ByConfigId3", ByConfigID3);
+        temdata.Add("ByConfigId4", ByConfigID4);
+        temdata.Add("MessageConfigId",MessageConfigID);
 
         return temdata;
-
-    }
-
-    public void init()
-    {
-        ID = 0;
-        Quality = HeroQuality.E;
-        Type = HeroType.warrior;
-        StarID = 0;
-        Level = 0;
-        Vitality = 0;
-        Attack = 0;
-        AttackSpeed = 0;
-        Skill = 0;
-        HitRate = 0;
-        Dodge = 0;
-        CriticalStrike = 0;
-        Tenacity = 0;
-        Pierce = 0;
-        Defense = 0;
-        ActGrow = 0;
-        VitalityGrow = 0;
-        ActSpeedGrow = 0;
-        GrowCoefficient = 0;
-        ActBreakLevel = 0;
-        VitalityBreakLevel = 0;
-        BaseStrikeDamage = 0;
-        TowerActFrequency = 0;
-        SkillConfigID = 0;
-        ExclusiveEquipID = 0;
-        ByConfigID=0;
-        MessageConfigID = 0;
 
     }
 }
@@ -268,14 +304,31 @@ public class C_HeroMessage
         Traveller = 9,
     }
     
-    public long MessageID;
+    public long InfoId;
     public long HeroID;
     public string Name;
     public string Nickname;
     public int Sex;
     public string TowerDefenceDefinite;
     public string FightDefinite;
-    public CampType HeroCamp;
+    public CampType Camp;
     public string Backstory;
+
+    public bool IsJson = false;
+
+    public JsonData getJsonData()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("InfoId",InfoId);
+        jd.Add("HeroId", HeroID);
+        jd.Add("Nickname",Nickname);
+        jd.Add("Name", Name);
+        jd.Add("Sex", Sex);
+        jd.Add("TowerDefenceDefinite", TowerDefenceDefinite);
+        jd.Add("FightDefinite", FightDefinite);
+        jd.Add("HeroCamp", (int)Camp);
+        jd.Add("Backstory",Backstory);
+        return jd;
+    }
 
 }
