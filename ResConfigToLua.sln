@@ -1,12 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio for Mac
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResConfigToLua.Plugins", "ResConfigToLua.Plugins.csproj", "{FC77BCA1-516F-A575-A12A-4B76D7A60C79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResConfigToLua", "ResConfigToLua.csproj", "{2708C872-0BFC-EAD1-700E-D95257EF142A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResConfigToLua.Editor", "ResConfigToLua.Editor.csproj", "{64330E4C-9083-43A9-BC97-9CB7C053ABE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC77BCA1-516F-A575-A12A-4B76D7A60C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC77BCA1-516F-A575-A12A-4B76D7A60C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC77BCA1-516F-A575-A12A-4B76D7A60C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC77BCA1-516F-A575-A12A-4B76D7A60C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2708C872-0BFC-EAD1-700E-D95257EF142A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2708C872-0BFC-EAD1-700E-D95257EF142A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2708C872-0BFC-EAD1-700E-D95257EF142A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2708C872-0BFC-EAD1-700E-D95257EF142A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64330E4C-9083-43A9-BC97-9CB7C053ABE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64330E4C-9083-43A9-BC97-9CB7C053ABE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64330E4C-9083-43A9-BC97-9CB7C053ABE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64330E4C-9083-43A9-BC97-9CB7C053ABE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

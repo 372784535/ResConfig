@@ -1,7 +1,14 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../Downloads/xlsxtools/demo/unity3d/xlsxtools/Assets/Scripts/Main.cs">
+﻿<Properties StartupConfiguration="{2708C872-0BFC-EAD1-700E-D95257EF142A}|">
+  <MonoDevelop.Ide.ItemProperties.ResConfigToLua PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Res/JsonConfig/HeroData.json">
     <Files>
-      <File FileName="../../../Downloads/xlsxtools/demo/unity3d/xlsxtools/Assets/Scripts/Main.cs" Line="9" Column="23" />
+      <File FileName="Assets/script/UI/BasicInformation.cs" Line="1" Column="1" />
+      <File FileName="Assets/script/UI/HeroData.cs" Line="1" Column="1" />
+      <File FileName="Assets/script/Data/DataManage.cs" Line="17" Column="94" />
+      <File FileName="Assets/Framework/Net/Network/http/MyHttp.cs" Line="6" Column="5" />
+      <File FileName="Assets/Slua/Source/LuaThreadWrapper.cs" Line="30" Column="40" />
+      <File FileName="Assets/Framework/Net/litjson/JsonData.cs" Line="1026" Column="15" />
+      <File FileName="Assets/Res/JsonConfig/HeroData.json" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
