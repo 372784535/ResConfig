@@ -161,26 +161,32 @@ public class DataManage : MonoBehaviour {
         }
     }
 
-    public static bool HeroMessageSave(C_HeroMessage heroMessage)
-    {
-        int pretreatmentIndex = -1; 
+    public static bool HeroMessageSave(C_HeroMessage heroMessage,int opIndex)
+    { 
         if(BasicInfoJsonData.IsArray)
         {
             for (int i = 0; i < BasicInfoJsonData.Count;i++)
             {
-                if(BasicInfoJsonData["InfoId"].ToInt64() == heroMessage.InfoId)
+                if((BasicInfoJsonData[i]["HeroId"].ToInt64() == heroMessage.HeroID||BasicInfoJsonData[i]["InfoId"].ToInt64() == heroMessage.InfoId )&& i != opIndex)
                 {
-                    WindowControl.SetConsole("保存失败,信息ID：" + heroMessage.InfoId + ",已经存在，请仔细填写");
-                    return false;
-                }
-                if (BasicInfoJsonData["HeroId"].ToInt64() == heroMessage.HeroID)
-                {
-                    WindowControl.SetConsole("保存失败,英雄ID：" + heroMessage.HeroID + ",已经存在，请仔细填写");
+                    WindowControl.SetConsole("保存失败ID：" + heroMessage.InfoId + ",已经存在，请仔细填写");
                     return false;
                 }
 
             }
         }
+        if(!heroMessage.IsJson)
+        {
+            //新增
+            BasicInfoJsonData.Add(heroMessage.getJsonData());
+        }
+        else
+        {
+            //修改
+            BasicInfoJsonData[opIndex] = heroMessage.getJsonData();
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/HeroBaseInfo.json", BasicInfoJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
         return true;
     }
 }

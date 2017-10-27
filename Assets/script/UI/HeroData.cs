@@ -431,4 +431,17 @@ public class HeroData : MonoBehaviour {
         WindowControl.SetConsole("删除成功");
         //transform.parent.Find("Console/Text").GetComponent<Text>().text = "删除成功-----------------时间" + DateTime.Now.ToString();
     }
+
+    public void OnDetail(int Id)
+    {
+        print(Id);
+        if(Id>DataManage.HeroJsonData.Count)
+        {
+            WindowControl.SetConsole("跳转失败，该数据你还没有保存");
+            return;
+        }else
+        {
+            transform.parent.Find("Panel").GetComponent<UIDeploy>().OnOrSetToggle("BasicInformation",heroData[Id].ID);
+        }
+    }
 }

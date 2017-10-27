@@ -9,6 +9,8 @@ public class BasicInformation : MonoBehaviour {
     int opIndex = -1;
     public C_HeroMessage heroMessage = new C_HeroMessage();
 
+    private InputField SarchID;
+
     private InputField HeroID;
     private InputField InfoId;
     private InputField Name;
@@ -29,10 +31,11 @@ public class BasicInformation : MonoBehaviour {
 
     void UIInit()
     {
-        HeroID = transform.Find("Top").GetComponent<InputField>();
-        InfoId = transform.Find("InfoId").GetComponent<InputField>();
-        Name = transform.Find("Name").GetComponent<InputField>();
-        Nickname = transform.Find("Nickname").GetComponent<InputField>();
+        SarchID =transform.Find("Top").GetComponent<InputField>();
+        HeroID = transform.Find("HeroId/Text").GetComponent<InputField>();
+        InfoId = transform.Find("InfoId/Text").GetComponent<InputField>();
+        Name = transform.Find("Name/Text").GetComponent<InputField>();
+        Nickname = transform.Find("Nickname/Text").GetComponent<InputField>();
         Sex = transform.Find("Sex").GetComponent<Dropdown>();
         Camp = transform.Find("Camp").GetComponent<Dropdown>();
         StoryBG = transform.Find("StoryBG").GetComponent<InputField>();
@@ -40,11 +43,28 @@ public class BasicInformation : MonoBehaviour {
         FightD = transform.Find("FightD").GetComponent<InputField>();
         Tip = transform.Find("Top/Tip").GetComponent<Text>();
 
+        heroMessage.IsJson = true;
+
         DataDynamiticTest = transform.Find("DataDynamiticTest");
     }
 	
+    public void RemoveUIData()
+    {
+        print("初始化");
+        HeroID.text = "";
+        InfoId.text = "";
+        Name.text = "";
+        Nickname.text = "";
+        Sex.value = 0;
+        Camp.value = 0;
+        StoryBG.text = "";
+        TowerDD.text = "";
+        FightD.text = "";
+    }
+
     public bool SearchInit(long Id)
     {
+        UIInit();
         JsonData CorresJson = null;
         //--------------------检测信息数据-----------------
         if(DataManage.BasicInfoJsonData.IsArray)
@@ -53,11 +73,13 @@ public class BasicInformation : MonoBehaviour {
             {
                 if(DataManage.BasicInfoJsonData[i]["InfoId"].ToInt64()==Id)
                 {
+                    opIndex = i;
                     CorresJson = DataManage.BasicInfoJsonData[i];
                     break;
                 }
                 if (DataManage.BasicInfoJsonData[i]["HeroId"].ToInt64() == Id)
                 {
+                    opIndex = i;
                     CorresJson = DataManage.BasicInfoJsonData[i];
                     break;
                 }
@@ -80,9 +102,10 @@ public class BasicInformation : MonoBehaviour {
         //----------------------检测英雄数据---------------------
         if(DataManage.HeroJsonData.IsArray)
         {
-            print("ID" + DataManage.HeroJsonData[0]["Id"].ToInt64());
+            
             for (var i = 0; i < DataManage.HeroJsonData.Count;i++)
             {
+                print("ID=" + Id );
                 if(DataManage.HeroJsonData[i]["Id"].ToInt64()==Id)
                 {
                     
@@ -90,6 +113,7 @@ public class BasicInformation : MonoBehaviour {
                     {
                         WindowControl.SetConsole("该ID基础信息没有，但是英雄数据存在，请尽快添加库中");
                         CorresJson = DataManage.HeroJsonData[i];
+                        HeroID.text = CorresJson["Id"].ToString();
                     }
                     else
                     {
@@ -104,6 +128,7 @@ public class BasicInformation : MonoBehaviour {
                     if(DataManage.HeroJsonData[i]["Id"].ToInt64()==CorresJson["HeroId"].ToInt64())
                     {
                         CorresJson = DataManage.HeroJsonData[i];
+                        WindowControl.SetConsole("查找成功");
                         break;
                     }
                 }
@@ -112,6 +137,8 @@ public class BasicInformation : MonoBehaviour {
                 {
                     if (CorresJson == null)
                     {
+                        WindowControl.SetConsole("查找失败，没有找到数据");
+
                         return false;
                     }
                     else
@@ -126,21 +153,24 @@ public class BasicInformation : MonoBehaviour {
         }
         //----------------------载入英雄数据---------------------
         DataDynamiticTest.gameObject.SetActive(true);
+
+        SarchID.text = CorresJson["Id"].ToString();
         //************
         return true;
     }
 
-    public void OnBtnFind()
+    public void OnBtnFind(int id=-1)
     {
-        if(HeroID.text=="")
+        if(SarchID.text=="")
         {
             WindowControl.SetConsole("查找失败，请输入英雄Id");
             return;
         }
         try
         {
-            if(!SearchInit(int.Parse(HeroID.text)))
+            if(!SearchInit(int.Parse(SarchID.text)))
             {
+                RemoveUIData();
                 WindowControl.SetConsole("查找失败，信息数据你根本没有创建");
             }
         }
@@ -153,6 +183,7 @@ public class BasicInformation : MonoBehaviour {
     public void OnBtnSave()
     {
         heroMessage.InfoId = int.Parse(InfoId.text);
+        heroMessage.HeroID = long.Parse(HeroID.text);
         heroMessage.Name = Name.text;
         heroMessage.Nickname = InfoId.text;
         heroMessage.Sex = Sex.value;
@@ -160,6 +191,8 @@ public class BasicInformation : MonoBehaviour {
         heroMessage.Backstory = StoryBG.text;
         heroMessage.TowerDefenceDefinite = TowerDD.text;
         heroMessage.FightDefinite = FightD.text;
+
+        DataManage.HeroMessageSave(heroMessage,opIndex);
 
     }
 
