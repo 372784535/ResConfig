@@ -6,6 +6,7 @@ using System;
 
 public class WindowControl : MonoBehaviour {
     public int ID;
+    public static string OpenType;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,8 +17,9 @@ public class WindowControl : MonoBehaviour {
 		
 	}
 
-    public static void OpenDelTip(int ID)
+    public static void OpenDelTip(int ID,string type)
     {
+        OpenType = type;
         GameObject.Find("Canvas/WindowControl/DelTipWindow").SetActive(true);
         GameObject.Find("Canvas/WindowControl").GetComponent<WindowControl>().ID = ID;
     }
@@ -29,12 +31,27 @@ public class WindowControl : MonoBehaviour {
 
     public void OnYes()
     {
-        if(ID==0)
+        if(ID==0&&OpenType=="HeroData")
         {
             return;
         }
-        GameObject.Find("Canvas/HeroData").GetComponent<HeroData>().Del(ID);
-        transform.Find("DelTipWindow").gameObject.SetActive(false);
+        switch (OpenType)
+        {
+            case "HeroData":
+                GameObject.Find("Canvas/HeroData").GetComponent<HeroData>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
+            case "BasicInformation":
+                DataManage.DelHeroMessage(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                transform.parent.Find("BasicInformation").GetComponent<BasicInformation>().RemoveUIData();
+                break;
+            case "StarGrow":
+                GameObject.Find("Canvas/StarGrow").GetComponent<StarGrow>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
+        }
+
         
     }
     public void OnNo()

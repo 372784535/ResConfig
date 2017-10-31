@@ -15,7 +15,7 @@ public class DelAssist : MonoBehaviour {
 	}
     public void OnDel()
     {
-        WindowControl.OpenDelTip(ID);
+        WindowControl.OpenDelTip(ID,"HeroData");
     }
     public void OnSave()
     {

@@ -1023,7 +1023,6 @@ namespace LitJson
         public string ToJsonFile()
         {
             string Tjson = ToJson();
-            UnityEngine.Debug.Log("Tj="+Tjson);
             try
             {
                 Tjson = Tjson.Replace("[{", "\r[\r{").Replace("}]", "}\r]").Replace("{\"", "{\r\"").Replace("}", "\r}");

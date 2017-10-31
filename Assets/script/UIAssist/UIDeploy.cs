@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIDeploy : MonoBehaviour {
     private Toggle HeroDateBtn;
     private Toggle BasicInformationBtn;
+    private Toggle StarGrowBtn;
     private Toggle SkillConfigBtn;
     private Toggle TowerDefenseSkillBtn;
     private Toggle CombatSkillsBtn;
@@ -15,10 +16,12 @@ public class UIDeploy : MonoBehaviour {
 
     private Transform HeroData;
     private Transform BasicInformation;
+    private Transform StarGrow;
 	// Use this for initialization
 	void Start () {
         HeroDateBtn = transform.Find("HeroDateBtn").GetComponent<Toggle>();
         BasicInformationBtn = transform.Find("BasicInformationBtn").GetComponent<Toggle>();
+        StarGrowBtn = transform.Find("StarGrowBtn").GetComponent<Toggle>();
         SkillConfigBtn = transform.Find("SkillConfigBtn").GetComponent<Toggle>();
         TowerDefenseSkillBtn = transform.Find("TowerDefenseSkillBtn").GetComponent<Toggle>();
         CombatSkillsBtn = transform.Find("CombatSkillsBtn").GetComponent<Toggle>();
@@ -28,6 +31,7 @@ public class UIDeploy : MonoBehaviour {
 
         HeroData = transform.parent.Find("HeroData");
         BasicInformation = transform.parent.Find("BasicInformation");
+        StarGrow =transform.parent.Find("StarGrow");
 	}
 	
 	// Update is called once per frame
@@ -59,6 +63,7 @@ public class UIDeploy : MonoBehaviour {
         {
             HeroData.gameObject.SetActive(HeroDateBtn.isOn);
             BasicInformation.gameObject.SetActive(BasicInformationBtn.isOn);
+            StarGrow.gameObject.SetActive(StarGrowBtn.isOn);
         }
         else
         {
@@ -92,7 +97,21 @@ public class UIDeploy : MonoBehaviour {
                     }
                     OnOrSetToggle("");
                     BasicInformation.GetComponent<BasicInformation>().SearchInit(ID);
-                    WindowControl.SetConsole("基本信息还没有，赶快填写并保存。*_*");
+                    //WindowControl.SetConsole("基本信息存在，赶快修改并保存。*_*");
+                    break;
+                case "StarGrow":
+                    for (int i = 0; i < transform.GetComponentsInChildren<Toggle>().Length; i++)
+                    {
+                        if (transform.GetComponentsInChildren<Toggle>()[i].gameObject.name == "StarGrow")
+                        {
+                            transform.GetComponentsInChildren<Toggle>()[i].isOn = true;
+                        }
+                        else
+                        {
+                            transform.GetComponentsInChildren<Toggle>()[i].isOn = false;
+                        }
+                    }
+                    OnOrSetToggle();
                     break;
             }
         }
