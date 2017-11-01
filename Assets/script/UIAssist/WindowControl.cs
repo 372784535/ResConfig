@@ -50,6 +50,10 @@ public class WindowControl : MonoBehaviour {
                 GameObject.Find("Canvas/StarGrow").GetComponent<StarGrow>().Del(ID);
                 transform.Find("DelTipWindow").gameObject.SetActive(false);
                 break;
+            case "SkillConfig":
+                GameObject.Find("Canvas/SkillConfig").GetComponent<SkillConfig>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
         }
 
         

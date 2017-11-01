@@ -109,6 +109,40 @@ public class DataManage : MonoBehaviour
             }
         }
     }
+
+    static JsonData _skillConfigJsonData;
+    public static JsonData SkillConfigJsonData
+    {
+        get
+        {
+            if (_skillConfigJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/SkillConfig.json"))
+                {
+                    _skillConfigJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/SkillConfig.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/SkillConfig.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _skillConfigJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _skillConfigJsonData;
+            }
+            else
+            {
+                return _skillConfigJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _skillConfigJsonData = value;
+            }
+        }
+    }
     // Use this for initialization
     void Start()
     {
@@ -228,7 +262,7 @@ public class DataManage : MonoBehaviour
         else
         {
             print("修改");
-            print("ID======="+opIndex);
+            print("ID=======" + opIndex);
             //修改
             BasicInfoJsonData[opIndex] = heroMessage.getJsonData();
         }
@@ -237,11 +271,11 @@ public class DataManage : MonoBehaviour
         return true;
     }
 
-    public static void DelHeroMessage (int opIndex)
+    public static void DelHeroMessage(int opIndex)
     {
-        if(opIndex < _basicInfoJsonData.Count)
+        if (opIndex < _basicInfoJsonData.Count)
         {
-            if(_basicInfoJsonData.Count==1)
+            if (_basicInfoJsonData.Count == 1)
             {
                 _basicInfoJsonData.Clear();
                 File.WriteAllText(@"Assets/Res/JsonConfig/HeroBaseInfo.json", "");
@@ -266,7 +300,7 @@ public class DataManage : MonoBehaviour
         }
     }
 
-    public static bool SaveStarGrowJson(Dictionary<int,C_StarGrow> starGrowData,int id)
+    public static bool SaveStarGrowJson(Dictionary<int, C_StarGrow> starGrowData, int id)
     {
         if (StarGrowJsonData.IsArray)
         {
@@ -326,18 +360,78 @@ public class DataManage : MonoBehaviour
             File.WriteAllText(@"Assets/Res/JsonConfig/StarGrow.json", StarGrowJsonData.ToJsonFile());
         }
     }
+
+    public static bool SaveSkillConfig(Dictionary<int, C_SkillConfig> skillConfig,int id)
+    {
+        if (SkillConfigJsonData.IsArray)
+        {
+            for (int i = 0; i < SkillConfigJsonData.Count; i++)
+            {
+                if (SkillConfigJsonData[i]["SkillConfigId"].ToInt32() == skillConfig[id].SkillConfigId && i != id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,技能ID：" + skillConfig[id].SkillConfigId + ",已经存在，请仔细填写");
+                    return false;
+                }
+            }
+        }
+
+
+        print("该数据状态" + id + "IsJson=" + skillConfig[id].Isjson.ToString());
+        if (!skillConfig[id].Isjson)
+        {
+            print("新增:" + SkillConfigJsonData.IsArray);
+            SkillConfigJsonData.Add(skillConfig[id].GetJson());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            SkillConfigJsonData[id - 1] = skillConfig[id].GetJson();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/SkillConfig.json", SkillConfigJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelSkillConfig(int id)
+    {
+        if (id <= SkillConfigJsonData.Count)
+        {
+            if (SkillConfigJsonData.Count == 1)
+            {
+                SkillConfigJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/killConfig.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(SkillConfigJsonData[i]);
+            }
+            for (int i = id - 1; i < SkillConfigJsonData.Count; i++)
+            {
+                if (i == SkillConfigJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(SkillConfigJsonData[i + 1]);
+            }
+            SkillConfigJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/killConfig.json", SkillConfigJsonData.ToJsonFile());
+        }
+    }
 }
 
 public class C_HeroData
 {
     public enum HeroQuality
     {
-        UR=6,
-        SSR=5,
-        SR=4,
-        R=3,
-        N=2,
-        E=1
+        UR = 6,
+        SSR = 5,
+        SR = 4,
+        R = 3,
+        N = 2,
+        E = 1
     }
 
     public enum HeroType
@@ -393,38 +487,38 @@ public class C_HeroData
     public JsonData getJsonData()
     {
         JsonData temdata = new JsonData();
-        temdata.Add("Id",ID);
+        temdata.Add("Id", ID);
         temdata.Add("Quality", (int)Quality);
         temdata.Add("Type", (int)Type);
         temdata.Add("StarId", StarID);
         temdata.Add("Fighting", Fighting);
         temdata.Add("ExponentBit", ExponentBit);
         temdata.Add("Level", Level);
-        temdata.Add("Vitality",Vitality);
-        temdata.Add("ATK",Attack);
-        temdata.Add("ATKSpeed",AttackSpeed);
-        temdata.Add("Skill",Skill);
-        temdata.Add("HitRate",HitRate);
-        temdata.Add("Dodge",Dodge);
-        temdata.Add("CriticalStrike",CriticalStrike);
-        temdata.Add("Tenacity",Tenacity);
-        temdata.Add("Pierce",Pierce);
-        temdata.Add("Defense",Defense);
-        temdata.Add("ATKGrow",ActGrow);
-        temdata.Add("VitalityGrow",VitalityGrow);
-        temdata.Add("ATKSpeedGrow",ActSpeedGrow);
-        temdata.Add("GrowCoefficient",GrowCoefficient);
-        temdata.Add("ATKBreakLevel",ActBreakLevel);
-        temdata.Add("VitalityBreakLevel",VitalityBreakLevel);
-        temdata.Add("BaseStrikeDamage",BaseStrikeDamage);
-        temdata.Add("TowerATKFrequency",TowerActFrequency);
-        temdata.Add("SkillConfigId",SkillConfigID);
-        temdata.Add("ExclusiveEquipId",ExclusiveEquipID);
+        temdata.Add("Vitality", Vitality);
+        temdata.Add("ATK", Attack);
+        temdata.Add("ATKSpeed", AttackSpeed);
+        temdata.Add("Skill", Skill);
+        temdata.Add("HitRate", HitRate);
+        temdata.Add("Dodge", Dodge);
+        temdata.Add("CriticalStrike", CriticalStrike);
+        temdata.Add("Tenacity", Tenacity);
+        temdata.Add("Pierce", Pierce);
+        temdata.Add("Defense", Defense);
+        temdata.Add("ATKGrow", ActGrow);
+        temdata.Add("VitalityGrow", VitalityGrow);
+        temdata.Add("ATKSpeedGrow", ActSpeedGrow);
+        temdata.Add("GrowCoefficient", GrowCoefficient);
+        temdata.Add("ATKBreakLevel", ActBreakLevel);
+        temdata.Add("VitalityBreakLevel", VitalityBreakLevel);
+        temdata.Add("BaseStrikeDamage", BaseStrikeDamage);
+        temdata.Add("TowerATKFrequency", TowerActFrequency);
+        temdata.Add("SkillConfigId", SkillConfigID);
+        temdata.Add("ExclusiveEquipId", ExclusiveEquipID);
         temdata.Add("ByConfigId1", ByConfigID1);
         temdata.Add("ByConfigId2", ByConfigID2);
         temdata.Add("ByConfigId3", ByConfigID3);
         temdata.Add("ByConfigId4", ByConfigID4);
-        temdata.Add("MessageConfigId",MessageConfigID);
+        temdata.Add("MessageConfigId", MessageConfigID);
 
         return temdata;
 
@@ -446,7 +540,7 @@ public class C_HeroMessage
         Spirit = 8,
         Traveller = 9,
     }
-    
+
     public long InfoId;
     public long HeroID;
     public string Name;
@@ -462,15 +556,15 @@ public class C_HeroMessage
     public JsonData getJsonData()
     {
         JsonData jd = new JsonData();
-        jd.Add("InfoId",InfoId);
+        jd.Add("InfoId", InfoId);
         jd.Add("HeroId", HeroID);
-        jd.Add("Nickname",Nickname);
+        jd.Add("Nickname", Nickname);
         jd.Add("Name", Name);
         jd.Add("Sex", Sex);
         jd.Add("TowerDefenceDefinite", TowerDefenceDefinite);
         jd.Add("FightDefinite", FightDefinite);
         jd.Add("HeroCamp", (int)Camp);
-        jd.Add("Backstory",Backstory);
+        jd.Add("Backstory", Backstory);
         return jd;
     }
 }
@@ -493,7 +587,7 @@ public class C_StarGrow
     public JsonData getJsonDate()
     {
         JsonData jd = new JsonData();
-        jd.Add("StarType",StarType);
+        jd.Add("StarType", StarType);
         jd.Add("ATKGrow", ATKGrow);
         jd.Add("VitalityGrow", VitalityGrow);
         jd.Add("ATKSpeedGrow", ATKSpeedGrow);
@@ -506,4 +600,98 @@ public class C_StarGrow
         return jd;
     }
 
-} 
+}
+
+public class C_SkillConfig
+{
+    public int HeroID;
+    public int SkillConfigId;
+    public int ATKEffect;
+    public int TowerPassivity;
+    public int TowerLittleSkill;
+    public int TowerBigSkill;
+    public int FightInitiative;
+    public int FightPassivity;
+    public int InnateSkill10;
+    public int InnateSkill11;
+    public int InnateSkill12;
+    public int InnateSkill13;
+    public int InnateSkill20;
+    public int InnateSkill21;
+    public int InnateSkill22;
+    public int InnateSkill23;
+    public int InnateSkill30;
+    public int InnateSkill31;
+    public int InnateSkill32;
+    public int InnateSkill33;
+    public int InnateSkill40;
+    public int InnateSkill41;
+    public int InnateSkill42;
+    public int InnateSkill43;
+    public int Awaken111;
+    public int Awaken121;
+    public int Awaken122;
+    public int Awaken131;
+    public int Awaken132;
+    public int Awaken141;
+    public int Awaken211;
+    public int Awaken221;
+    public int Awaken222;
+    public int Awaken231;
+    public int Awaken232;
+    public int Awaken241;
+    public int Awaken311;
+    public int Awaken321;
+    public int Awaken322;
+    public int Awaken331;
+    public int Awaken332;
+    public int Awaken341;
+
+    public bool Isjson = false;
+
+    public JsonData GetJson()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("HeroID",HeroID);
+        jd.Add("SkillConfigId", SkillConfigId);
+        jd.Add("ATKEffect", ATKEffect);
+        jd.Add("TowerPassivity", TowerPassivity);
+        jd.Add("TowerLittleSkill", TowerLittleSkill);
+        jd.Add("TowerBigSkill", TowerBigSkill);
+        jd.Add("FightInitiative", FightInitiative);
+        jd.Add("FightPassivity", FightPassivity);
+        jd.Add("InnateSkill10", InnateSkill10);
+        jd.Add("InnateSkill11", InnateSkill11);
+        jd.Add("InnateSkill12", InnateSkill12);
+        jd.Add("InnateSkill13", InnateSkill13);
+        jd.Add("InnateSkill20", InnateSkill20);
+        jd.Add("InnateSkill21", InnateSkill21);
+        jd.Add("InnateSkill22", InnateSkill22);
+        jd.Add("InnateSkill23", InnateSkill23); 
+        jd.Add("InnateSkill30", InnateSkill30);
+        jd.Add("InnateSkill31", InnateSkill31);
+        jd.Add("InnateSkill32", InnateSkill32);
+        jd.Add("InnateSkill33", InnateSkill33);
+        jd.Add("Awaken111", Awaken111);
+        jd.Add("Awaken121", Awaken121);
+        jd.Add("Awaken122", Awaken122);
+        jd.Add("Awaken131", Awaken131);
+        jd.Add("Awaken132", Awaken132);
+        jd.Add("Awaken141", Awaken141);
+        jd.Add("Awaken211", Awaken211);
+        jd.Add("Awaken221", Awaken221);
+        jd.Add("Awaken222", Awaken222);
+        jd.Add("Awaken231", Awaken231);
+        jd.Add("Awaken232", Awaken232);
+        jd.Add("Awaken241", Awaken241);
+        jd.Add("Awaken311", Awaken311);
+        jd.Add("Awaken321", Awaken321);
+        jd.Add("Awaken322", Awaken322);
+        jd.Add("Awaken331", Awaken331);
+        jd.Add("Awaken332", Awaken332);
+        jd.Add("Awaken341", Awaken341);
+     
+        return jd;
+    }
+
+}

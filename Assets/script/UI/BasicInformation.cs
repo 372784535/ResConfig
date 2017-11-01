@@ -138,9 +138,10 @@ public class BasicInformation : MonoBehaviour
 
     public void StartTest()
     {
-        if(_Test_Level.text=="0"||_Test_StarLevel.text=="0"||_Test_ExponentBit.text=="0")
+        if(_Test_Level.text=="0")
         {
             WindowControl.SetConsole("测试失败，请输入有效数据");
+            return;
         }
         C_HeroData Text_Hd = new C_HeroData();
         int Level = int.Parse(_Test_Level.text);
@@ -165,7 +166,6 @@ public class BasicInformation : MonoBehaviour
             {
                 Text_Hd.GrowCoefficient = DataManage.StarGrowJsonData[i]["GrowCoefficient"].ToInt32();
                 sg.StarType = DataManage.StarGrowJsonData[i]["StarType"].ToInt32();
-                sg.StarType = DataManage.StarGrowJsonData[i]["StarType"].ToInt32();
                 sg.ATKGrow = DataManage.StarGrowJsonData[i]["ATKGrow"].ToInt32();
                 sg.VitalityGrow = DataManage.StarGrowJsonData[i]["VitalityGrow"].ToInt32();
                 sg.ATKSpeedGrow = DataManage.StarGrowJsonData[i]["ATKSpeedGrow"].ToInt32();
@@ -185,54 +185,61 @@ public class BasicInformation : MonoBehaviour
         }
         //突破等级处理
         const double coefficient = 1.03;
-        Text_Hd.ActBreakLevel = (int)(Math.Pow(coefficient, ATKBreakLevel) * 10000);
-        Text_Hd.VitalityBreakLevel = (int)(Math.Pow(coefficient, VitalityBreakLevel) * 10000);
+        const double coefficient30 = 1.05;
+        if (ATKBreakLevel <= 30)
+        {
+            Text_Hd.ActBreakLevel = (int)(Math.Pow(coefficient, ATKBreakLevel) * 10000);
+            Text_Hd.VitalityBreakLevel = (int)(Math.Pow(coefficient, VitalityBreakLevel) * 10000);
+        }else if (ATKBreakLevel > 30)
+        {
+            Text_Hd.ActBreakLevel =(int) (Math.Pow(coefficient, 30)*(Math.Pow(coefficient30, ATKBreakLevel-30) * 10000));
+            Text_Hd.VitalityBreakLevel = (int)(Math.Pow(coefficient, 30)*(Math.Pow(coefficient, VitalityBreakLevel-30) * 10000));
+        }
 
         //计算生命
-        double Vitality = ((double)heroData.Vitality+((double)heroData.VitalityGrow/10000.00)*(double)(Text_Hd.GrowCoefficient/10000.00)*(Text_Hd.Level - 1))*(double)Text_Hd.VitalityBreakLevel/10000.00+(sg.VitalityGrow)*(heroData.VitalityGrow/10000.00);
+        double Vitality = (double.Parse(_Test_Base_Vitality.text)+(double.Parse(_Test_Base_VitalityGrow.text)/10000.00)*(double)(Text_Hd.GrowCoefficient/10000.00)*(Text_Hd.Level - 1))*(double)Text_Hd.VitalityBreakLevel/10000.00+(sg.VitalityGrow/10000.0)*(double.Parse(_Test_Base_VitalityGrow.text)/10000.00);
         Text_Hd.Vitality = (int)Vitality;
         _Test_Results_Vitality.text = Text_Hd.Vitality.ToString();
         //计算攻击
-        double Attack = ((double)heroData.Attack + ((double)heroData.ActGrow / 10000.00) * (double)(Text_Hd.GrowCoefficient / 10000.00) * (Text_Hd.Level - 1)) * (double)Text_Hd.ActBreakLevel / 10000.00 + (sg.ATKGrow) * (heroData.ActGrow / 10000.00);
+        double Attack = (double.Parse(_Test_Base_ATK.text) + (double.Parse(_Test_Base_AttacksGrow.text) / 10000.00) * (double)(Text_Hd.GrowCoefficient / 10000.00) * (Text_Hd.Level - 1)) * (double)Text_Hd.ActBreakLevel / 10000.00 + (sg.ATKGrow/10000.00) * (double.Parse(_Test_Base_AttacksGrow.text) / 10000.00);
         Text_Hd.Attack = (int)Attack;
         _Test_Results_ATK.text = Text_Hd.Attack.ToString();
         //计算韧性
-        Text_Hd.Tenacity = heroData.Tenacity + sg.TenacityGrow;
+        Text_Hd.Tenacity =int.Parse(_Test_Base_Tenacity.text) + sg.TenacityGrow;
         _Test_Results_Tenacity.text = Text_Hd.Tenacity.ToString();
         //计算暴击
-        Text_Hd.CriticalStrike = heroData.CriticalStrike + sg.CritGrow;
+        Text_Hd.CriticalStrike = int.Parse(_Test_Base_Crit.text) + sg.CritGrow;
         _Test_Results_Crit.text = Text_Hd.CriticalStrike.ToString();
         //计算技能
-        Text_Hd.Skill = heroData.Skill;
+        Text_Hd.Skill = int.Parse(_Test_Base_Skill.text);
         _Test_Results_Skill.text = Text_Hd.Skill.ToString();
         //计算速度
-        double AttackSpeed = ((double)heroData.AttackSpeed + ((double)heroData.AttackSpeed / 10000.00) * (double)(Text_Hd.GrowCoefficient / 10000.00) * (Text_Hd.Level - 1))/* * (double)Text_Hd.ActBreakLevel / 10000.00 */+ (sg.ATKGrow) * (heroData.ActGrow / 10000.00);
+        double AttackSpeed = (double.Parse(_Test_Base_Speed.text) + (double.Parse(_Test_Base_SpeedGrow.text) / 10000.00) * (double)(Text_Hd.GrowCoefficient / 10000.00) * (Text_Hd.Level - 1))/* * (double)Text_Hd.ActBreakLevel / 10000.00 */+ (sg.ATKGrow/10000.00) * (double.Parse(_Test_Base_SpeedGrow.text) / 10000.00);
         Text_Hd.AttackSpeed = (int)AttackSpeed;
         _Test_Results_Speed.text = Text_Hd.AttackSpeed.ToString();
         //计算穿透
-        Text_Hd.Pierce = heroData.Pierce;
+        Text_Hd.Pierce = int.Parse(_Test_Base_Penetrate.text);
         _Test_Results_Penetrate.text = Text_Hd.Pierce.ToString();
         //计算防御
-        Text_Hd.Defense = heroData.Defense;
+        Text_Hd.Defense = int.Parse(_Test_Base_Defense.text);
         _Test_Results_Defense.text = Text_Hd.Defense.ToString();
         //计算命中
-        Text_Hd.HitRate = heroData.HitRate+sg.HitRateGrow;
+        Text_Hd.HitRate = int.Parse(_Test_Base_HitRate.text)+sg.HitRateGrow;
         _Test_Results_HitRate.text = Text_Hd.HitRate.ToString();
         //计算闪避
-        Text_Hd.Dodge = heroData.Dodge + sg.DodgeGrow;
-        _Test_Results_Dodge.text = Text_Hd.Dodge.ToString();
-        //计算闪避
-        Text_Hd.Dodge = heroData.Dodge + sg.DodgeGrow;
+        Text_Hd.Dodge = int.Parse(_Test_Base_Dodge.text) + sg.DodgeGrow;
         _Test_Results_Dodge.text = Text_Hd.Dodge.ToString();
 
         //生命成长
         _Test_Results_VitalityGrow.text = Text_Hd.Dodge.ToString();
 
-
-
+        //战斗力测试
+        long FightingForce =(long)( Attack * 0.3 + Vitality * 0.1 + AttackSpeed * 3 + Text_Hd.Skill + Text_Hd.HitRate + Text_Hd.Dodge + Text_Hd.CriticalStrike + Text_Hd.Tenacity + Text_Hd.Pierce * 1.4 + Text_Hd.Defense * 1.4 + sg.AdditionalFighting);
+        _Test_Results_FightingForce.text = FightingForce.ToString();
+        WindowControl.SetConsole("测试成功");
     }
 
-    void Test_BaseDataInit()
+    public void Test_BaseDataInit()
     {
         TestUIInit();
         
@@ -274,6 +281,41 @@ public class BasicInformation : MonoBehaviour
         _Test_Base_SpeedGrow.text = heroData.ActSpeedGrow.ToString();
         _Test_Base_TowerATKFrequency.text = heroData.TowerActFrequency.ToString();
 
+    }
+
+    public void BaseChangSave()
+    {
+        int id = -1;
+        for (int i = 0; i < HeroData.heroData.Count; i++)
+        {
+            if (HeroData.heroData[i + 1].ID == heroMessage.HeroID)
+            {
+                HeroData.heroData[i + 1].Vitality =int.Parse(_Test_Base_Vitality.text);
+                HeroData.heroData[i + 1].Attack = int.Parse(_Test_Base_ATK.text);
+                HeroData.heroData[i + 1].AttackSpeed =int.Parse(_Test_Base_Speed.text);
+                HeroData.heroData[i + 1].Skill = int.Parse(_Test_Base_Skill.text);
+                HeroData.heroData[i + 1].HitRate = int.Parse(_Test_Base_HitRate.text);
+                HeroData.heroData[i + 1].Dodge = int.Parse(_Test_Base_Dodge.text);
+                HeroData.heroData[i + 1].CriticalStrike = int.Parse(_Test_Base_Crit.text);
+                HeroData.heroData[i + 1].Tenacity = int.Parse(_Test_Base_Tenacity.text);
+                HeroData.heroData[i + 1].Defense = int.Parse(_Test_Base_Defense.text);
+                HeroData.heroData[i + 1].ActGrow = int.Parse(_Test_Base_AttacksGrow.text);
+                HeroData.heroData[i + 1].VitalityGrow = int.Parse(_Test_Base_VitalityGrow.text);
+                HeroData.heroData[i + 1].ActSpeedGrow = int.Parse(_Test_Base_SpeedGrow.text);
+                HeroData.heroData[i + 1].TowerActFrequency = int.Parse(_Test_Base_TowerATKFrequency.text);
+                id = i+1;
+                break;
+
+            }
+        }
+        if(DataManage.HeroDataSave(HeroData.heroData,id))
+        {
+            WindowControl.SetConsole("保存成功");
+        }
+        else
+        {
+            WindowControl.SetConsole("保存失败");
+        }
     }
 
     public void RemoveUIData()

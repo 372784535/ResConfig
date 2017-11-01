@@ -1,24 +1,13 @@
 [
     {
-        "InfoId":1515,
-        "HeroId":465,
-        "Nickname":"1515",
-        "Name":"\u5E7F\u53D1\u534E\u798F",
-        "Sex":0,
-        "TowerDefenceDefinite":"\u597D\u89C4\u8303\u5316",
-        "FightDefinite":"\u89C4\u8303\u5316\u53D1\u8FC7\u706B",
-        "HeroCamp":3,
-        "Backstory":"\u6CD5\u89C4\u548C\u6CD5\u56FDh'f'g"
-    },
-    {
-        "InfoId":66,
+        "InfoId":25001,
         "HeroId":21001,
-        "Nickname":"66",
-        "Name":"\u5B89\u742A\u513F",
+        "Nickname":"25001",
+        "Name":"\u5B89\u742A\u5C14",
         "Sex":1,
-        "TowerDefenceDefinite":" \u5927\u5927",
-        "FightDefinite":"\u7684\u5965\u672F\u5927\u5E08\u90FD\u662F\u5965\u5FB7\u8D5B\u591A",
-        "HeroCamp":3,
-        "Backstory":"\u8428\u8FBE\u8428\u8FBEa's'd"
+        "TowerDefenceDefinite":"\u7FA4\u653B\u8F93\u51FA\u578B\u82F1\u96C4",
+        "FightDefinite":"\u9AD8\u9632\u590D\u6D3B\u8F85\u52A9\u578B\u82F1\u96C4",
+        "HeroCamp":0,
+        "Backstory":"\u5B89\u742A\u5C14\u662F\u738B\u56FD\u5386\u53F2\u4E0A\u6700\u5177\u4EBA\u6C14\u7684\u5723\u9A91\u58EB\uFF0C\u4E0D\u5149\u56E0\u4E3A\u5979\u7684\u7F8E\u8C8C\uFF0C\u8FD8\u56E0\u4E3A\u5979\u8D85\u51E1\u7684\u5929\u8D4B\uFF0C\u4EE5\u53CA\u6E29\u6696\u5982\u5723\u6BCD\u822C\u7684\u7B11\u5BB9\uFF0C\u5386\u53F2\u4E0A\u5E74\u7EAA\u8F7B\u8F7B\u5C31\u8FBE\u5230\u5723\u9A91\u58EB\u7EA7\u522B\u7684\u53EA\u6709\u4E24\u4E2A\u4EBA\uFF0C\u4E00\u4E2A\u4EBA\u662F\u5B89\u742A\u5C14\uFF0C\u53E6\u4E00\u4E2A\u5C31\u662F800\u5E74\u524D\u7684\u5E03\u857E\u3002\r\n"
     }
 ]

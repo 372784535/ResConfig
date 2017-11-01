@@ -41,7 +41,7 @@ public class HeroData : MonoBehaviour {
     private Text _heroByConfigID4;
     private Text _heroMessageConfigID;
 
-    Dictionary<int, C_HeroData> heroData = new Dictionary<int, C_HeroData>();
+    public static Dictionary<int, C_HeroData> heroData = new Dictionary<int, C_HeroData>();
 
     Transform _basicInformation;
     public Transform BasicInformation
@@ -74,9 +74,119 @@ public class HeroData : MonoBehaviour {
 	void Start () {
         //_basicInformation = transform.Find("Viewport/Content/type");
         //print( DataManage.Data);
-        Init();
+
 	}
-	
+
+    void Awake()
+    {
+        Init();
+    }
+    void OnEnable()
+    {
+        for (int i = 0; i < DataManage.HeroJsonData.Count; i++)
+        {
+            _heroID = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroID").GetComponent<Text>();
+            _heroQuality = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroQuality").GetComponent<Dropdown>();
+            _heroType = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroType").GetComponent<Dropdown>();
+            _heroStarID = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroStarID").GetComponent<Text>();
+            _heroFighting = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroFighting").GetComponent<Text>();
+            _heroExponentBit = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroExponentBit").GetComponent<Text>();
+            _heroLevel = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroLevel").GetComponent<Text>();
+            _heroVitality = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroVitality").GetComponent<Text>();
+            _heroAttack = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroAttack").GetComponent<Text>();
+            _heroAttackSpeed = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroAttackSpeed").GetComponent<Text>();
+            _heroSkill = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroSkill").GetComponent<Text>();
+            _heroHitRate = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroHitRate").GetComponent<Text>();
+            _heroDodge = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroDodge").GetComponent<Text>();
+            _heroCriticalStrike = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroCriticalStrike").GetComponent<Text>();
+            _heroTenacity = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroTenacity").GetComponent<Text>();
+            _heroPierce = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroPierce").GetComponent<Text>();
+            _heroDefense = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroDefense").GetComponent<Text>();
+            _heroActGrow = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroActGrow").GetComponent<Text>();
+            _heroVitalityGrow = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroVitalityGrow").GetComponent<Text>();
+            _heroActSpeedGrow = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroActSpeedGrow").GetComponent<Text>();
+            _heroGrowCoefficient = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroGrowCoefficient").GetComponent<Text>();
+            _heroActBreakLevel = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroActBreakLevel").GetComponent<Text>();
+            _heroVitalityBreakLevel = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroVitalityBreakLevel").GetComponent<Text>();
+            _heroBaseStrikeDamage = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroBaseStrikeDamage").GetComponent<Text>();
+            _heroTowerActFrequency = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroTowerActFrequency").GetComponent<Text>();
+            _heroSkillConfigID = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroSkillConfigID").GetComponent<Text>();
+            _heroExclusiveEquipID = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroExclusiveEquipID").GetComponent<Text>();
+            _heroByConfigID1 = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroByConfigID1").GetComponent<Text>();
+            _heroByConfigID2 = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroByConfigID2").GetComponent<Text>();
+            _heroByConfigID3 = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroByConfigID3").GetComponent<Text>();
+            _heroByConfigID4 = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroByConfigID4").GetComponent<Text>();
+            _heroMessageConfigID = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroMessageConfigID").GetComponent<Text>();
+
+            heroData[(i + 1)].ID = DataManage.HeroJsonData[i]["Id"].ToInt32();
+            heroData[(i + 1)].StarID = DataManage.HeroJsonData[i]["StarId"].ToInt32();
+            heroData[(i + 1)].Quality = (C_HeroData.HeroQuality)DataManage.HeroJsonData[i]["Quality"].ToInt32();
+            heroData[(i + 1)].Type = (C_HeroData.HeroType)DataManage.HeroJsonData[i]["Type"].ToInt32();
+            heroData[(i + 1)].Fighting = DataManage.HeroJsonData[i]["Fighting"].ToInt32();
+            heroData[(i + 1)].ExponentBit = DataManage.HeroJsonData[i]["ExponentBit"].ToInt32();
+            heroData[(i + 1)].Level = DataManage.HeroJsonData[i]["Level"].ToInt32();
+            heroData[(i + 1)].Vitality = DataManage.HeroJsonData[i]["Vitality"].ToInt32();
+            heroData[(i + 1)].Attack = DataManage.HeroJsonData[i]["ATK"].ToInt32();
+            heroData[(i + 1)].AttackSpeed = DataManage.HeroJsonData[i]["ATKSpeed"].ToInt32();
+            heroData[(i + 1)].Skill = DataManage.HeroJsonData[i]["Skill"].ToInt32();
+            heroData[(i + 1)].HitRate = DataManage.HeroJsonData[i]["HitRate"].ToInt32();
+            heroData[(i + 1)].Dodge = DataManage.HeroJsonData[i]["Dodge"].ToInt32();
+            heroData[(i + 1)].CriticalStrike = DataManage.HeroJsonData[i]["CriticalStrike"].ToInt32();
+            heroData[(i + 1)].Tenacity = DataManage.HeroJsonData[i]["Tenacity"].ToInt32();
+            heroData[(i + 1)].Pierce = DataManage.HeroJsonData[i]["Pierce"].ToInt32();
+            heroData[(i + 1)].Defense = DataManage.HeroJsonData[i]["Defense"].ToInt32();
+            heroData[(i + 1)].ActGrow = DataManage.HeroJsonData[i]["ATKGrow"].ToInt32();
+            heroData[(i + 1)].VitalityGrow = DataManage.HeroJsonData[i]["VitalityGrow"].ToInt32();
+            heroData[(i + 1)].ActSpeedGrow = DataManage.HeroJsonData[i]["ATKSpeedGrow"].ToInt32();
+            heroData[(i + 1)].GrowCoefficient = DataManage.HeroJsonData[i]["GrowCoefficient"].ToInt32();
+            heroData[(i + 1)].ActBreakLevel = DataManage.HeroJsonData[i]["ATKBreakLevel"].ToInt32();
+            heroData[(i + 1)].VitalityBreakLevel = DataManage.HeroJsonData[i]["VitalityBreakLevel"].ToInt32();
+            heroData[(i + 1)].BaseStrikeDamage = DataManage.HeroJsonData[i]["BaseStrikeDamage"].ToInt32();
+            heroData[(i + 1)].TowerActFrequency = DataManage.HeroJsonData[i]["TowerATKFrequency"].ToInt32();
+            heroData[(i + 1)].SkillConfigID = DataManage.HeroJsonData[i]["SkillConfigId"].ToInt32();
+            heroData[(i + 1)].ExclusiveEquipID = DataManage.HeroJsonData[i]["ExclusiveEquipId"].ToInt32();
+            heroData[(i + 1)].ByConfigID1 = DataManage.HeroJsonData[i]["ByConfigId1"].ToInt32();
+            heroData[(i + 1)].ByConfigID2 = DataManage.HeroJsonData[i]["ByConfigId2"].ToInt32();
+            heroData[(i + 1)].ByConfigID3 = DataManage.HeroJsonData[i]["ByConfigId3"].ToInt32();
+            heroData[(i + 1)].ByConfigID4 = DataManage.HeroJsonData[i]["ByConfigId4"].ToInt32();
+            heroData[(i + 1)].MessageConfigID = DataManage.HeroJsonData[i]["MessageConfigId"].ToInt32();
+            heroData[(i + 1)].IsJson = true;
+
+            print("DataManage=" + DataManage.HeroJsonData.Count);
+            _heroID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ID.ToString();
+            //_heroQuality.value = (int)heroData[Length].Quality - 1;
+            //_heroType.value = (int)heroData[Length].Type - 1;
+            _heroStarID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].StarID.ToString();
+            _heroFighting.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Fighting.ToString();
+            _heroExponentBit.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ExponentBit.ToString();
+            _heroLevel.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Level.ToString();
+            _heroVitality.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Vitality.ToString();
+            _heroAttack.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Attack.ToString();
+            _heroAttackSpeed.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].AttackSpeed.ToString();
+            _heroSkill.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Skill.ToString();
+            _heroHitRate.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].HitRate.ToString();
+            _heroDodge.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Dodge.ToString();
+            _heroCriticalStrike.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].CriticalStrike.ToString();
+            _heroTenacity.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Tenacity.ToString();
+            _heroPierce.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Pierce.ToString();
+            _heroDefense.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Defense.ToString();
+            _heroActGrow.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ActGrow.ToString();
+            _heroVitalityGrow.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].VitalityGrow.ToString();
+            _heroActSpeedGrow.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ActSpeedGrow.ToString();
+            _heroGrowCoefficient.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].GrowCoefficient.ToString();
+            _heroActBreakLevel.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ActBreakLevel.ToString();
+            _heroVitalityBreakLevel.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].VitalityBreakLevel.ToString();
+            _heroBaseStrikeDamage.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].BaseStrikeDamage.ToString();
+            _heroTowerActFrequency.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].TowerActFrequency.ToString();
+            _heroSkillConfigID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].SkillConfigID.ToString();
+            _heroExclusiveEquipID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ID.ToString();
+            _heroByConfigID1.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ByConfigID1.ToString();
+            _heroByConfigID2.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ByConfigID2.ToString();
+            _heroByConfigID3.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ByConfigID3.ToString();
+            _heroByConfigID4.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ByConfigID4.ToString();
+            _heroMessageConfigID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].MessageConfigID.ToString();
+        }
+    }
 	// Update is called once per frame
 	void Update () {
 		
@@ -84,11 +194,21 @@ public class HeroData : MonoBehaviour {
 
     public void Init()
     {
+        /*Length = 0;
+
+
+        for (int i = 0; i < transform.Find("Viewport/Content").childCount;i++)
+        {
+            Destroy(transform.Find("Viewport/Content/obj" + (i + 1)).gameObject);
+            Destroy(transform.Find("TipTitleX/Viewport/Content/obj" + (i + 1)).gameObject);
+            heroData.Remove(i+1);
+        }*/
         //print("dddd" + DataManage.Data.ToJson());
         if (!DataManage.HeroJsonData.IsArray)
         {
             return;
         }
+
         for (int i = 0; i < DataManage.HeroJsonData.Count;i++)
         {
             OnAdd();
@@ -159,6 +279,7 @@ public class HeroData : MonoBehaviour {
             heroData[Length].MessageConfigID = DataManage.HeroJsonData[i]["MessageConfigId"].ToInt32();
             heroData[Length].IsJson = true;
 
+            print("DataManage=" + DataManage.HeroJsonData.Count);
             _heroID.gameObject.GetComponent<InputField>().text= heroData[Length].ID.ToString();
             _heroQuality.value = (int)heroData[Length].Quality-1;
             _heroType.value = (int)heroData[Length].Type-1;
@@ -337,6 +458,7 @@ public class HeroData : MonoBehaviour {
         //------------数据处理------------------//
         C_HeroData c_heroData=new C_HeroData();
         //heroData[Length-1] = s_heroData;
+        //heroData.Add(Length, c_heroData);
         heroData[Length]=(c_heroData);
         //print("集合长度="+heroData.Count);
         _heroID = transform.Find("Viewport/Content/obj" + Length + "/HeroID").GetComponent<Text>();

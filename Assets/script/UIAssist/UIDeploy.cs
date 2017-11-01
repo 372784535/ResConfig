@@ -43,6 +43,8 @@ public class UIDeploy : MonoBehaviour {
     {
         transform.parent.Find("HeroData/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value=transform.parent.Find("HeroData/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("HeroData/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("HeroData/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("SkillConfig/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("SkillConfig/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
 
     }
 
@@ -50,6 +52,8 @@ public class UIDeploy : MonoBehaviour {
     {
         transform.parent.Find("HeroData/Scrollbar Vertical").GetComponent<Scrollbar>().value= transform.parent.Find("HeroData/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("HeroData/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("HeroData/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("SkillConfig/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("SkillConfig/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
     }
     public void OnToggle()
     {
