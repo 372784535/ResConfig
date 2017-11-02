@@ -17,6 +17,8 @@ public class UIDeploy : MonoBehaviour {
     private Transform HeroData;
     private Transform BasicInformation;
     private Transform StarGrow;
+    private Transform SkillConfig;
+    private Transform Fetter;
 	// Use this for initialization
 	void Start () {
         HeroDateBtn = transform.Find("HeroDateBtn").GetComponent<Toggle>();
@@ -32,6 +34,8 @@ public class UIDeploy : MonoBehaviour {
         HeroData = transform.parent.Find("HeroData");
         BasicInformation = transform.parent.Find("BasicInformation");
         StarGrow =transform.parent.Find("StarGrow");
+        SkillConfig = transform.parent.Find("SkillConfig");
+        Fetter = transform.parent.Find("Fetter");
 	}
 	
 	// Update is called once per frame
@@ -45,6 +49,8 @@ public class UIDeploy : MonoBehaviour {
         transform.parent.Find("HeroData/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("HeroData/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
         transform.parent.Find("SkillConfig/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("SkillConfig/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("Fetter/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("Fetter/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
 
     }
 
@@ -54,6 +60,8 @@ public class UIDeploy : MonoBehaviour {
         transform.parent.Find("HeroData/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("HeroData/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
         transform.parent.Find("SkillConfig/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("SkillConfig/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("Fetter/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("Fetter/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
     }
     public void OnToggle()
     {
@@ -68,6 +76,8 @@ public class UIDeploy : MonoBehaviour {
             HeroData.gameObject.SetActive(HeroDateBtn.isOn);
             BasicInformation.gameObject.SetActive(BasicInformationBtn.isOn);
             StarGrow.gameObject.SetActive(StarGrowBtn.isOn);
+            SkillConfig.gameObject.SetActive(SkillConfigBtn.isOn);
+            Fetter.gameObject.SetActive(FetterBtn.isOn);
         }
         else
         {

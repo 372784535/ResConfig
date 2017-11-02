@@ -400,7 +400,7 @@ public class DataManage : MonoBehaviour
             if (SkillConfigJsonData.Count == 1)
             {
                 SkillConfigJsonData.Clear();
-                File.WriteAllText(@"Assets/Res/JsonConfig/killConfig.json", "");
+                File.WriteAllText(@"Assets/Res/JsonConfig/SkillConfig.json", "");
                 return;
             }
             JsonData jd = new JsonData();
@@ -417,7 +417,7 @@ public class DataManage : MonoBehaviour
                 jd.Add(SkillConfigJsonData[i + 1]);
             }
             SkillConfigJsonData = jd;
-            File.WriteAllText(@"Assets/Res/JsonConfig/killConfig.json", SkillConfigJsonData.ToJsonFile());
+            File.WriteAllText(@"Assets/Res/JsonConfig/SkillConfig.json", SkillConfigJsonData.ToJsonFile());
         }
     }
 }
@@ -694,4 +694,38 @@ public class C_SkillConfig
         return jd;
     }
 
+}
+
+public class C_Frtter
+{
+    public int HeroID;
+    public int FrtterId;
+    public int NeedHeroIDLength;
+    public List<int> NeedHeroList = new List<int>();
+    public int PropertyAddLength;
+    public List<int> PropertyAddList = new List<int>();
+
+    public bool IsJson = false;
+
+    public JsonData GetJson()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("HeroID",HeroID);
+        jd.Add("FrtterId",FrtterId);
+
+        JsonData needHero = new JsonData();
+        for (int i = 0; i < NeedHeroList.Count;i++)
+        {
+            needHero.Add(NeedHeroList[i]);
+        }
+        jd.Add("NeedHeroList",needHero);
+
+        JsonData propertyAdd = new JsonData();
+        for (int i = 0; i < PropertyAddList.Count;i++)
+        {
+            propertyAdd.Add(PropertyAddList[i]);
+        }
+        jd.Add("propertyAddList",propertyAdd);
+        return jd;
+    }
 }

@@ -55,7 +55,7 @@ public class SkillConfig : MonoBehaviour {
     public Dictionary<int, C_SkillConfig> skillConfig = new Dictionary<int, C_SkillConfig>();
 	// Use this for initialization
 	void Start () {
-		
+        Init();
 	}
 	
     Transform _basicInformation;
@@ -83,6 +83,155 @@ public class SkillConfig : MonoBehaviour {
                 return _tipTitle;
             }
             return _tipTitle;
+        }
+    }
+
+    public void Init()
+    {
+        /*Length = 0;
+
+
+        for (int i = 0; i < transform.Find("Viewport/Content").childCount;i++)
+        {
+            Destroy(transform.Find("Viewport/Content/obj" + (i + 1)).gameObject);
+            Destroy(transform.Find("TipTitleX/Viewport/Content/obj" + (i + 1)).gameObject);
+            heroData.Remove(i+1);
+        }*/
+        //print("dddd" + DataManage.Data.ToJson());
+        if (!DataManage.SkillConfigJsonData.IsArray)
+        {
+            return;
+        }
+
+        for (int i = 0; i < DataManage.SkillConfigJsonData.Count; i++)
+        {
+            OnAdd();
+            _heroID = transform.Find("Viewport/Content/obj" + Length + "/HeroID").GetComponent<InputField>();
+            _SkillConfigId = transform.Find("Viewport/Content/obj" + Length + "/SkillConfigId").GetComponent<InputField>();
+            _ATKEffect = transform.Find("Viewport/Content/obj" + Length + "/ATKEffect").GetComponent<InputField>();
+            _TowerPassivity = transform.Find("Viewport/Content/obj" + Length + "/TowerPassivity").GetComponent<InputField>();
+            _TowerLittleSkill = transform.Find("Viewport/Content/obj" + Length + "/TowerLittleSkill").GetComponent<InputField>();
+            _TowerBigSkill = transform.Find("Viewport/Content/obj" + Length + "/TowerBigSkill").GetComponent<InputField>();
+            _FightInitiative = transform.Find("Viewport/Content/obj" + Length + "/FightInitiative").GetComponent<InputField>();
+            _FightPassivity = transform.Find("Viewport/Content/obj" + Length + "/FightPassivity").GetComponent<InputField>();
+            _InnateSkill10 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill10").GetComponent<InputField>();
+            _InnateSkill11 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill11").GetComponent<InputField>();
+            _InnateSkill12 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill12").GetComponent<InputField>();
+            _InnateSkill13 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill13").GetComponent<InputField>();
+            _InnateSkill20 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill20").GetComponent<InputField>();
+            _InnateSkill21 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill21").GetComponent<InputField>();
+            _InnateSkill22 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill22").GetComponent<InputField>();
+            _InnateSkill23 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill23").GetComponent<InputField>();
+            _InnateSkill30 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill30").GetComponent<InputField>();
+            _InnateSkill31 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill31").GetComponent<InputField>();
+            _InnateSkill32 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill32").GetComponent<InputField>();
+            _InnateSkill33 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill33").GetComponent<InputField>();
+            _InnateSkill40 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill40").GetComponent<InputField>();
+            _InnateSkill41 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill41").GetComponent<InputField>();
+            _InnateSkill42 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill42").GetComponent<InputField>();
+            _InnateSkill43 = transform.Find("Viewport/Content/obj" + Length + "/InnateSkill43").GetComponent<InputField>();
+            _Awaken111 = transform.Find("Viewport/Content/obj" + Length + "/Awaken111").GetComponent<InputField>();
+            _Awaken121 = transform.Find("Viewport/Content/obj" + Length + "/Awaken121").GetComponent<InputField>();
+            _Awaken122 = transform.Find("Viewport/Content/obj" + Length + "/Awaken122").GetComponent<InputField>();
+            _Awaken131 = transform.Find("Viewport/Content/obj" + Length + "/Awaken131").GetComponent<InputField>();
+            _Awaken132 = transform.Find("Viewport/Content/obj" + Length + "/Awaken132").GetComponent<InputField>();
+            _Awaken141 = transform.Find("Viewport/Content/obj" + Length + "/Awaken141").GetComponent<InputField>();
+            _Awaken211 = transform.Find("Viewport/Content/obj" + Length + "/Awaken211").GetComponent<InputField>();
+            _Awaken221 = transform.Find("Viewport/Content/obj" + Length + "/Awaken221").GetComponent<InputField>();
+            _Awaken222 = transform.Find("Viewport/Content/obj" + Length + "/Awaken222").GetComponent<InputField>();
+            _Awaken231 = transform.Find("Viewport/Content/obj" + Length + "/Awaken231").GetComponent<InputField>();
+            _Awaken232 = transform.Find("Viewport/Content/obj" + Length + "/Awaken232").GetComponent<InputField>();
+            _Awaken241 = transform.Find("Viewport/Content/obj" + Length + "/Awaken241").GetComponent<InputField>();
+            _Awaken311 = transform.Find("Viewport/Content/obj" + Length + "/Awaken311").GetComponent<InputField>();
+            _Awaken321 = transform.Find("Viewport/Content/obj" + Length + "/Awaken321").GetComponent<InputField>();
+            _Awaken322 = transform.Find("Viewport/Content/obj" + Length + "/Awaken322").GetComponent<InputField>();
+            _Awaken331 = transform.Find("Viewport/Content/obj" + Length + "/Awaken331").GetComponent<InputField>();
+            _Awaken332 = transform.Find("Viewport/Content/obj" + Length + "/Awaken332").GetComponent<InputField>();
+            _Awaken341 = transform.Find("Viewport/Content/obj" + Length + "/Awaken341").GetComponent<InputField>();
+
+            skillConfig[Length].HeroID = DataManage.SkillConfigJsonData[i]["HeroID"].ToInt32();
+            skillConfig[Length].SkillConfigId = DataManage.SkillConfigJsonData[i]["SkillConfigId"].ToInt32();
+            skillConfig[Length].ATKEffect = DataManage.SkillConfigJsonData[i]["ATKEffect"].ToInt32();
+            skillConfig[Length].TowerPassivity = DataManage.SkillConfigJsonData[i]["TowerPassivity"].ToInt32();
+            skillConfig[Length].TowerLittleSkill = DataManage.SkillConfigJsonData[i]["TowerLittleSkill"].ToInt32();
+            skillConfig[Length].TowerBigSkill = DataManage.SkillConfigJsonData[i]["TowerBigSkill"].ToInt32();
+            skillConfig[Length].FightInitiative = DataManage.SkillConfigJsonData[i]["FightInitiative"].ToInt32();
+            skillConfig[Length].FightPassivity =DataManage.SkillConfigJsonData[i]["FightPassivity"].ToInt32();
+            skillConfig[Length].InnateSkill10 = DataManage.SkillConfigJsonData[i]["InnateSkill10"].ToInt32();
+            skillConfig[Length].InnateSkill11 = DataManage.SkillConfigJsonData[i]["InnateSkill11"].ToInt32();
+            skillConfig[Length].InnateSkill12 = DataManage.SkillConfigJsonData[i]["InnateSkill12"].ToInt32();
+            skillConfig[Length].InnateSkill13 = DataManage.SkillConfigJsonData[i]["InnateSkill13"].ToInt32();
+            skillConfig[Length].InnateSkill20 = DataManage.SkillConfigJsonData[i]["InnateSkill20"].ToInt32();
+            skillConfig[Length].InnateSkill21 = DataManage.SkillConfigJsonData[i]["InnateSkill21"].ToInt32();
+            skillConfig[Length].InnateSkill22 = DataManage.SkillConfigJsonData[i]["InnateSkill22"].ToInt32();
+            skillConfig[Length].InnateSkill23 = DataManage.SkillConfigJsonData[i]["InnateSkill23"].ToInt32();
+            skillConfig[Length].InnateSkill30 = DataManage.SkillConfigJsonData[i]["InnateSkill30"].ToInt32();
+            skillConfig[Length].InnateSkill31 = DataManage.SkillConfigJsonData[i]["InnateSkill31"].ToInt32();
+            skillConfig[Length].InnateSkill32 = DataManage.SkillConfigJsonData[i]["InnateSkill32"].ToInt32();
+            skillConfig[Length].InnateSkill33 = DataManage.SkillConfigJsonData[i]["InnateSkill33"].ToInt32();
+            skillConfig[Length].Awaken111 = DataManage.SkillConfigJsonData[i]["Awaken111"].ToInt32();
+            skillConfig[Length].Awaken121 = DataManage.SkillConfigJsonData[i]["Awaken121"].ToInt32();
+            skillConfig[Length].Awaken122 = DataManage.SkillConfigJsonData[i]["Awaken122"].ToInt32();
+            skillConfig[Length].Awaken131 = DataManage.SkillConfigJsonData[i]["Awaken131"].ToInt32();
+            skillConfig[Length].Awaken132 = DataManage.SkillConfigJsonData[i]["Awaken132"].ToInt32();
+            skillConfig[Length].Awaken141 = DataManage.SkillConfigJsonData[i]["Awaken141"].ToInt32();
+            skillConfig[Length].Awaken211 = DataManage.SkillConfigJsonData[i]["Awaken211"].ToInt32();
+            skillConfig[Length].Awaken221 = DataManage.SkillConfigJsonData[i]["Awaken221"].ToInt32();
+            skillConfig[Length].Awaken222 = DataManage.SkillConfigJsonData[i]["Awaken222"].ToInt32();
+            skillConfig[Length].Awaken231 = DataManage.SkillConfigJsonData[i]["Awaken231"].ToInt32();
+            skillConfig[Length].Awaken232 = DataManage.SkillConfigJsonData[i]["Awaken232"].ToInt32();
+            skillConfig[Length].Awaken241 = DataManage.SkillConfigJsonData[i]["Awaken241"].ToInt32();
+            skillConfig[Length].Awaken311 = DataManage.SkillConfigJsonData[i]["Awaken311"].ToInt32();
+            skillConfig[Length].Awaken321 = DataManage.SkillConfigJsonData[i]["Awaken321"].ToInt32();
+            skillConfig[Length].Awaken322 = DataManage.SkillConfigJsonData[i]["Awaken322"].ToInt32();
+            skillConfig[Length].Awaken331 = DataManage.SkillConfigJsonData[i]["Awaken331"].ToInt32();
+            skillConfig[Length].Awaken332 = DataManage.SkillConfigJsonData[i]["Awaken332"].ToInt32();
+            skillConfig[Length].Awaken341 = DataManage.SkillConfigJsonData[i]["Awaken341"].ToInt32();
+            skillConfig[Length].Isjson = true;
+
+            print("DataManage=" + DataManage.HeroJsonData.Count);
+            _heroID.text = skillConfig[Length].HeroID.ToString();
+            _SkillConfigId.text = skillConfig[Length].SkillConfigId.ToString();
+            _ATKEffect.text = skillConfig[Length].ATKEffect.ToString();
+            _TowerPassivity.text = skillConfig[Length].TowerPassivity.ToString();
+            _TowerLittleSkill.text = skillConfig[Length].TowerLittleSkill.ToString();
+            _TowerBigSkill.text = skillConfig[Length].TowerBigSkill.ToString();
+            _FightInitiative.text = skillConfig[Length].FightInitiative.ToString();
+            _FightPassivity.text = skillConfig[Length].FightPassivity.ToString();
+            _InnateSkill10.text = skillConfig[Length].InnateSkill10.ToString();
+            _InnateSkill11.text = skillConfig[Length].InnateSkill11.ToString();
+            _InnateSkill12.text = skillConfig[Length].InnateSkill12.ToString();
+            _InnateSkill13.text = skillConfig[Length].InnateSkill13.ToString();
+            _InnateSkill20.text = skillConfig[Length].InnateSkill20.ToString();
+            _InnateSkill21.text = skillConfig[Length].InnateSkill21.ToString();
+            _InnateSkill22.text = skillConfig[Length].InnateSkill22.ToString();
+            _InnateSkill23.text = skillConfig[Length].InnateSkill23.ToString();
+            _InnateSkill30.text = skillConfig[Length].InnateSkill30.ToString();
+            _InnateSkill31.text = skillConfig[Length].InnateSkill31.ToString();
+            _InnateSkill32.text = skillConfig[Length].InnateSkill32.ToString();
+            _InnateSkill33.text = skillConfig[Length].InnateSkill33.ToString();
+            _InnateSkill40.text = skillConfig[Length].InnateSkill40.ToString();
+            _InnateSkill41.text = skillConfig[Length].InnateSkill41.ToString();
+            _InnateSkill42.text = skillConfig[Length].InnateSkill42.ToString();
+            _InnateSkill43.text = skillConfig[Length].InnateSkill43.ToString();
+            _Awaken111.text = skillConfig[Length].Awaken111.ToString();
+            _Awaken121.text = skillConfig[Length].Awaken121.ToString();
+            _Awaken122.text = skillConfig[Length].Awaken122.ToString();
+            _Awaken131.text = skillConfig[Length].Awaken131.ToString();
+            _Awaken132.text = skillConfig[Length].Awaken132.ToString();
+            _Awaken141.text = skillConfig[Length].Awaken141.ToString();
+            _Awaken211.text = skillConfig[Length].Awaken211.ToString();
+            _Awaken221.text = skillConfig[Length].Awaken221.ToString();
+            _Awaken222.text = skillConfig[Length].Awaken222.ToString();
+            _Awaken231.text = skillConfig[Length].Awaken231.ToString();
+            _Awaken232.text = skillConfig[Length].Awaken232.ToString();
+            _Awaken241.text = skillConfig[Length].Awaken241.ToString();
+            _Awaken311.text = skillConfig[Length].Awaken311.ToString();
+            _Awaken321.text = skillConfig[Length].Awaken321.ToString();
+            _Awaken322.text = skillConfig[Length].Awaken322.ToString();
+            _Awaken331.text = skillConfig[Length].Awaken331.ToString();
+            _Awaken332.text = skillConfig[Length].Awaken332.ToString();
+            _Awaken341.text = skillConfig[Length].Awaken341.ToString();
         }
     }
 
