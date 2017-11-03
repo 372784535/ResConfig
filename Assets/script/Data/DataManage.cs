@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using LitJson;
+using UnityEngine.UI;
 
 public class DataManage : MonoBehaviour
 {
@@ -143,6 +144,75 @@ public class DataManage : MonoBehaviour
             }
         }
     }
+
+    static JsonData _fetterJsonData;
+    public static JsonData FetterJsonData
+    {
+        get
+        {
+            if (_fetterJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/Fetter.json"))
+                {
+                    _fetterJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/Fetter.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/Fetter.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _fetterJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _fetterJsonData;
+            }
+            else
+            {
+                return _fetterJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _fetterJsonData = value;
+            }
+        }
+    }
+
+    static JsonData _talentSkill_BuffJsonData;
+    public static JsonData TalentSkill_BuffJsonData
+    {
+        get
+        {
+            if (_talentSkill_BuffJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/TalentSkill_Buff.json"))
+                {
+                    _talentSkill_BuffJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/TalentSkill_Buff.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _talentSkill_BuffJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _talentSkill_BuffJsonData;
+            }
+            else
+            {
+                return _talentSkill_BuffJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _talentSkill_BuffJsonData = value;
+            }
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -361,7 +431,7 @@ public class DataManage : MonoBehaviour
         }
     }
 
-    public static bool SaveSkillConfig(Dictionary<int, C_SkillConfig> skillConfig,int id)
+    public static bool SaveSkillConfig(Dictionary<int, C_SkillConfig> skillConfig, int id)
     {
         if (SkillConfigJsonData.IsArray)
         {
@@ -418,6 +488,123 @@ public class DataManage : MonoBehaviour
             }
             SkillConfigJsonData = jd;
             File.WriteAllText(@"Assets/Res/JsonConfig/SkillConfig.json", SkillConfigJsonData.ToJsonFile());
+        }
+    }
+
+    public static bool SaveFetterData(Dictionary<int, C_Frtter> c_frtter, int Id)
+    {
+        if (FetterJsonData.IsArray)
+        {
+            for (int i = 0; i < FetterJsonData.Count; i++)
+            {
+                if (FetterJsonData[i]["FrtterId"].ToInt32() == c_frtter[Id].FrtterId && i != Id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,技能ID：" + c_frtter[Id].FrtterId + ",已经存在，请仔细填写");
+                    return false;
+                }
+            }
+        }
+        print("该数据状态" + Id + "IsJson=" + c_frtter[Id].IsJson.ToString());
+        if (!c_frtter[Id].IsJson)
+        {
+            print("新增:" + FetterJsonData.IsArray);
+            FetterJsonData.Add(c_frtter[Id].GetJson());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            FetterJsonData[Id - 1] = c_frtter[Id].GetJson();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/Fetter.json", FetterJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelFetterData(int id)
+    {
+        if (id <= FetterJsonData.Count)
+        {
+            if (FetterJsonData.Count == 1)
+            {
+                FetterJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/Fetter.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(FetterJsonData[i]);
+            }
+            for (int i = id - 1; i < FetterJsonData.Count; i++)
+            {
+                if (i == FetterJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(FetterJsonData[i + 1]);
+            }
+            FetterJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/Fetter.json", FetterJsonData.ToJsonFile());
+        }
+    }
+
+    public static bool SavetalentSkill_Buff(Dictionary<int, C_TalentSkill_Buff> talentSkill_Buff, int id)
+    {
+        if (TalentSkill_BuffJsonData.IsArray)
+        {
+            for (int i = 0; i < TalentSkill_BuffJsonData.Count; i++)
+            {
+                if (TalentSkill_BuffJsonData[i]["Id"].ToInt32() == talentSkill_Buff[id].Id && i != id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,ID：" + talentSkill_Buff[id].Id + ",已经存在，请仔细填写");
+                    return false;
+                }
+
+            }
+        }
+        print("该数据状态" + id + "IsJson=" + talentSkill_Buff[id].IsJson.ToString());
+        if (!talentSkill_Buff[id].IsJson)
+        {
+            print("新增:" + TalentSkill_BuffJsonData.IsArray);
+            TalentSkill_BuffJsonData.Add(talentSkill_Buff[id].GetJson());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            TalentSkill_BuffJsonData[id - 1] = talentSkill_Buff[id].GetJson();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json", TalentSkill_BuffJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelTalentSkill_BuffData(int id)
+    {
+        if (id <= TalentSkill_BuffJsonData.Count)
+        {
+            if (TalentSkill_BuffJsonData.Count == 1)
+            {
+                TalentSkill_BuffJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(TalentSkill_BuffJsonData[i]);
+            }
+            for (int i = id - 1; i < TalentSkill_BuffJsonData.Count; i++)
+            {
+                if (i == TalentSkill_BuffJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(TalentSkill_BuffJsonData[i + 1]);
+            }
+            TalentSkill_BuffJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json", TalentSkill_BuffJsonData.ToJsonFile());
         }
     }
 }
@@ -701,9 +888,10 @@ public class C_Frtter
     public int HeroID;
     public int FrtterId;
     public int NeedHeroIDLength;
-    public List<int> NeedHeroList = new List<int>();
+    public List<Transform> NeedHeroList = new List<Transform>();
+    public List<int> NeedexponentBit = new List<int>();
     public int PropertyAddLength;
-    public List<int> PropertyAddList = new List<int>();
+    public List<Transform> PropertyAddList = new List<Transform>();
 
     public bool IsJson = false;
 
@@ -716,16 +904,47 @@ public class C_Frtter
         JsonData needHero = new JsonData();
         for (int i = 0; i < NeedHeroList.Count;i++)
         {
-            needHero.Add(NeedHeroList[i]);
+            JsonData js = new JsonData();
+            js.Add("HeroId",int.Parse(NeedHeroList[i].Find("HeroId").GetComponent<InputField>().text));
+            js.Add("NeedStars", int.Parse(NeedHeroList[i].Find("NeedStars").GetComponent<InputField>().text));
+            js.Add("NeedexponentBit", int.Parse(NeedHeroList[i].Find("NeedexponentBit").GetComponent<InputField>().text));
+            needHero.Add(js);
         }
         jd.Add("NeedHeroList",needHero);
 
         JsonData propertyAdd = new JsonData();
         for (int i = 0; i < PropertyAddList.Count;i++)
         {
-            propertyAdd.Add(PropertyAddList[i]);
+            JsonData js = new JsonData();
+            js.Add("PropertyType", PropertyAddList[i].Find("PropertyType").GetComponent<Dropdown>().value);
+            js.Add("PropertyAdd", int.Parse(PropertyAddList[i].Find("Property").GetComponent<InputField>().text));
+            propertyAdd.Add(js);
         }
         jd.Add("propertyAddList",propertyAdd);
         return jd;
+    }
+}
+
+public class C_TalentSkill_Buff
+{
+    public int Id;
+    public int Type;
+    public int IsDispel;
+    public int IsSuperposition;
+    public int TimeDuration;
+    public string Explain;
+
+    public bool IsJson = false;
+
+    public JsonData GetJson()
+    {
+        JsonData js = new JsonData();
+        js.Add("Id",Id);
+        js.Add("Type",Type);
+        js.Add("IsDispel",IsDispel);
+        js.Add("IsSuperposition",IsSuperposition);
+        js.Add("TimeDuration",TimeDuration);
+        js.Add("Explain",Explain);
+        return js;
     }
 }

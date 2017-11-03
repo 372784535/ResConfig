@@ -1,10 +1,13 @@
 ﻿<Properties StartupConfiguration="{2708C872-0BFC-EAD1-700E-D95257EF142A}|">
   <MonoDevelop.Ide.ItemProperties.ResConfigToLua PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/Data/DataManage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/UIAssist/UIDeploy.cs">
     <Files>
-      <File FileName="Assets/script/UI/BasicInformation.cs" Line="64" Column="9" />
-      <File FileName="Assets/script/UI/HeroData.cs" Line="89" Column="58" />
-      <File FileName="Assets/script/Data/DataManage.cs" Line="24" Column="115" />
+      <File FileName="Assets/script/UI/BasicInformation.cs" Line="162" Column="15" />
+      <File FileName="Assets/script/UI/HeroData.cs" Line="316" Column="6" />
+      <File FileName="Assets/script/Data/DataManage.cs" Line="420" Column="66" />
+      <File FileName="Assets/script/UIAssist/DelAssist.cs" Line="18" Column="49" />
+      <File FileName="Assets/script/UIAssist/UIDeploy.cs" Line="95" Column="58" />
+      <File FileName="Assets/script/UIAssist/WindowControl.cs" Line="45" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

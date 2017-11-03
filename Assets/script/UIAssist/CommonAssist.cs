@@ -23,4 +23,22 @@ public class CommonAssist : MonoBehaviour {
     {
         transform.parent.parent.parent.GetComponent<Fetter>().ChangPropertyAddPlan(ID);
     }
+
+    public void OnDel()
+    {
+        WindowControl.OpenDelTip(ID, "Fetter");
+    }
+    public void OnSave()
+    {
+        GameObject.Find("Canvas/Fetter").GetComponent<Fetter>().Save(ID);
+    }
+    public void TalentSkill_BuffDel()
+    {
+        WindowControl.OpenDelTip(ID, "TalentSkill_Buff");
+    }
+
+    public void TalentSkill_BuffSave()
+    {
+        GameObject.Find("Canvas/TalentSkill_Buff").GetComponent<TalentSkill_Buff>().Save(ID);
+    }
 }

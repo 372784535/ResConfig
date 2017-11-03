@@ -888,8 +888,16 @@
     <Compile Include="Assets\Slua\Source\UnityExtension.cs" />
     <Compile Include="Assets\script\Data\DataManage.cs" />
     <Compile Include="Assets\script\UI\BasicInformation.cs" />
+    <Compile Include="Assets\script\UI\Fetter.cs" />
     <Compile Include="Assets\script\UI\HeroData.cs" />
+    <Compile Include="Assets\script\UI\SkillConfig.cs" />
+    <Compile Include="Assets\script\UI\StarGrow.cs" />
+    <Compile Include="Assets\script\UI\TalentSkill_Buff.cs" />
+    <Compile Include="Assets\script\UI\TowerDefenseSkill.cs" />
+    <Compile Include="Assets\script\UIAssist\CommonAssist.cs" />
     <Compile Include="Assets\script\UIAssist\DelAssist.cs" />
+    <Compile Include="Assets\script\UIAssist\SKillConfigAssist.cs" />
+    <Compile Include="Assets\script\UIAssist\StarGrowAssist.cs" />
     <Compile Include="Assets\script\UIAssist\UIDeploy.cs" />
     <Compile Include="Assets\script\UIAssist\WindowControl.cs" />
   </ItemGroup>

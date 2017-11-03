@@ -54,6 +54,14 @@ public class WindowControl : MonoBehaviour {
                 GameObject.Find("Canvas/SkillConfig").GetComponent<SkillConfig>().Del(ID);
                 transform.Find("DelTipWindow").gameObject.SetActive(false);
                 break;
+            case "Fetter":
+                GameObject.Find("Canvas/Fetter").GetComponent<Fetter>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
+            case "TalentSkill_Buff":
+                GameObject.Find("Canvas/TalentSkill_Buff").GetComponent<TalentSkill_Buff>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
         }
 
         

@@ -13,13 +13,15 @@ public class UIDeploy : MonoBehaviour {
     private Toggle TalentSkillsBtn;
     private Toggle AwakeningSkills;
     private Toggle FetterBtn;
+    private Toggle TalentSkill_BuffBtn;
 
     private Transform HeroData;
     private Transform BasicInformation;
     private Transform StarGrow;
     private Transform SkillConfig;
     private Transform Fetter;
-	// Use this for initialization
+    private Transform TalentSkill_Buff;
+    // Use this for initialization
 	void Start () {
         HeroDateBtn = transform.Find("HeroDateBtn").GetComponent<Toggle>();
         BasicInformationBtn = transform.Find("BasicInformationBtn").GetComponent<Toggle>();
@@ -30,12 +32,14 @@ public class UIDeploy : MonoBehaviour {
         TalentSkillsBtn = transform.Find("TalentSkillsBtn").GetComponent<Toggle>();
         AwakeningSkills = transform.Find("AwakeningSkills").GetComponent<Toggle>();
         FetterBtn = transform.Find("FetterBtn").GetComponent<Toggle>();
+        TalentSkill_BuffBtn = transform.Find("TalentSkill_BuffBtn").GetComponent<Toggle>();
 
         HeroData = transform.parent.Find("HeroData");
         BasicInformation = transform.parent.Find("BasicInformation");
         StarGrow =transform.parent.Find("StarGrow");
         SkillConfig = transform.parent.Find("SkillConfig");
         Fetter = transform.parent.Find("Fetter");
+        TalentSkill_Buff = transform.parent.Find("TalentSkill_Buff");
 	}
 	
 	// Update is called once per frame
@@ -78,6 +82,7 @@ public class UIDeploy : MonoBehaviour {
             StarGrow.gameObject.SetActive(StarGrowBtn.isOn);
             SkillConfig.gameObject.SetActive(SkillConfigBtn.isOn);
             Fetter.gameObject.SetActive(FetterBtn.isOn);
+            TalentSkill_Buff.gameObject.SetActive(TalentSkill_BuffBtn.isOn);
         }
         else
         {

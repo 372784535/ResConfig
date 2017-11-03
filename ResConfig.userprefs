@@ -1,9 +1,15 @@
 ﻿<Properties StartupConfiguration="{2ECAEE74-5810-DAB0-7618-60122BFC58D2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/UI/BasicInformation.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/UIAssist/UIDeploy.cs">
     <Files>
-      <File FileName="Assets/script/UI/BasicInformation.cs" Line="107" Column="30" />
-      <File FileName="Assets/script/UI/HeroData.cs" Line="122" Column="97" />
-      <File FileName="Assets/script/Data/DataManage.cs" Line="99" Column="56" />
+      <File FileName="Assets/script/Data/DataManage.cs" Line="600" Column="50" />
+      <File FileName="Assets/script/UI/StarGrow.cs" Line="48" Column="45" />
+      <File FileName="Assets/script/UI/BasicInformation.cs" Line="162" Column="15" />
+      <File FileName="Assets/script/UI/TalentSkill_Buff.cs" Line="81" Column="29" />
+      <File FileName="Assets/script/UIAssist/CommonAssist.cs" Line="40" Column="37" />
+      <File FileName="Assets/script/UIAssist/WindowControl.cs" Line="62" Column="99" />
+      <File FileName="Assets/Res/JsonConfig/TalentSkill_Buff.json" Line="1" Column="1" />
+      <File FileName="Assets/script/UIAssist/DelAssist.cs" Line="1" Column="1" />
+      <File FileName="Assets/script/UIAssist/UIDeploy.cs" Line="60" Column="121" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
