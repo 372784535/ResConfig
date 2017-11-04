@@ -14,6 +14,7 @@ public class UIDeploy : MonoBehaviour {
     private Toggle AwakeningSkills;
     private Toggle FetterBtn;
     private Toggle TalentSkill_BuffBtn;
+    private Toggle TalentStoneConditionBtn;
 
     private Transform HeroData;
     private Transform BasicInformation;
@@ -21,6 +22,8 @@ public class UIDeploy : MonoBehaviour {
     private Transform SkillConfig;
     private Transform Fetter;
     private Transform TalentSkill_Buff;
+    private Transform TalentSkill;
+    private Transform TalentStoneCondition;
     // Use this for initialization
 	void Start () {
         HeroDateBtn = transform.Find("HeroDateBtn").GetComponent<Toggle>();
@@ -33,6 +36,7 @@ public class UIDeploy : MonoBehaviour {
         AwakeningSkills = transform.Find("AwakeningSkills").GetComponent<Toggle>();
         FetterBtn = transform.Find("FetterBtn").GetComponent<Toggle>();
         TalentSkill_BuffBtn = transform.Find("TalentSkill_BuffBtn").GetComponent<Toggle>();
+        TalentStoneConditionBtn = transform.Find("TalentStoneConditionBtn").GetComponent<Toggle>();
 
         HeroData = transform.parent.Find("HeroData");
         BasicInformation = transform.parent.Find("BasicInformation");
@@ -40,6 +44,8 @@ public class UIDeploy : MonoBehaviour {
         SkillConfig = transform.parent.Find("SkillConfig");
         Fetter = transform.parent.Find("Fetter");
         TalentSkill_Buff = transform.parent.Find("TalentSkill_Buff");
+        TalentSkill = transform.parent.Find("TalentSkill");
+        TalentStoneCondition = transform.parent.Find("TalentStoneCondition");
 	}
 	
 	// Update is called once per frame
@@ -55,7 +61,8 @@ public class UIDeploy : MonoBehaviour {
         transform.parent.Find("SkillConfig/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
         transform.parent.Find("Fetter/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("Fetter/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
-
+        transform.parent.Find("TalentStoneCondition/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("TalentStoneCondition/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
     }
 
     public void onReChangValue()
@@ -66,6 +73,8 @@ public class UIDeploy : MonoBehaviour {
         transform.parent.Find("SkillConfig/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("SkillConfig/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
         transform.parent.Find("Fetter/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("Fetter/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("TalentStoneCondition/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("TalentStoneCondition/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
     }
     public void OnToggle()
     {
@@ -83,6 +92,8 @@ public class UIDeploy : MonoBehaviour {
             SkillConfig.gameObject.SetActive(SkillConfigBtn.isOn);
             Fetter.gameObject.SetActive(FetterBtn.isOn);
             TalentSkill_Buff.gameObject.SetActive(TalentSkill_BuffBtn.isOn);
+            TalentSkill.gameObject.SetActive(TalentSkillsBtn.isOn);
+            TalentStoneCondition.gameObject.SetActive(TalentStoneConditionBtn.isOn);
         }
         else
         {

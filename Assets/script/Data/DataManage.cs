@@ -213,6 +213,73 @@ public class DataManage : MonoBehaviour
         }
     }
 
+    static JsonData _talentSkillJsonData;
+    public static JsonData TalentSkillJsonData
+    {
+        get
+        {
+            if (_talentSkillJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/TalentSkill.json"))
+                {
+                    _talentSkillJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/TalentSkill.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/TalentSkill.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _talentSkillJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _talentSkillJsonData;
+            }
+            else
+            {
+                return _talentSkillJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _talentSkillJsonData = value;
+            }
+        }
+    }
+
+    static JsonData _talentStoneConditionJsonData;
+    public static JsonData TalentStoneConditionJsonData
+    {
+        get
+        {
+            if (_talentStoneConditionJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/TalentStoneCondition.json"))
+                {
+                    _talentStoneConditionJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/TalentStoneCondition.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/TalentStoneCondition.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _talentStoneConditionJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _talentStoneConditionJsonData;
+            }
+            else
+            {
+                return _talentStoneConditionJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _talentStoneConditionJsonData = value;
+            }
+        }
+    }
     // Use this for initialization
     void Start()
     {
@@ -607,6 +674,127 @@ public class DataManage : MonoBehaviour
             File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json", TalentSkill_BuffJsonData.ToJsonFile());
         }
     }
+
+    public static bool SavetalentSkill(Dictionary<int, C_TalentSkill> talentSkill, int id)
+    {
+        if (TalentSkillJsonData.IsArray)
+        {
+            for (int i = 0; i < TalentSkillJsonData.Count; i++)
+            {
+                if (TalentSkillJsonData[i]["Id"].ToInt32() == talentSkill[id].Id && i != id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,ID：" + talentSkill[id].Id + ",已经存在，请仔细填写");
+                    return false;
+                }
+
+            }
+        }
+        print("该数据状态" + id + "IsJson=" + talentSkill[id].IsJson.ToString());
+        if (!talentSkill[id].IsJson)
+        {
+            print("新增:" + TalentSkillJsonData.IsArray);
+            TalentSkillJsonData.Add(talentSkill[id].Getjson());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            TalentSkillJsonData[id - 1] = talentSkill[id].Getjson();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill.json", TalentSkillJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelTalentSkillData(int id)
+    {
+        if (id <= TalentSkillJsonData.Count)
+        {
+            if (TalentSkillJsonData.Count == 1)
+            {
+                TalentSkillJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(TalentSkillJsonData[i]);
+            }
+            for (int i = id - 1; i < TalentSkillJsonData.Count; i++)
+            {
+                if (i == TalentSkillJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(TalentSkillJsonData[i + 1]);
+            }
+            TalentSkillJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill.json", TalentSkillJsonData.ToJsonFile());
+        }
+    }
+
+    public static bool SaveTalentStoneConditionDate(Dictionary <int,C_TalentStoneCondition> talentStoneConditions,int id)
+    {
+        if (TalentStoneConditionJsonData.IsArray)
+        {
+            for (int i = 0; i < TalentStoneConditionJsonData.Count; i++)
+            {
+                if (TalentStoneConditionJsonData[i]["Id"].ToInt32() == talentStoneConditions[id].Id && i != id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,ID：" + talentStoneConditions[id].Id + ",已经存在，请仔细填写");
+                    return false;
+                }
+            }
+        }
+
+
+        print("该数据状态" + id + "IsJson=" + talentStoneConditions[id].IsJson.ToString());
+        if (!talentStoneConditions[id].IsJson)
+        {
+            print("新增:" + TalentStoneConditionJsonData.IsArray);
+            TalentStoneConditionJsonData.Add(talentStoneConditions[id].getJson());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            TalentStoneConditionJsonData[id - 1] = talentStoneConditions[id].getJson();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/TalentStoneCondition.json", TalentStoneConditionJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelTalentStoneConditionDate(int id)
+    {
+        if (id <= TalentStoneConditionJsonData.Count)
+        {
+            if (TalentStoneConditionJsonData.Count == 1)
+            {
+                TalentStoneConditionJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/TalentStoneCondition.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(TalentStoneConditionJsonData[i]);
+            }
+            for (int i = id - 1; i < TalentStoneConditionJsonData.Count; i++)
+            {
+                if (i == TalentStoneConditionJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(TalentStoneConditionJsonData[i + 1]);
+            }
+            TalentStoneConditionJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/TalentStoneCondition.json", TalentStoneConditionJsonData.ToJsonFile());
+        }
+    }
+
+
 }
 
 public class C_HeroData
@@ -946,5 +1134,145 @@ public class C_TalentSkill_Buff
         js.Add("TimeDuration",TimeDuration);
         js.Add("Explain",Explain);
         return js;
+    }
+}
+
+public class C_TalentSkill
+{
+    public int Id;
+    public int HeroId;
+    public int Type;
+    public int IsActivate;
+    public int RelevantSkill;
+    public string Result;
+    public int ActivateResource1;
+    public int Resource1Count;
+    public int ActivateResource2;
+    public int Resource2Count;
+    public int ActivateResource3;
+    public int Resource3Count;
+
+    public bool IsJson = false;
+
+    public JsonData Getjson()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("Id",Id);
+        jd.Add("HeroId", HeroId);
+        jd.Add("Type", Type);
+        jd.Add("IsActivate", IsActivate);
+        jd.Add("RelevantSkill", RelevantSkill);
+        jd.Add("Result", Result);
+        jd.Add("ActivateResource1", ActivateResource1);
+        jd.Add("Resource1Count", Resource1Count);
+        jd.Add("ActivateResource2", ActivateResource2);
+        jd.Add("Resource2Count", Resource2Count);
+        jd.Add("ActivateResource3", ActivateResource3);
+        jd.Add("Resource3Count", Resource3Count);
+        return jd;
+    }
+}
+
+public class C_TalentStoneCondition
+{
+    public int Id;
+    public int HeroId;
+    public int Slot1_1;
+    public int Slot1_2;
+    public int Slot1_3;
+    public int Slot1_4;
+    public int Slot1_LevelConfine;
+    public int Slot2_1;
+    public int Slot2_2;
+    public int Slot2_3;
+    public int Slot2_4;
+    public int Slot2_5;
+    public int Slot2_6;
+    public int Slot2_7;
+    public int Slot2_8;
+    public int Slot2_LevelConfine;
+    public int Slot3_1;
+    public int Slot3_2;
+    public int Slot3_3;
+    public int Slot3_4;
+    public int Slot3_5;
+    public int Slot3_6;
+    public int Slot3_7;
+    public int Slot3_8;
+    public int Slot3_9;
+    public int Slot3_10;
+    public int Slot3_11;
+    public int Slot3_12;
+    public int Slot3_LevelConfine;
+    public int Slot4_1;
+    public int Slot4_2;
+    public int Slot4_3;
+    public int Slot4_4;
+    public int Slot4_5;
+    public int Slot4_6;
+    public int Slot4_7;
+    public int Slot4_8;
+    public int Slot4_9;
+    public int Slot4_10;
+    public int Slot4_11;
+    public int Slot4_12;
+    public int Slot4_13;
+    public int Slot4_14;
+    public int Slot4_15;
+    public int Slot4_16;
+    public int Slot4_LevelConfine;
+
+    public bool IsJson = false;
+
+    public JsonData getJson()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("Id", Id);
+        jd.Add("HeroId", HeroId);
+        jd.Add("Slot1_1", Slot1_1);
+        jd.Add("Slot1_2", Slot1_2);
+        jd.Add("Slot1_3", Slot1_3);
+        jd.Add("Slot1_4", Slot1_4);
+        jd.Add("Slot1_LevelConfine", Slot1_LevelConfine);
+        jd.Add("Slot2_1", Slot2_1);
+        jd.Add("Slot2_2", Slot2_2);
+        jd.Add("Slot2_3", Slot2_3);
+        jd.Add("Slot2_4", Slot2_4);
+        jd.Add("Slot2_5", Slot2_5);
+        jd.Add("Slot2_6", Slot2_6);
+        jd.Add("Slot2_7", Slot2_7);
+        jd.Add("Slot2_8", Slot2_8);
+        jd.Add("Slot2_LevelConfine", Slot2_LevelConfine);
+        jd.Add("Slot3_1", Slot3_1);
+        jd.Add("Slot3_2", Slot3_2);
+        jd.Add("Slot3_3", Slot3_3);
+        jd.Add("Slot3_4", Slot3_4);
+        jd.Add("Slot3_5", Slot3_5);
+        jd.Add("Slot3_6", Slot3_6);
+        jd.Add("Slot3_7", Slot3_7);
+        jd.Add("Slot3_8", Slot3_8);
+        jd.Add("Slot3_9", Slot3_9);
+        jd.Add("Slot3_10", Slot3_10);
+        jd.Add("Slot3_11", Slot3_11);
+        jd.Add("Slot3_12", Slot3_12);
+        jd.Add("Slot3_LevelConfine", Slot3_LevelConfine);
+        jd.Add("Slot4_1", Slot4_1);
+        jd.Add("Slot4_2", Slot4_2);
+        jd.Add("Slot4_3", Slot4_3);
+        jd.Add("Slot4_4", Slot4_4);
+        jd.Add("Slot4_5", Slot4_5);
+        jd.Add("Slot4_6", Slot4_6);
+        jd.Add("Slot4_7", Slot4_7);
+        jd.Add("Slot4_8", Slot4_8);
+        jd.Add("Slot4_9", Slot4_9);
+        jd.Add("Slot4_10", Slot4_10);
+        jd.Add("Slot4_11", Slot4_11);
+        jd.Add("Slot4_12", Slot4_12);
+        jd.Add("Slot4_13", Slot4_13);
+        jd.Add("Slot4_14", Slot4_14);
+        jd.Add("Slot4_15", Slot4_15);
+        jd.Add("Slot4_16", Slot4_16);
+        jd.Add("Slot4_LevelConfine", Slot4_LevelConfine);
+        return jd;
     }
 }

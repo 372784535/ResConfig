@@ -41,4 +41,24 @@ public class CommonAssist : MonoBehaviour {
     {
         GameObject.Find("Canvas/TalentSkill_Buff").GetComponent<TalentSkill_Buff>().Save(ID);
     }
+
+    public void TalentSkillDel()
+    {
+        WindowControl.OpenDelTip(ID, "TalentSkill");
+    }
+
+    public void TalentSkillSave()
+    {
+        GameObject.Find("Canvas/TalentSkill").GetComponent<TalentSkill>().Save(ID);
+    }
+
+    public void TalentStoneConditionDel()
+    {
+        WindowControl.OpenDelTip(ID, "TalentStoneCondition");
+    }
+
+    public void TalentStoneConditionSave()
+    {
+        GameObject.Find("Canvas/TalentStoneCondition").GetComponent<TalentStoneCondition>().Save(ID);
+    }
 }
