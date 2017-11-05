@@ -70,6 +70,18 @@ public class WindowControl : MonoBehaviour {
                 GameObject.Find("Canvas/TalentStoneCondition").GetComponent<TalentStoneCondition>().Del(ID);
                 transform.Find("DelTipWindow").gameObject.SetActive(false);
                 break;
+            case "TowerDefenseSkill":
+                GameObject.Find("Canvas/TowerDefenseSkill").GetComponent<TowerDefenseSkill>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
+            case "BreakGrow":
+                GameObject.Find("Canvas/BreakGrow").GetComponent<BreakGrow>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
+            case "FightSkill":
+                GameObject.Find("Canvas/FightSkill").GetComponent<FightSkill>().Del(ID);
+                transform.Find("DelTipWindow").gameObject.SetActive(false);
+                break;
         }
 
         

@@ -1,0 +1,20 @@
+[
+    {
+        "Level":5,
+        "AddCoefficient":1,
+        "VitalityGrow":2,
+        "BreakNum":3,
+        "ConsumptionGold":4,
+        "ConsumptionBG":5,
+        "ConsumptionEssence":6
+    },
+    {
+        "Level":6,
+        "AddCoefficient":5,
+        "VitalityGrow":6,
+        "BreakNum":0,
+        "ConsumptionGold":0,
+        "ConsumptionBG":0,
+        "ConsumptionEssence":0
+    }
+]

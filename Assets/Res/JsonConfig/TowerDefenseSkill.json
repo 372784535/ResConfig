@@ -1,0 +1,31 @@
+[
+    {
+        "HeroId":1,
+        "SkillId":2,
+        "SkillName":3,
+        "ReleaseNum":4,
+        "Duration":5,
+        "AttackRange":6,
+        "TrajectorySpeed":7,
+        "DamageType":2,
+        "SkillType":13,
+        "SkillRange":8,
+        "SkillBaseDamage":9,
+        "DamageCoefficient":10,
+        "SpeedCut":11,
+        "SpeedCutTime":12,
+        "DizzinessTime":13,
+        "DisorderTime":14,
+        "AttackIncrease":15,
+        "AttackIncreaseTime":16,
+        "IsWhetherFly":1,
+        "UpATK":17,
+        "UpATKTime":18,
+        "RespondEnergy":19,
+        "EnergyConsumption":20,
+        "RelevantTalentId1":21,
+        "RelevantTalentId2":22,
+        "RelevantTalentId3":23,
+        "SkillDescribe":"\u7535\u98CE\u6247\u7535\u98CE\u6247\u7535\u98CE\u6247\u6253\u53D1\u624B\u52A8\u9600\u624B\u52A8\u9600\u6253\u53D1\u58EB\u5927\u592B\u4F3C\u7684\u7684\u65B9\u5F0F \u4E0B\u6B21\u65E9\u70B9\u53D1\u58EB\u5927\u592B\u7684\u8BF4\u6CD5\u8272\u7C89"
+    }
+]

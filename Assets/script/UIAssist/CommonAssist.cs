@@ -61,4 +61,31 @@ public class CommonAssist : MonoBehaviour {
     {
         GameObject.Find("Canvas/TalentStoneCondition").GetComponent<TalentStoneCondition>().Save(ID);
     }
+
+    public void TowerDefenseSkillSave()
+    {
+        GameObject.Find("Canvas/TowerDefenseSkill").GetComponent<TowerDefenseSkill>().Save(ID);
+    }
+    public void TowerDefenseSkillDel()
+    {
+        WindowControl.OpenDelTip(ID, "TowerDefenseSkill");
+    }
+
+    public void BreakGrowSave()
+    {
+        GameObject.Find("Canvas/BreakGrow").GetComponent<BreakGrow>().Save(ID);
+    }
+    public void BreakGrowSkillDel()
+    {
+        WindowControl.OpenDelTip(ID, "BreakGrow");
+    }
+
+    public void FightSkillSave()
+    {
+        GameObject.Find("Canvas/FightSkill").GetComponent<FightSkill>().Save(ID);
+    }
+    public void FightSkillDel()
+    {
+        WindowControl.OpenDelTip(ID, "FightSkill");
+    }
 }

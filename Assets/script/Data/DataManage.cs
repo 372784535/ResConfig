@@ -280,6 +280,109 @@ public class DataManage : MonoBehaviour
             }
         }
     }
+
+    static JsonData _towerDefenseSkillJsonData;
+    public static JsonData TowerDefenseSkillJsonData
+    {
+        get
+        {
+            if (_towerDefenseSkillJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/TowerDefenseSkill.json"))
+                {
+                    _towerDefenseSkillJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/TowerDefenseSkill.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/TowerDefenseSkill.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _towerDefenseSkillJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _towerDefenseSkillJsonData;
+            }
+            else
+            {
+                return _towerDefenseSkillJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _towerDefenseSkillJsonData = value;
+            }
+        }
+    }
+
+    static JsonData _breakGrowJsonData;
+    public static JsonData BreakGrowJsonData
+    {
+        get
+        {
+            if (_breakGrowJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/BreakGrow.json"))
+                {
+                    _breakGrowJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/BreakGrow.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/BreakGrow.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _breakGrowJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _breakGrowJsonData;
+            }
+            else
+            {
+                return _breakGrowJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _breakGrowJsonData = value;
+            }
+        }
+    }
+
+    static JsonData _fightSkillJsonData;
+    public static JsonData FightSkillJsonData
+    {
+        get
+        {
+            if (_fightSkillJsonData == null)
+            {
+                if (File.Exists(@"Assets/Res/JsonConfig/FightSkill.json"))
+                {
+                    _fightSkillJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/FightSkill.json"));
+                }
+                else
+                {
+                    File.Create(@"Assets/Res/JsonConfig/FightSkill.json");
+                    // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+                    _fightSkillJsonData = new JsonData();
+                }
+                //print("数据："+data[0]["Id"]);
+                return _fightSkillJsonData;
+            }
+            else
+            {
+                return _fightSkillJsonData;
+            }
+        }
+        set
+        {
+            if (value != null)
+            {
+                _fightSkillJsonData = value;
+            }
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -794,7 +897,184 @@ public class DataManage : MonoBehaviour
         }
     }
 
+    public static bool SaveTowerDefenseSkill(Dictionary<int, C_TowerDefenseSkill> towerDefenseSkill, int id)
+    {
+        if (TowerDefenseSkillJsonData.IsArray)
+        {
+            for (int i = 0; i < TowerDefenseSkillJsonData.Count; i++)
+            {
+                if (TowerDefenseSkillJsonData[i]["SkillId"].ToInt32() == towerDefenseSkill[id].SkillId && i != id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,技能ID：" + towerDefenseSkill[id].SkillId + ",已经存在，请仔细填写");
+                    return false;
+                }
+            }
+        }
 
+
+        print("该数据状态" + id + "IsJson=" + towerDefenseSkill[id].IsJson.ToString());
+        if (!towerDefenseSkill[id].IsJson)
+        {
+            print("新增:" + SkillConfigJsonData.IsArray);
+            TowerDefenseSkillJsonData.Add(towerDefenseSkill[id].GetJson());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            TowerDefenseSkillJsonData[id - 1] = towerDefenseSkill[id].GetJson();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/TowerDefenseSkill.json", TowerDefenseSkillJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelTowerDefenseSkill(int id)
+    {
+        if (id <= TowerDefenseSkillJsonData.Count)
+        {
+            if (TowerDefenseSkillJsonData.Count == 1)
+            {
+                TowerDefenseSkillJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/TowerDefenseSkill.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(TowerDefenseSkillJsonData[i]);
+            }
+            for (int i = id - 1; i < TowerDefenseSkillJsonData.Count; i++)
+            {
+                if (i == TowerDefenseSkillJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(TowerDefenseSkillJsonData[i + 1]);
+            }
+            TowerDefenseSkillJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/TowerDefenseSkill.json", TowerDefenseSkillJsonData.ToJsonFile());
+        }
+    }
+
+    public static bool SaveBreakGrowsJson(Dictionary<int,C_BreakGrow> breakGrows, int id)
+    {
+        if (BreakGrowJsonData.IsArray)
+        {
+            for (int i = 0; i < BreakGrowJsonData.Count; i++)
+            {
+                if (BreakGrowJsonData[i]["Level"].ToInt32() == breakGrows[id].Level && i != id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,对应等级：" + breakGrows[id].Level+ ",已经存在，请仔细填写");
+                    return false;
+                }
+
+            }
+        }
+        print("该数据状态" + id + "IsJson=" + breakGrows[id].IsJson.ToString());
+        if (!breakGrows[id].IsJson)
+        {
+            print("新增:" + BreakGrowJsonData.IsArray);
+            BreakGrowJsonData.Add(breakGrows[id].getJsonDate());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            BreakGrowJsonData[id - 1] = breakGrows[id].getJsonDate();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/BreakGrow.json", BreakGrowJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelBreakGrowsJson(int id)
+    {
+        if (id <= BreakGrowJsonData.Count)
+        {
+            if (BreakGrowJsonData.Count == 1)
+            {
+                BreakGrowJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/BreakGrow.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(BreakGrowJsonData[i]);
+            }
+            for (int i = id - 1; i < BreakGrowJsonData.Count; i++)
+            {
+                if (i == BreakGrowJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(BreakGrowJsonData[i + 1]);
+            }
+            BreakGrowJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/BreakGrow.json", BreakGrowJsonData.ToJsonFile());
+        }
+    }
+
+    public static bool SaveFightSkill(Dictionary<int,C_FightSkill> fightSkill ,int id)
+    {
+        if (FightSkillJsonData.IsArray)
+        {
+            for (int i = 0; i < FightSkillJsonData.Count; i++)
+            {
+                if (FightSkillJsonData[i]["SkillId"].ToInt32() == fightSkill[id].SkillId && i != id - 1)
+                {
+                    WindowControl.SetConsole("保存失败,技能ID：" + fightSkill[id].SkillId + ",已经存在，请仔细填写");
+                    return false;
+                }
+            }
+        }
+
+
+        print("该数据状态" + id + "IsJson=" + fightSkill[id].IsJson.ToString());
+        if (!fightSkill[id].IsJson)
+        {
+            print("新增:" + FightSkillJsonData.IsArray);
+            FightSkillJsonData.Add(fightSkill[id].GetJson());//新增操作
+
+        }
+        else
+        {
+            print("修改");
+            FightSkillJsonData[id - 1] = fightSkill[id].GetJson();//修改操作
+        }
+        File.WriteAllText(@"Assets/Res/JsonConfig/FightSkill.json", FightSkillJsonData.ToJsonFile());
+        WindowControl.SetConsole("保存成功");
+        return true;
+    }
+
+    public static void DelFightSkill(int id)
+    {
+        if (id <= FightSkillJsonData.Count)
+        {
+            if (FightSkillJsonData.Count == 1)
+            {
+                FightSkillJsonData.Clear();
+                File.WriteAllText(@"Assets/Res/JsonConfig/FightSkill.json", "");
+                return;
+            }
+            JsonData jd = new JsonData();
+            for (int i = 0; i < id - 1; i++)
+            {
+                jd.Add(FightSkillJsonData[i]);
+            }
+            for (int i = id - 1; i < FightSkillJsonData.Count; i++)
+            {
+                if (i == FightSkillJsonData.Count - 1)
+                {
+                    break;
+                }
+                jd.Add(FightSkillJsonData[i + 1]);
+            }
+            FightSkillJsonData = jd;
+            File.WriteAllText(@"Assets/Res/JsonConfig/FightSkill.json", FightSkillJsonData.ToJsonFile());
+        }
+    }
 }
 
 public class C_HeroData
@@ -1275,4 +1555,142 @@ public class C_TalentStoneCondition
         jd.Add("Slot4_LevelConfine", Slot4_LevelConfine);
         return jd;
     }
+}
+
+public class C_TowerDefenseSkill
+{
+    public int HeroId;
+    public int SkillId;
+    public int SkillName;
+    public int ReleaseNum;
+    public int Duration;
+    public int AttackRange;
+    public int TrajectorySpeed;
+    public int DamageType;
+    public int SkillType;
+    public int SkillRange;
+    public int SkillBaseDamage;
+    public int DamageCoefficient;
+    public int SpeedCut;
+    public int SpeedCutTime;
+    public int DizzinessTime;
+    public int DisorderTime;
+    public int AttackIncrease;
+    public int AttackIncreaseTime;
+    public int IsWhetherFly;
+    public int UpATK;
+    public int UpATKTime;
+    public int RespondEnergy;
+    public int EnergyConsumption;
+    public int RelevantTalentId1;
+    public int RelevantTalentId2;
+    public int RelevantTalentId3;
+    public string SkillDescribe;
+
+    public bool IsJson = false;
+
+    public JsonData GetJson()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("HeroId", HeroId);
+        jd.Add("SkillId", SkillId);
+        jd.Add("SkillName", SkillName);
+        jd.Add("ReleaseNum", ReleaseNum);
+        jd.Add("Duration", Duration);
+        jd.Add("AttackRange", AttackRange);
+        jd.Add("TrajectorySpeed", TrajectorySpeed);
+        jd.Add("DamageType", DamageType);
+        jd.Add("SkillType", SkillType);
+        jd.Add("SkillRange", SkillRange);
+        jd.Add("SkillBaseDamage", SkillBaseDamage);
+        jd.Add("DamageCoefficient", DamageCoefficient);
+        jd.Add("SpeedCut", SpeedCut);
+        jd.Add("SpeedCutTime", SpeedCutTime);
+        jd.Add("DizzinessTime", DizzinessTime);
+        jd.Add("DisorderTime", DisorderTime);
+        jd.Add("AttackIncrease", AttackIncrease);
+        jd.Add("AttackIncreaseTime", AttackIncreaseTime);
+        jd.Add("IsWhetherFly", IsWhetherFly);
+        jd.Add("UpATK", UpATK);
+        jd.Add("UpATKTime", UpATKTime);
+        jd.Add("RespondEnergy", RespondEnergy);
+        jd.Add("EnergyConsumption", EnergyConsumption);
+        jd.Add("RelevantTalentId1", RelevantTalentId1);
+        jd.Add("RelevantTalentId2", RelevantTalentId2);
+        jd.Add("RelevantTalentId3", RelevantTalentId3);
+        jd.Add("SkillDescribe", SkillDescribe);
+        return jd;
+    }
+}
+
+public class C_BreakGrow
+{
+
+    public int Level;
+    public int AddCoefficient;
+    public int VitalityGrow;
+    public int BreakNum;
+    public int ConsumptionGold;
+    public int ConsumptionBG;
+    public int ConsumptionEssence;
+
+    public bool IsJson = false;
+
+    public JsonData getJsonDate()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("Level", Level);
+        jd.Add("AddCoefficient", AddCoefficient);
+        jd.Add("VitalityGrow", VitalityGrow);
+        jd.Add("BreakNum", BreakNum);
+        jd.Add("ConsumptionGold", ConsumptionGold);
+        jd.Add("ConsumptionBG", ConsumptionBG);
+        jd.Add("ConsumptionEssence", ConsumptionEssence);
+        return jd;
+    }
+}
+
+    public class C_FightSkill
+    {
+        public int SkillId;
+        public int HeroId;
+        public int SkillName;
+        public int DamageCoefficient;
+        public int Effect1;
+        public int SpecialCase1;
+        public int Target1;
+        public int Dispose1;
+        public int Effect2;
+        public int SpecialCase2;
+        public int Target2;
+        public int Dispose2;
+        public int RelevantTalentId1;
+        public int RelevantTalentId2;
+        public int RelevantTalentId3;
+        public string SkillDescribe;
+
+        public bool IsJson = false;
+
+        public JsonData GetJson()
+        {
+            JsonData jd = new JsonData();
+            jd.Add("SkillId", SkillId);
+            jd.Add("HeroId", HeroId);
+            jd.Add("SkillName", SkillName);
+            jd.Add("DamageCoefficient", DamageCoefficient);
+            jd.Add("Effect1", Effect1);
+            jd.Add("SpecialCase1", SpecialCase1);
+            jd.Add("Target1", Target1);
+            jd.Add("Dispose1", Dispose1); ;
+            jd.Add("Effect2", Effect2);
+            jd.Add("SpecialCase2", SpecialCase2);
+            jd.Add("Target2", Target2);
+            jd.Add("Dispose2", Dispose2);
+            jd.Add("RelevantTalentId1", RelevantTalentId1);
+            jd.Add("RelevantTalentId2", RelevantTalentId2);
+            jd.Add("RelevantTalentId3", RelevantTalentId3);
+            jd.Add("SkillDescribe", SkillDescribe);
+            return jd;
+        }
+    
 }

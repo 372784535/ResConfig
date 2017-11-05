@@ -15,6 +15,8 @@ public class UIDeploy : MonoBehaviour {
     private Toggle FetterBtn;
     private Toggle TalentSkill_BuffBtn;
     private Toggle TalentStoneConditionBtn;
+    private Toggle BreakGrowBtn;
+    private Toggle FightSkillBtn;
 
     private Transform HeroData;
     private Transform BasicInformation;
@@ -24,19 +26,23 @@ public class UIDeploy : MonoBehaviour {
     private Transform TalentSkill_Buff;
     private Transform TalentSkill;
     private Transform TalentStoneCondition;
+    private Transform TowerDefenseSkill;
+    private Transform BreakGrow;
+    private Transform FightSkill;
     // Use this for initialization
-	void Start () {
+    void Start () {
         HeroDateBtn = transform.Find("HeroDateBtn").GetComponent<Toggle>();
         BasicInformationBtn = transform.Find("BasicInformationBtn").GetComponent<Toggle>();
         StarGrowBtn = transform.Find("StarGrowBtn").GetComponent<Toggle>();
         SkillConfigBtn = transform.Find("SkillConfigBtn").GetComponent<Toggle>();
         TowerDefenseSkillBtn = transform.Find("TowerDefenseSkillBtn").GetComponent<Toggle>();
-        CombatSkillsBtn = transform.Find("CombatSkillsBtn").GetComponent<Toggle>();
         TalentSkillsBtn = transform.Find("TalentSkillsBtn").GetComponent<Toggle>();
         AwakeningSkills = transform.Find("AwakeningSkills").GetComponent<Toggle>();
         FetterBtn = transform.Find("FetterBtn").GetComponent<Toggle>();
         TalentSkill_BuffBtn = transform.Find("TalentSkill_BuffBtn").GetComponent<Toggle>();
         TalentStoneConditionBtn = transform.Find("TalentStoneConditionBtn").GetComponent<Toggle>();
+        BreakGrowBtn = transform.Find("BreakGrowBtn").GetComponent<Toggle>();
+        FightSkillBtn = transform.Find("FightSkillBtn").GetComponent<Toggle>();
 
         HeroData = transform.parent.Find("HeroData");
         BasicInformation = transform.parent.Find("BasicInformation");
@@ -46,7 +52,10 @@ public class UIDeploy : MonoBehaviour {
         TalentSkill_Buff = transform.parent.Find("TalentSkill_Buff");
         TalentSkill = transform.parent.Find("TalentSkill");
         TalentStoneCondition = transform.parent.Find("TalentStoneCondition");
-	}
+        TowerDefenseSkill = transform.parent.Find("TowerDefenseSkill");
+        BreakGrow = transform.parent.Find("BreakGrow");
+        FightSkill = transform.parent.Find("FightSkill");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -63,6 +72,10 @@ public class UIDeploy : MonoBehaviour {
         transform.parent.Find("Fetter/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
         transform.parent.Find("TalentStoneCondition/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("TalentStoneCondition/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("TowerDefenseSkill/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("TowerDefenseSkill/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("TowerDefenseSkill/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("TowerDefenseSkill/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("FightSkill/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("FightSkill/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("FightSkill/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("FightSkill/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
     }
 
     public void onReChangValue()
@@ -75,6 +88,10 @@ public class UIDeploy : MonoBehaviour {
         transform.parent.Find("Fetter/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("Fetter/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
         transform.parent.Find("TalentStoneCondition/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
         transform.parent.Find("TalentStoneCondition/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("TalentStoneCondition/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("TowerDefenseSkill/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("TowerDefenseSkill/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("TowerDefenseSkill/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("TowerDefenseSkill/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
+        transform.parent.Find("FightSkill/Scrollbar Vertical").GetComponent<Scrollbar>().value = transform.parent.Find("FightSkill/TipTitleY/Scrollbar Vertical").GetComponent<Scrollbar>().value;
+        transform.parent.Find("FightSkill/Scrollbar Horizontal").GetComponent<Scrollbar>().value = transform.parent.Find("FightSkill/TipTitleX/Scrollbar Horizontal").GetComponent<Scrollbar>().value;
     }
     public void OnToggle()
     {
@@ -94,6 +111,9 @@ public class UIDeploy : MonoBehaviour {
             TalentSkill_Buff.gameObject.SetActive(TalentSkill_BuffBtn.isOn);
             TalentSkill.gameObject.SetActive(TalentSkillsBtn.isOn);
             TalentStoneCondition.gameObject.SetActive(TalentStoneConditionBtn.isOn);
+            TowerDefenseSkill.gameObject.SetActive(TowerDefenseSkillBtn.isOn);
+            BreakGrow.gameObject.SetActive(BreakGrowBtn.isOn);
+            FightSkill.gameObject.SetActive(FightSkillBtn.isOn);
         }
         else
         {
