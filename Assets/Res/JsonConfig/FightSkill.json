@@ -1,18 +1,18 @@
-
-[
+[
     {
         "SkillId":1,
-        "HeroId":2,
-        "SkillName":3,
+        "HeroId":1,
+        "SkillName":"\u6C99\u53D1",
+        "ATKType":0,
         "DamageCoefficient":4,
         "Effect1":2,
-        "SpecialCase1":5,
+        "SpecialCase1":"\u5C81\u6570\u5927\u6240\u8428\u8FBE",
         "Target1":5,
-        "Dispose1":6,
+        "Dispose1":"\u8428\u8FBE\u6240\u5927",
         "Effect2":2,
-        "SpecialCase2":7,
+        "SpecialCase2":"\u8428\u8FBE",
         "Target2":5,
-        "Dispose2":8,
+        "Dispose2":"\u8428\u8FBE",
         "RelevantTalentId1":9,
         "RelevantTalentId2":10,
         "RelevantTalentId3":11,

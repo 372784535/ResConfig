@@ -186,13 +186,13 @@ public class DataManage : MonoBehaviour
         {
             if (_talentSkill_BuffJsonData == null)
             {
-                if (File.Exists(@"Assets/Res/JsonConfig/TalentSkill_Buff.json"))
+                if (File.Exists(@"Assets/Res/JsonConfig/FightSkill_Buff.json"))
                 {
-                    _talentSkill_BuffJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json"));
+                    _talentSkill_BuffJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/FightSkill_Buff.json"));
                 }
                 else
                 {
-                    File.Create(@"Assets/Res/JsonConfig/TalentSkill_Buff.json");
+                    File.Create(@"Assets/Res/JsonConfig/FightSkill_Buff.json");
                     // _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
                     _talentSkill_BuffJsonData = new JsonData();
                 }
@@ -745,7 +745,7 @@ public class DataManage : MonoBehaviour
             print("修改");
             TalentSkill_BuffJsonData[id - 1] = talentSkill_Buff[id].GetJson();//修改操作
         }
-        File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json", TalentSkill_BuffJsonData.ToJsonFile());
+        File.WriteAllText(@"Assets/Res/JsonConfig/FightSkill_Buff.json", TalentSkill_BuffJsonData.ToJsonFile());
         WindowControl.SetConsole("保存成功");
         return true;
     }
@@ -757,7 +757,7 @@ public class DataManage : MonoBehaviour
             if (TalentSkill_BuffJsonData.Count == 1)
             {
                 TalentSkill_BuffJsonData.Clear();
-                File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json", "");
+                File.WriteAllText(@"Assets/Res/JsonConfig/FightSkill_Buff.json", "");
                 return;
             }
             JsonData jd = new JsonData();
@@ -774,7 +774,7 @@ public class DataManage : MonoBehaviour
                 jd.Add(TalentSkill_BuffJsonData[i + 1]);
             }
             TalentSkill_BuffJsonData = jd;
-            File.WriteAllText(@"Assets/Res/JsonConfig/TalentSkill_Buff.json", TalentSkill_BuffJsonData.ToJsonFile());
+            File.WriteAllText(@"Assets/Res/JsonConfig/FightSkill_Buff.json", TalentSkill_BuffJsonData.ToJsonFile());
         }
     }
 
@@ -1136,6 +1136,7 @@ public class C_HeroData
     public long ByConfigID3;
     public long ByConfigID4;
     public long MessageConfigID;
+    public int ATKType;
 
     public bool IsJson = false;
 
@@ -1144,6 +1145,7 @@ public class C_HeroData
         JsonData temdata = new JsonData();
         temdata.Add("Id", ID);
         temdata.Add("Quality", (int)Quality);
+        temdata.Add("ATKType",ATKType);
         temdata.Add("Type", (int)Type);
         temdata.Add("StarId", StarID);
         temdata.Add("Fighting", Fighting);
@@ -1561,7 +1563,7 @@ public class C_TowerDefenseSkill
 {
     public int HeroId;
     public int SkillId;
-    public int SkillName;
+    public string SkillName;
     public int ReleaseNum;
     public int Duration;
     public int AttackRange;
@@ -1627,8 +1629,6 @@ public class C_BreakGrow
 {
 
     public int Level;
-    public int AddCoefficient;
-    public int VitalityGrow;
     public int BreakNum;
     public int ConsumptionGold;
     public int ConsumptionBG;
@@ -1640,8 +1640,6 @@ public class C_BreakGrow
     {
         JsonData jd = new JsonData();
         jd.Add("Level", Level);
-        jd.Add("AddCoefficient", AddCoefficient);
-        jd.Add("VitalityGrow", VitalityGrow);
         jd.Add("BreakNum", BreakNum);
         jd.Add("ConsumptionGold", ConsumptionGold);
         jd.Add("ConsumptionBG", ConsumptionBG);
@@ -1654,16 +1652,17 @@ public class C_BreakGrow
     {
         public int SkillId;
         public int HeroId;
-        public int SkillName;
+        public string SkillName;
+        public int ATKType;
         public int DamageCoefficient;
         public int Effect1;
-        public int SpecialCase1;
+        public string SpecialCase1;
         public int Target1;
-        public int Dispose1;
+        public string Dispose1;
         public int Effect2;
-        public int SpecialCase2;
+        public string SpecialCase2;
         public int Target2;
-        public int Dispose2;
+        public string Dispose2;
         public int RelevantTalentId1;
         public int RelevantTalentId2;
         public int RelevantTalentId3;
@@ -1677,11 +1676,12 @@ public class C_BreakGrow
             jd.Add("SkillId", SkillId);
             jd.Add("HeroId", HeroId);
             jd.Add("SkillName", SkillName);
+            jd.Add("ATKType", ATKType);
             jd.Add("DamageCoefficient", DamageCoefficient);
             jd.Add("Effect1", Effect1);
             jd.Add("SpecialCase1", SpecialCase1);
             jd.Add("Target1", Target1);
-            jd.Add("Dispose1", Dispose1); ;
+            jd.Add("Dispose1", Dispose1);
             jd.Add("Effect2", Effect2);
             jd.Add("SpecialCase2", SpecialCase2);
             jd.Add("Target2", Target2);
@@ -1693,4 +1693,31 @@ public class C_BreakGrow
             return jd;
         }
     
+}
+
+public class C_ResourceConfig
+{
+    public int Id;
+    public int HeroId;
+    public string ModelTarget;
+    public string ATK1Target;
+    public int ATK1Frame;
+    public string ATK2Target;
+    public int ATK2Frame;
+    public string SkillTarget1;
+    public string SkillTarget2;
+    public string ShowTarget;
+    public string RandomTarget;
+
+    public bool IsJson = false;
+
+    public JsonData GetJson()
+    {
+        JsonData jd = new JsonData();
+        jd.Add("Id",Id);
+        jd.Add("HeroId", HeroId);
+        jd.Add("ModelTarget", ModelTarget);
+        return jd;
+    }
+
 }

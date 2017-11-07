@@ -40,6 +40,7 @@ public class HeroData : MonoBehaviour {
     private Text _heroByConfigID3;
     private Text _heroByConfigID4;
     private Text _heroMessageConfigID;
+    private Dropdown _ATKType;
 
     public static Dictionary<int, C_HeroData> heroData = new Dictionary<int, C_HeroData>();
 
@@ -117,11 +118,14 @@ public class HeroData : MonoBehaviour {
             _heroByConfigID3 = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroByConfigID3").GetComponent<Text>();
             _heroByConfigID4 = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroByConfigID4").GetComponent<Text>();
             _heroMessageConfigID = transform.Find("Viewport/Content/obj" + (i + 1) + "/HeroMessageConfigID").GetComponent<Text>();
+            _ATKType = transform.Find("Viewport/Content/obj" + (i + 1) + "/ATKType").GetComponent<Dropdown>();
 
             heroData[(i + 1)].ID = DataManage.HeroJsonData[i]["Id"].ToInt32();
             heroData[(i + 1)].StarID = DataManage.HeroJsonData[i]["StarId"].ToInt32();
-            heroData[(i + 1)].Quality = (C_HeroData.HeroQuality)DataManage.HeroJsonData[i]["Quality"].ToInt32();
+            //heroData[(i + 1)].Quality = (C_HeroData.HeroQuality)DataManage.HeroJsonData[i]["Quality"].ToString();
+
             heroData[(i + 1)].Type = (C_HeroData.HeroType)DataManage.HeroJsonData[i]["Type"].ToInt32();
+            heroData[(i + 1)].ATKType = DataManage.HeroJsonData[i]["ATKType"].ToInt32();
             heroData[(i + 1)].Fighting = DataManage.HeroJsonData[i]["Fighting"].ToInt32();
             heroData[(i + 1)].ExponentBit = DataManage.HeroJsonData[i]["ExponentBit"].ToInt32();
             heroData[(i + 1)].Level = DataManage.HeroJsonData[i]["Level"].ToInt32();
@@ -157,6 +161,7 @@ public class HeroData : MonoBehaviour {
             //_heroQuality.value = (int)heroData[Length].Quality - 1;
             //_heroType.value = (int)heroData[Length].Type - 1;
             _heroStarID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].StarID.ToString();
+            _ATKType.gameObject.GetComponent<Dropdown>().value = heroData[i + 1].ATKType;
             _heroFighting.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Fighting.ToString();
             _heroExponentBit.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ExponentBit.ToString();
             _heroLevel.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].Level.ToString();
@@ -179,7 +184,7 @@ public class HeroData : MonoBehaviour {
             _heroBaseStrikeDamage.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].BaseStrikeDamage.ToString();
             _heroTowerActFrequency.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].TowerActFrequency.ToString();
             _heroSkillConfigID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].SkillConfigID.ToString();
-            _heroExclusiveEquipID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ID.ToString();
+            _heroExclusiveEquipID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ExclusiveEquipID.ToString();
             _heroByConfigID1.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ByConfigID1.ToString();
             _heroByConfigID2.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ByConfigID2.ToString();
             _heroByConfigID3.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ByConfigID3.ToString();
@@ -214,6 +219,7 @@ public class HeroData : MonoBehaviour {
             OnAdd();
             _heroID = transform.Find("Viewport/Content/obj" + Length + "/HeroID").GetComponent<Text>();
             _heroQuality = transform.Find("Viewport/Content/obj" + Length + "/HeroQuality").GetComponent<Dropdown>();
+            _ATKType = transform.Find("Viewport/Content/obj" + Length + "/ATKType").GetComponent<Dropdown>();
             _heroType = transform.Find("Viewport/Content/obj" + Length+ "/HeroType").GetComponent<Dropdown>();
             _heroStarID = transform.Find("Viewport/Content/obj" + Length + "/HeroStarID").GetComponent<Text>();
             _heroFighting = transform.Find("Viewport/Content/obj" + Length + "/HeroFighting").GetComponent<Text>();
@@ -247,7 +253,8 @@ public class HeroData : MonoBehaviour {
 
             heroData[Length].ID = DataManage.HeroJsonData[i]["Id"].ToInt32();
             heroData[Length].StarID = DataManage.HeroJsonData[i]["StarId"].ToInt32();
-            heroData[Length].Quality =(C_HeroData.HeroQuality)DataManage.HeroJsonData[i]["Quality"].ToInt32();
+            //heroData[Length].Quality =(C_HeroData.HeroQuality)DataManage.HeroJsonData[i]["Quality"].ToInt32();
+            heroData[Length].ATKType = DataManage.HeroJsonData[i]["ATKType"].ToInt32();
             heroData[Length].Type =(C_HeroData.HeroType)DataManage.HeroJsonData[i]["Type"].ToInt32();
             heroData[Length].Fighting = DataManage.HeroJsonData[i]["Fighting"].ToInt32();
             heroData[Length].ExponentBit =DataManage.HeroJsonData[i]["ExponentBit"].ToInt32();
@@ -281,6 +288,7 @@ public class HeroData : MonoBehaviour {
 
             print("DataManage=" + DataManage.HeroJsonData.Count);
             _heroID.gameObject.GetComponent<InputField>().text= heroData[Length].ID.ToString();
+            _ATKType.gameObject.GetComponent<Dropdown>().value =  heroData[Length].ATKType;
             _heroQuality.value = (int)heroData[Length].Quality-1;
             _heroType.value = (int)heroData[Length].Type-1;
             _heroStarID.gameObject.GetComponent<InputField>().text = heroData[Length].StarID.ToString();
@@ -306,7 +314,7 @@ public class HeroData : MonoBehaviour {
             _heroBaseStrikeDamage.gameObject.GetComponent<InputField>().text = heroData[Length].BaseStrikeDamage.ToString();
             _heroTowerActFrequency.gameObject.GetComponent<InputField>().text = heroData[Length].TowerActFrequency.ToString();
             _heroSkillConfigID.gameObject.GetComponent<InputField>().text = heroData[Length].SkillConfigID.ToString();
-            _heroExclusiveEquipID.gameObject.GetComponent<InputField>().text = heroData[Length].ID.ToString();
+            _heroExclusiveEquipID.gameObject.GetComponent<InputField>().text = heroData[Length].ExclusiveEquipID.ToString();
             _heroByConfigID1.gameObject.GetComponent<InputField>().text = heroData[Length].ByConfigID1.ToString();
             _heroByConfigID2.gameObject.GetComponent<InputField>().text = heroData[Length].ByConfigID2.ToString();
             _heroByConfigID3.gameObject.GetComponent<InputField>().text = heroData[Length].ByConfigID3.ToString();
@@ -320,6 +328,7 @@ public class HeroData : MonoBehaviour {
         _heroID = transform.Find("Viewport/Content/obj" + ID+"/HeroID").GetComponent<Text>();
         _heroQuality = transform.Find("Viewport/Content/obj" + ID + "/HeroQuality").GetComponent<Dropdown>();
         _heroType = transform.Find("Viewport/Content/obj" + ID + "/HeroType").GetComponent<Dropdown>();
+        _ATKType = transform.Find("Viewport/Content/obj" + ID + "/ATKType").GetComponent<Dropdown>();
         _heroStarID = transform.Find("Viewport/Content/obj" + ID + "/HeroStarID").GetComponent<Text>();
         _heroFighting = transform.Find("Viewport/Content/obj" + ID + "/HeroFighting").GetComponent<Text>();
         _heroExponentBit = transform.Find("Viewport/Content/obj" + ID + "/HeroExponentBit").GetComponent<Text>();
@@ -398,7 +407,7 @@ public class HeroData : MonoBehaviour {
                 break;
         }
 
-
+            heroData[ID].ATKType =_ATKType.value;
             heroData[ID].StarID = int.Parse(_heroStarID.text);
             heroData[ID].Fighting = int.Parse(_heroFighting.text);
             heroData[ID].ExponentBit = int.Parse(_heroExponentBit.text);
@@ -464,6 +473,7 @@ public class HeroData : MonoBehaviour {
         _heroID = transform.Find("Viewport/Content/obj" + Length + "/HeroID").GetComponent<Text>();
         _heroQuality = transform.Find("Viewport/Content/obj" + Length + "/HeroQuality").GetComponent<Dropdown>();
         _heroType = transform.Find("Viewport/Content/obj" + Length + "/HeroType").GetComponent<Dropdown>();
+        _ATKType = transform.Find("Viewport/Content/obj" + Length + "/ATKType").GetComponent<Dropdown>();
         _heroStarID = transform.Find("Viewport/Content/obj" + Length + "/HeroStarID").GetComponent<Text>();
         _heroFighting = transform.Find("Viewport/Content/obj" + Length + "/HeroFighting").GetComponent<Text>();
         _heroExponentBit = transform.Find("Viewport/Content/obj" + Length + "/HeroExponentBit").GetComponent<Text>();
@@ -496,6 +506,7 @@ public class HeroData : MonoBehaviour {
 
         _heroID.gameObject.GetComponent<InputField>().text = "0";
         _heroQuality.value = 5;
+        _ATKType.value = 0;
         _heroType.value = 0;
         _heroStarID.gameObject.GetComponent<InputField>().text = "1";
         _heroFighting.gameObject.GetComponent<InputField>().text = "0";
@@ -564,6 +575,19 @@ public class HeroData : MonoBehaviour {
         }else
         {
             transform.parent.Find("Panel").GetComponent<UIDeploy>().OnOrSetToggle("BasicInformation",heroData[Id].ID);
+        }
+    }
+
+    public void OnResource(int Id)
+    {
+        if (Id > DataManage.HeroJsonData.Count)
+        {
+            WindowControl.SetConsole("跳转失败，该数据你还没有保存");
+            return;
+        }
+        else
+        {
+            transform.parent.Find("Panel").GetComponent<UIDeploy>().OnOrSetToggle("ResourceConfig", heroData[Id].ID);
         }
     }
 }

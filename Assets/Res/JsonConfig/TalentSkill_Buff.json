@@ -1,18 +1,0 @@
-[
-    {
-        "Id":5,
-        "Type":4,
-        "IsDispel":0,
-        "IsSuperposition":1,
-        "TimeDuration":56,
-        "Explain":"\u6253\u53D1\u65AF\u8482\u82AC"
-    },
-    {
-        "Id":25,
-        "Type":0,
-        "IsDispel":0,
-        "IsSuperposition":0,
-        "TimeDuration":2,
-        "Explain":"\u751F\u65E0\u53EF\u604B\u7684\u8FD8\u662F\u6269\u5927\u662F\u591A\u4E45\u554A "
-    }
-]

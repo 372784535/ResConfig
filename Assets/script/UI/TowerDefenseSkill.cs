@@ -118,7 +118,7 @@ public class TowerDefenseSkill : MonoBehaviour {
 
             towerDefenseSkills[Length].HeroId = DataManage.TowerDefenseSkillJsonData[i]["HeroId"].ToInt32();
             towerDefenseSkills[Length].SkillId = DataManage.TowerDefenseSkillJsonData[i]["SkillId"].ToInt32();
-            towerDefenseSkills[Length].SkillName = DataManage.TowerDefenseSkillJsonData[i]["SkillName"].ToInt32();
+            towerDefenseSkills[Length].SkillName = DataManage.TowerDefenseSkillJsonData[i]["SkillName"].ToString();
             towerDefenseSkills[Length].ReleaseNum = DataManage.TowerDefenseSkillJsonData[i]["ReleaseNum"].ToInt32();
             towerDefenseSkills[Length].Duration = DataManage.TowerDefenseSkillJsonData[i]["Duration"].ToInt32();
             towerDefenseSkills[Length].AttackRange = DataManage.TowerDefenseSkillJsonData[i]["AttackRange"].ToInt32();
@@ -148,7 +148,7 @@ public class TowerDefenseSkill : MonoBehaviour {
             print("DataManage=" + DataManage.HeroJsonData.Count);
             HeroID.text = towerDefenseSkills[Length].HeroId.ToString();
             SkillId.text = towerDefenseSkills[Length].SkillId.ToString();
-            SkillName.text = towerDefenseSkills[Length].SkillName.ToString();
+            SkillName.text = towerDefenseSkills[Length].SkillName;
             ReleaseNum.text = towerDefenseSkills[Length].ReleaseNum.ToString();
             Duration.text = towerDefenseSkills[Length].Duration.ToString();
             AttackRange.text = towerDefenseSkills[Length].AttackRange.ToString();
@@ -210,7 +210,7 @@ public class TowerDefenseSkill : MonoBehaviour {
         {
             towerDefenseSkills[ID].HeroId = int.Parse(HeroID.text);
             towerDefenseSkills[ID].SkillId = int.Parse(SkillId.text);
-            towerDefenseSkills[ID].SkillName = int.Parse(SkillName.text);
+            towerDefenseSkills[ID].SkillName = SkillName.text;
             towerDefenseSkills[ID].ReleaseNum = int.Parse(ReleaseNum.text);
             towerDefenseSkills[ID].Duration = int.Parse(Duration.text);
             towerDefenseSkills[ID].AttackRange = int.Parse(AttackRange.text);

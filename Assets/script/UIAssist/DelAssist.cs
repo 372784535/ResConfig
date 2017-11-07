@@ -25,4 +25,8 @@ public class DelAssist : MonoBehaviour {
     {
         GameObject.Find("Canvas/HeroData").GetComponent<HeroData>().OnDetail(ID);
     }
+    public void OnResource()
+    {
+        GameObject.Find("Canvas/HeroData").GetComponent<HeroData>().OnResource(ID);
+    }
 }

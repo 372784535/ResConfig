@@ -29,6 +29,7 @@ public class UIDeploy : MonoBehaviour {
     private Transform TowerDefenseSkill;
     private Transform BreakGrow;
     private Transform FightSkill;
+    private Transform ResourceConfig;
     // Use this for initialization
     void Start () {
         HeroDateBtn = transform.Find("HeroDateBtn").GetComponent<Toggle>();
@@ -55,6 +56,7 @@ public class UIDeploy : MonoBehaviour {
         TowerDefenseSkill = transform.parent.Find("TowerDefenseSkill");
         BreakGrow = transform.parent.Find("BreakGrow");
         FightSkill = transform.parent.Find("FightSkill");
+        ResourceConfig = transform.parent.Find("ResourceConfig");
     }
 	
 	// Update is called once per frame
@@ -114,6 +116,7 @@ public class UIDeploy : MonoBehaviour {
             TowerDefenseSkill.gameObject.SetActive(TowerDefenseSkillBtn.isOn);
             BreakGrow.gameObject.SetActive(BreakGrowBtn.isOn);
             FightSkill.gameObject.SetActive(FightSkillBtn.isOn);
+            ResourceConfig.gameObject.SetActive(false);
         }
         else
         {
@@ -162,6 +165,15 @@ public class UIDeploy : MonoBehaviour {
                         }
                     }
                     OnOrSetToggle();
+                    break;
+                case "ResourceConfig":
+                    for (int i = 0; i < transform.GetComponentsInChildren<Toggle>().Length; i++)
+                    {
+                        transform.GetComponentsInChildren<Toggle>()[i].isOn = false;
+                    }
+                    this.HeroData.gameObject.SetActive(false);
+                    ResourceConfig.gameObject.SetActive(true);
+                    ResourceConfig.gameObject.GetComponent<ResourceConfig>().InitHero(ID);
                     break;
             }
         }

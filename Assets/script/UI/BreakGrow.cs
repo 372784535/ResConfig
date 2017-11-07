@@ -9,8 +9,6 @@ public class BreakGrow : MonoBehaviour {
     public Dictionary<int, C_BreakGrow> breakGrows = new Dictionary<int, C_BreakGrow>();
     Transform BaseBreakGrow;
     private InputField Level;
-    private InputField AddCoefficient;
-    private InputField VitalityGrow;
     private InputField BreakNum;
     private InputField ConsumptionGold;
     private InputField ConsumptionBG;
@@ -31,16 +29,12 @@ public class BreakGrow : MonoBehaviour {
         {
             Add();
             Level = transform.Find("Scroll/Viewport/Content/obj" + Length + "/Level").GetComponent<InputField>();
-            AddCoefficient = transform.Find("Scroll/Viewport/Content/obj" + Length + "/AddCoefficient").GetComponent<InputField>();
-            VitalityGrow = transform.Find("Scroll/Viewport/Content/obj" + Length + "/VitalityGrow").GetComponent<InputField>();
             BreakNum = transform.Find("Scroll/Viewport/Content/obj" + Length + "/BreakNum").GetComponent<InputField>();
             ConsumptionGold = transform.Find("Scroll/Viewport/Content/obj" + Length + "/ConsumptionGold").GetComponent<InputField>();
             ConsumptionBG = transform.Find("Scroll/Viewport/Content/obj" + Length + "/ConsumptionBG").GetComponent<InputField>();
             ConsumptionEssence = transform.Find("Scroll/Viewport/Content/obj" + Length + "/ConsumptionEssence").GetComponent<InputField>();;
 
             breakGrows[Length].Level = DataManage.BreakGrowJsonData[i]["Level"].ToInt32();
-            breakGrows[Length].AddCoefficient = DataManage.BreakGrowJsonData[i]["AddCoefficient"].ToInt32();
-            breakGrows[Length].VitalityGrow = DataManage.BreakGrowJsonData[i]["VitalityGrow"].ToInt32();
             breakGrows[Length].BreakNum = DataManage.BreakGrowJsonData[i]["BreakNum"].ToInt32();
             breakGrows[Length].ConsumptionGold = DataManage.BreakGrowJsonData[i]["ConsumptionGold"].ToInt32();
             breakGrows[Length].ConsumptionBG = DataManage.BreakGrowJsonData[i]["ConsumptionBG"].ToInt32();
@@ -48,8 +42,6 @@ public class BreakGrow : MonoBehaviour {
             breakGrows[Length].IsJson = true;
 
             Level.text = breakGrows[Length].Level.ToString();
-            AddCoefficient.text = breakGrows[Length].AddCoefficient.ToString();
-            VitalityGrow.text = breakGrows[Length].VitalityGrow.ToString();
             BreakNum.text = breakGrows[Length].BreakNum.ToString();
             ConsumptionGold.text = breakGrows[Length].ConsumptionGold.ToString();
             ConsumptionBG.text = breakGrows[Length].ConsumptionBG.ToString();
@@ -70,8 +62,6 @@ public class BreakGrow : MonoBehaviour {
     public void Save(int ID)
     {
         Level = transform.Find("Scroll/Viewport/Content/obj" + ID + "/Level").GetComponent<InputField>();
-        AddCoefficient = transform.Find("Scroll/Viewport/Content/obj" + ID + "/AddCoefficient").GetComponent<InputField>();
-        VitalityGrow = transform.Find("Scroll/Viewport/Content/obj" + ID + "/VitalityGrow").GetComponent<InputField>();
         BreakNum = transform.Find("Scroll/Viewport/Content/obj" + ID + "/BreakNum").GetComponent<InputField>();
         ConsumptionGold = transform.Find("Scroll/Viewport/Content/obj" + ID + "/ConsumptionGold").GetComponent<InputField>();
         ConsumptionBG = transform.Find("Scroll/Viewport/Content/obj" + ID + "/ConsumptionBG").GetComponent<InputField>();
@@ -80,8 +70,6 @@ public class BreakGrow : MonoBehaviour {
         try
         {
             breakGrows[ID].Level = int.Parse(Level.text);
-            breakGrows[ID].AddCoefficient = int.Parse(AddCoefficient.text);
-            breakGrows[ID].VitalityGrow = int.Parse(VitalityGrow.text);
             breakGrows[ID].BreakNum = int.Parse(BreakNum.text);
             breakGrows[ID].ConsumptionGold = int.Parse(ConsumptionGold.text);
             breakGrows[ID].ConsumptionBG = int.Parse(ConsumptionBG.text);

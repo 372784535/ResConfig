@@ -2,7 +2,7 @@
     {
         "HeroId":1,
         "SkillId":2,
-        "SkillName":3,
+        "SkillName":"\u53D1\u7684\u53D1\u751F",
         "ReleaseNum":4,
         "Duration":5,
         "AttackRange":6,
@@ -18,7 +18,7 @@
         "DisorderTime":14,
         "AttackIncrease":15,
         "AttackIncreaseTime":16,
-        "IsWhetherFly":1,
+        "IsWhetherFly":0,
         "UpATK":17,
         "UpATKTime":18,
         "RespondEnergy":19,

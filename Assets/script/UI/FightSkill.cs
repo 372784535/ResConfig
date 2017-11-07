@@ -11,6 +11,7 @@ public class FightSkill : MonoBehaviour {
     private InputField SkillId;
     private InputField HeroId;
     private InputField SkillName;
+    private Dropdown ATKType;
     private InputField DamageCoefficient;
     private Dropdown Effect1;
     private InputField SpecialCase1;
@@ -84,6 +85,7 @@ public class FightSkill : MonoBehaviour {
             SkillId = transform.Find("Viewport/Content/obj" + Length + "/SkillId").GetComponent<InputField>();
             HeroId = transform.Find("Viewport/Content/obj" + Length + "/HeroId").GetComponent<InputField>();
             SkillName = transform.Find("Viewport/Content/obj" + Length + "/SkillName").GetComponent<InputField>();
+            ATKType = transform.Find("Viewport/Content/obj" + Length + "/ATKType").GetComponent<Dropdown>();
             DamageCoefficient = transform.Find("Viewport/Content/obj" + Length + "/DamageCoefficient").GetComponent<InputField>();
             Effect1 = transform.Find("Viewport/Content/obj" + Length + "/Effect1").GetComponent<Dropdown>();
             SpecialCase1 = transform.Find("Viewport/Content/obj" + Length + "/SpecialCase1").GetComponent<InputField>();
@@ -101,16 +103,17 @@ public class FightSkill : MonoBehaviour {
 
             fightSkills[Length].SkillId = DataManage.FightSkillJsonData[i]["SkillId"].ToInt32();
             fightSkills[Length].HeroId = DataManage.FightSkillJsonData[i]["HeroId"].ToInt32();
-            fightSkills[Length].SkillName = DataManage.FightSkillJsonData[i]["SkillName"].ToInt32();
+            fightSkills[Length].SkillName = DataManage.FightSkillJsonData[i]["SkillName"].ToString();
+            fightSkills[Length].ATKType = DataManage.FightSkillJsonData[i]["ATKType"].ToInt32();
             fightSkills[Length].DamageCoefficient = DataManage.FightSkillJsonData[i]["DamageCoefficient"].ToInt32();
             fightSkills[Length].Effect1 = DataManage.FightSkillJsonData[i]["Effect1"].ToInt32();
-            fightSkills[Length].SpecialCase1 = DataManage.FightSkillJsonData[i]["SpecialCase1"].ToInt32();
+            fightSkills[Length].SpecialCase1 = DataManage.FightSkillJsonData[i]["SpecialCase1"].ToString();
             fightSkills[Length].Target1 = DataManage.FightSkillJsonData[i]["Target1"].ToInt32();
-            fightSkills[Length].Dispose1 = DataManage.FightSkillJsonData[i]["Dispose1"].ToInt32();
+            fightSkills[Length].Dispose1 = DataManage.FightSkillJsonData[i]["Dispose1"].ToString();
             fightSkills[Length].Effect2 = DataManage.FightSkillJsonData[i]["Effect2"].ToInt32();
-            fightSkills[Length].SpecialCase2 = DataManage.FightSkillJsonData[i]["SpecialCase2"].ToInt32();
+            fightSkills[Length].SpecialCase2 = DataManage.FightSkillJsonData[i]["SpecialCase2"].ToString();
             fightSkills[Length].Target2 = DataManage.FightSkillJsonData[i]["Target2"].ToInt32();
-            fightSkills[Length].Dispose2 = DataManage.FightSkillJsonData[i]["Dispose2"].ToInt32();
+            fightSkills[Length].Dispose2 = DataManage.FightSkillJsonData[i]["Dispose2"].ToString();
             fightSkills[Length].RelevantTalentId1 = DataManage.FightSkillJsonData[i]["RelevantTalentId1"].ToInt32();
             fightSkills[Length].RelevantTalentId2 = DataManage.FightSkillJsonData[i]["RelevantTalentId2"].ToInt32();
             fightSkills[Length].RelevantTalentId3 = DataManage.FightSkillJsonData[i]["RelevantTalentId3"].ToInt32();
@@ -120,7 +123,8 @@ public class FightSkill : MonoBehaviour {
             print("DataManage=" + DataManage.HeroJsonData.Count);
             SkillId.text = fightSkills[Length].SkillId.ToString();
             HeroId.text = fightSkills[Length].HeroId.ToString();
-            SkillName.text = fightSkills[Length].SkillName.ToString();
+            SkillName.text = fightSkills[Length].SkillName;
+            ATKType.value = fightSkills[Length].ATKType;
             DamageCoefficient.text = fightSkills[Length].DamageCoefficient.ToString();
             Effect1.value = fightSkills[Length].Effect1-1;
             SpecialCase1.text = fightSkills[Length].SpecialCase1.ToString();
@@ -160,6 +164,7 @@ public class FightSkill : MonoBehaviour {
         SkillId = transform.Find("Viewport/Content/obj" + ID + "/SkillId").GetComponent<InputField>();
         HeroId = transform.Find("Viewport/Content/obj" + ID + "/HeroId").GetComponent<InputField>();
         SkillName = transform.Find("Viewport/Content/obj" + ID + "/SkillName").GetComponent<InputField>();
+        ATKType = transform.Find("Viewport/Content/obj" + ID + "/ATKType").GetComponent<Dropdown>();
         DamageCoefficient = transform.Find("Viewport/Content/obj" + ID + "/DamageCoefficient").GetComponent<InputField>();
         Effect1 = transform.Find("Viewport/Content/obj" + ID + "/Effect1").GetComponent<Dropdown>();
         SpecialCase1 = transform.Find("Viewport/Content/obj" + ID + "/SpecialCase1").GetComponent<InputField>();
@@ -177,16 +182,17 @@ public class FightSkill : MonoBehaviour {
         {
             fightSkills[ID].SkillId = int.Parse(SkillId.text);
             fightSkills[ID].HeroId = int.Parse(HeroId.text);
-            fightSkills[ID].SkillName = int.Parse(SkillName.text);
+            fightSkills[ID].SkillName = SkillName.text;
+            fightSkills[ID].ATKType = ATKType.value;
             fightSkills[ID].DamageCoefficient = int.Parse(DamageCoefficient.text);
             fightSkills[ID].Effect1 = Effect1.value+1;
-            fightSkills[ID].SpecialCase1 = int.Parse(SpecialCase1.text);
+            fightSkills[ID].SpecialCase1 = SpecialCase1.text;
             fightSkills[ID].Target1 = Target1.value + 1;
-            fightSkills[ID].Dispose1 = int.Parse(Dispose1.text);
+            fightSkills[ID].Dispose1 = Dispose1.text;
             fightSkills[ID].Effect2 = Effect2.value + 1;
-            fightSkills[ID].SpecialCase2 = int.Parse(SpecialCase2.text);
+            fightSkills[ID].SpecialCase2 = SpecialCase2.text;
             fightSkills[ID].Target2 = Target2.value + 1;
-            fightSkills[ID].Dispose2 = int.Parse(Dispose2.text);
+            fightSkills[ID].Dispose2 = Dispose2.text;
             fightSkills[ID].RelevantTalentId1 = int.Parse(RelevantTalentId1.text);
             fightSkills[ID].RelevantTalentId2 = int.Parse(RelevantTalentId2.text);
             fightSkills[ID].RelevantTalentId3 = int.Parse(RelevantTalentId3.text);
