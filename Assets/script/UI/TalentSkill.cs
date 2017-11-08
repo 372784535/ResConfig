@@ -10,6 +10,7 @@ public class TalentSkill : MonoBehaviour {
 
     private InputField _Id;
     private InputField _HeroId;
+    private InputField _TalentName;
     private Dropdown _Type;
     private Dropdown _IsActivate;
     private InputField _RelevantSkill;
@@ -40,6 +41,7 @@ public class TalentSkill : MonoBehaviour {
             Add();
             _Id = transform.Find("Scroll/Viewport/Content/obj" + Length + "/Id").GetComponent<InputField>();
             _HeroId= transform.Find("Scroll/Viewport/Content/obj" + Length + "/HeroId").GetComponent<InputField>();
+            _TalentName = transform.Find("Scroll/Viewport/Content/obj" + Length + "/TalentName").GetComponent<InputField>();
             _Type = transform.Find("Scroll/Viewport/Content/obj" + Length + "/Type").GetComponent<Dropdown>();
             _IsActivate = transform.Find("Scroll/Viewport/Content/obj" + Length + "/IsActivate").GetComponent<Dropdown>();
             _RelevantSkill = transform.Find("Scroll/Viewport/Content/obj" + Length + "/RelevantSkill").GetComponent<InputField>();
@@ -53,6 +55,7 @@ public class TalentSkill : MonoBehaviour {
 
             talentSkill[Length].Id = DataManage.TalentSkillJsonData[i]["Id"].ToInt32();
             talentSkill[Length].HeroId = DataManage.TalentSkillJsonData[i]["HeroId"].ToInt32();
+            talentSkill[Length].TalentName = DataManage.TalentSkillJsonData[i]["TalentName"].ToString();
             talentSkill[Length].Type = DataManage.TalentSkillJsonData[i]["Type"].ToInt32();
             talentSkill[Length].IsActivate = DataManage.TalentSkillJsonData[i]["IsActivate"].ToInt32();
             talentSkill[Length].RelevantSkill = DataManage.TalentSkillJsonData[i]["RelevantSkill"].ToInt32();
@@ -67,8 +70,9 @@ public class TalentSkill : MonoBehaviour {
 
             _Id.text = talentSkill[Length].Id.ToString();
             _HeroId.text = talentSkill[Length].Id.ToString();
+            _TalentName.text = talentSkill[Length].TalentName;
             _Type.value = talentSkill[Length].Type;
-            _IsActivate.value = talentSkill[Length].Type;
+            _IsActivate.value = talentSkill[Length].IsActivate;
             _RelevantSkill.text = talentSkill[Length].RelevantSkill.ToString();
             _Result.text = talentSkill[Length].Result;
             _ActivateResource1.text = talentSkill[Length].ActivateResource1.ToString();
@@ -117,6 +121,7 @@ public class TalentSkill : MonoBehaviour {
     {
         _Id = transform.Find("Scroll/Viewport/Content/obj" + ID + "/Id").GetComponent<InputField>();
         _HeroId = transform.Find("Scroll/Viewport/Content/obj" + ID + "/HeroId").GetComponent<InputField>();
+        _TalentName = transform.Find("Scroll/Viewport/Content/obj" + ID + "/TalentName").GetComponent<InputField>();
         _Type = transform.Find("Scroll/Viewport/Content/obj" + ID + "/Type").GetComponent<Dropdown>();
         _IsActivate= transform.Find("Scroll/Viewport/Content/obj" + ID + "/IsActivate").GetComponent<Dropdown>();
         _RelevantSkill = transform.Find("Scroll/Viewport/Content/obj" + ID + "/RelevantSkill").GetComponent<InputField>();
@@ -133,6 +138,7 @@ public class TalentSkill : MonoBehaviour {
         {
             talentSkill[ID].Id = int.Parse(_Id.text);
             talentSkill[ID].HeroId = int.Parse(_HeroId.text);
+            talentSkill[ID].TalentName = _TalentName.text;
             talentSkill[ID].Type = _Type.value;
             talentSkill[ID].IsActivate = _IsActivate.value;
             talentSkill[ID].RelevantSkill =int.Parse(_RelevantSkill.text);

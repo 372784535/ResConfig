@@ -117,6 +117,10 @@ public class ExcelUtility
                     //row[field] = Convert.ToDouble(_str);
                     row[field] =(int) Mathf.RoundToInt(float.Parse(_str));
                 }
+                else if(_str==null||_str =="")
+                {
+                    row[field] = -1;
+                }
                 else
                 {
                     row[field] = _str;

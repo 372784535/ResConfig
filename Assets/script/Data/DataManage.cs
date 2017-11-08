@@ -1099,7 +1099,7 @@ public class C_HeroData
     }
 
     public int ID;
-    public HeroQuality Quality;
+    public string Quality;
     public HeroType Type;
     public int StarID;
     public int Fighting;
@@ -1144,7 +1144,7 @@ public class C_HeroData
     {
         JsonData temdata = new JsonData();
         temdata.Add("Id", ID);
-        temdata.Add("Quality", (int)Quality);
+        temdata.Add("Quality", Quality);
         temdata.Add("ATKType",ATKType);
         temdata.Add("Type", (int)Type);
         temdata.Add("StarId", StarID);
@@ -1329,6 +1329,10 @@ public class C_SkillConfig
         jd.Add("InnateSkill31", InnateSkill31);
         jd.Add("InnateSkill32", InnateSkill32);
         jd.Add("InnateSkill33", InnateSkill33);
+        jd.Add("InnateSkill40", InnateSkill40);
+        jd.Add("InnateSkill41", InnateSkill41);
+        jd.Add("InnateSkill42", InnateSkill42);
+        jd.Add("InnateSkill43", InnateSkill43);
         jd.Add("Awaken111", Awaken111);
         jd.Add("Awaken121", Awaken121);
         jd.Add("Awaken122", Awaken122);
@@ -1423,6 +1427,7 @@ public class C_TalentSkill
 {
     public int Id;
     public int HeroId;
+    public string TalentName;
     public int Type;
     public int IsActivate;
     public int RelevantSkill;
@@ -1441,6 +1446,7 @@ public class C_TalentSkill
         JsonData jd = new JsonData();
         jd.Add("Id",Id);
         jd.Add("HeroId", HeroId);
+        jd.Add("TalentName",TalentName);
         jd.Add("Type", Type);
         jd.Add("IsActivate", IsActivate);
         jd.Add("RelevantSkill", RelevantSkill);

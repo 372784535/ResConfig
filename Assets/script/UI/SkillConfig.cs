@@ -169,6 +169,10 @@ public class SkillConfig : MonoBehaviour {
             skillConfig[Length].InnateSkill31 = DataManage.SkillConfigJsonData[i]["InnateSkill31"].ToInt32();
             skillConfig[Length].InnateSkill32 = DataManage.SkillConfigJsonData[i]["InnateSkill32"].ToInt32();
             skillConfig[Length].InnateSkill33 = DataManage.SkillConfigJsonData[i]["InnateSkill33"].ToInt32();
+            skillConfig[Length].InnateSkill40 = DataManage.SkillConfigJsonData[i]["InnateSkill40"].ToInt32();
+            skillConfig[Length].InnateSkill41 = DataManage.SkillConfigJsonData[i]["InnateSkill41"].ToInt32();
+            skillConfig[Length].InnateSkill42 = DataManage.SkillConfigJsonData[i]["InnateSkill42"].ToInt32();
+            skillConfig[Length].InnateSkill43 = DataManage.SkillConfigJsonData[i]["InnateSkill43"].ToInt32();
             skillConfig[Length].Awaken111 = DataManage.SkillConfigJsonData[i]["Awaken111"].ToInt32();
             skillConfig[Length].Awaken121 = DataManage.SkillConfigJsonData[i]["Awaken121"].ToInt32();
             skillConfig[Length].Awaken122 = DataManage.SkillConfigJsonData[i]["Awaken122"].ToInt32();
@@ -404,6 +408,10 @@ public class SkillConfig : MonoBehaviour {
             skillConfig[ID].InnateSkill31 = int.Parse(_InnateSkill31.text);
             skillConfig[ID].InnateSkill32 = int.Parse(_InnateSkill32.text);
             skillConfig[ID].InnateSkill33 = int.Parse(_InnateSkill33.text);
+            skillConfig[ID].InnateSkill40 = int.Parse(_InnateSkill40.text);
+            skillConfig[ID].InnateSkill41 = int.Parse(_InnateSkill41.text);
+            skillConfig[ID].InnateSkill42 = int.Parse(_InnateSkill42.text);
+            skillConfig[ID].InnateSkill43 = int.Parse(_InnateSkill43.text);
             skillConfig[ID].Awaken111 = int.Parse(_Awaken111.text);
             skillConfig[ID].Awaken121 = int.Parse(_Awaken121.text);
             skillConfig[ID].Awaken122 = int.Parse(_Awaken122.text);

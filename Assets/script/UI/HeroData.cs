@@ -122,7 +122,7 @@ public class HeroData : MonoBehaviour {
 
             heroData[(i + 1)].ID = DataManage.HeroJsonData[i]["Id"].ToInt32();
             heroData[(i + 1)].StarID = DataManage.HeroJsonData[i]["StarId"].ToInt32();
-            //heroData[(i + 1)].Quality = (C_HeroData.HeroQuality)DataManage.HeroJsonData[i]["Quality"].ToString();
+            heroData[(i + 1)].Quality =DataManage.HeroJsonData[i]["Quality"].ToString();
 
             heroData[(i + 1)].Type = (C_HeroData.HeroType)DataManage.HeroJsonData[i]["Type"].ToInt32();
             heroData[(i + 1)].ATKType = DataManage.HeroJsonData[i]["ATKType"].ToInt32();
@@ -156,9 +156,31 @@ public class HeroData : MonoBehaviour {
             heroData[(i + 1)].MessageConfigID = DataManage.HeroJsonData[i]["MessageConfigId"].ToInt32();
             heroData[(i + 1)].IsJson = true;
 
-            print("DataManage=" + DataManage.HeroJsonData.Count);
+            //print("DataManage=" + DataManage.HeroJsonData.Count);
             _heroID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].ID.ToString();
             //_heroQuality.value = (int)heroData[Length].Quality - 1;
+            switch (heroData[i + 1].Quality)
+            {
+                case "E":
+                    _heroQuality.value = 5;
+                    break;
+                case "N":
+                    _heroQuality.value = 4;
+                    break;
+                case "R":
+                    _heroQuality.value = 3;
+                    break;
+                case "SR":
+                    _heroQuality.value = 2;
+                    break;
+                case "SSR":
+                    print("存在？？？");
+                    _heroQuality.value = 1;
+                    break;
+                case "UR":
+                    _heroQuality.value = 0;
+                    break;
+            }
             //_heroType.value = (int)heroData[Length].Type - 1;
             _heroStarID.gameObject.GetComponent<InputField>().text = heroData[(i + 1)].StarID.ToString();
             _ATKType.gameObject.GetComponent<Dropdown>().value = heroData[i + 1].ATKType;
@@ -253,7 +275,7 @@ public class HeroData : MonoBehaviour {
 
             heroData[Length].ID = DataManage.HeroJsonData[i]["Id"].ToInt32();
             heroData[Length].StarID = DataManage.HeroJsonData[i]["StarId"].ToInt32();
-            //heroData[Length].Quality =(C_HeroData.HeroQuality)DataManage.HeroJsonData[i]["Quality"].ToInt32();
+            heroData[Length].Quality =DataManage.HeroJsonData[i]["Quality"].ToString();
             heroData[Length].ATKType = DataManage.HeroJsonData[i]["ATKType"].ToInt32();
             heroData[Length].Type =(C_HeroData.HeroType)DataManage.HeroJsonData[i]["Type"].ToInt32();
             heroData[Length].Fighting = DataManage.HeroJsonData[i]["Fighting"].ToInt32();
@@ -286,10 +308,31 @@ public class HeroData : MonoBehaviour {
             heroData[Length].MessageConfigID = DataManage.HeroJsonData[i]["MessageConfigId"].ToInt32();
             heroData[Length].IsJson = true;
 
-            print("DataManage=" + DataManage.HeroJsonData.Count);
+      //      print("DataManage=" + DataManage.HeroJsonData.Count);
             _heroID.gameObject.GetComponent<InputField>().text= heroData[Length].ID.ToString();
             _ATKType.gameObject.GetComponent<Dropdown>().value =  heroData[Length].ATKType;
-            _heroQuality.value = (int)heroData[Length].Quality-1;
+            print("英雄质量="+heroData[Length].Quality);
+            switch (heroData[Length].Quality)
+            {
+                case "E":
+                    _heroQuality.value = 5;
+                    break;
+                case "N":
+                    _heroQuality.value = 4;
+                    break;
+                case "R":
+                    _heroQuality.value = 3;
+                    break;
+                case "SR":
+                    _heroQuality.value = 2;
+                    break;
+                case "SSR":
+                    _heroQuality.value = 1;
+                    break;
+                case "UR":
+                    _heroQuality.value = 0;
+                    break;
+            }
             _heroType.value = (int)heroData[Length].Type-1;
             _heroStarID.gameObject.GetComponent<InputField>().text = heroData[Length].StarID.ToString();
             _heroFighting.gameObject.GetComponent<InputField>().text = heroData[Length].Fighting.ToString();
@@ -365,22 +408,22 @@ public class HeroData : MonoBehaviour {
         switch(_heroQuality.value)
         {
             case 0:
-                    heroData[ID].Quality = C_HeroData.HeroQuality.E;
+                    heroData[ID].Quality = "E";
                 break;
             case 1:
-                    heroData[ID].Quality = C_HeroData.HeroQuality.N;
+                    heroData[ID].Quality = "N";
                 break;
             case 2:
-                    heroData[ID].Quality = C_HeroData.HeroQuality.R;
+                    heroData[ID].Quality = "R";
                 break;
             case 3:
-                    heroData[ID].Quality = C_HeroData.HeroQuality.SR;
+                    heroData[ID].Quality = "SR";
                 break;
             case 4:
-                    heroData[ID].Quality = C_HeroData.HeroQuality.SSR;
+                    heroData[ID].Quality = "SSR";
                 break;
             case 5:
-                heroData[ID].Quality = C_HeroData.HeroQuality.UR;
+                heroData[ID].Quality = "UR";
                 break;
                 
             default:
