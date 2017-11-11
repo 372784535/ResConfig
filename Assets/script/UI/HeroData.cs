@@ -71,6 +71,11 @@ public class HeroData : MonoBehaviour {
         }
     }
 
+    public void OnToLua()
+    {
+        DataManage.jsonToLua(DataManage.HeroJsonData.ToJsonFile(),@"Assets/Res/LuaConfig/HeroData.Lua");
+    }
+
     // Use this for initialization
 	void Start () {
         //_basicInformation = transform.Find("Viewport/Content/type");

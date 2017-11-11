@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Text;
 using LitJson;
 using UnityEngine.UI;
+using System.Json;
+using Newtonsoft.Json.Linq;
 
 public class DataManage : MonoBehaviour
 {
@@ -14,11 +13,13 @@ public class DataManage : MonoBehaviour
     {
         get
         {
+            
             if (_heroJsonData == null)
             {
                 if (File.Exists(@"Assets/Res/JsonConfig/HeroData.json"))
                 {
                     _heroJsonData = JsonMapper.ToObject(File.ReadAllText(@"Assets/Res/JsonConfig/HeroData.json"));
+
                 }
                 else
                 {
@@ -439,6 +440,7 @@ public class DataManage : MonoBehaviour
             HeroJsonData[id - 1] = heroData[id].getJsonData();//修改操作
         }
         File.WriteAllText(@"Assets/Res/JsonConfig/HeroData.json", HeroJsonData.ToJsonFile());
+        //jsonToLua(DataManage.HeroJsonData.ToJson(), @"Assets/Res/LuaConfig/HeroData.Lua");
         WindowControl.SetConsole("保存成功");
         return true;
     }
@@ -1075,6 +1077,64 @@ public class DataManage : MonoBehaviour
             File.WriteAllText(@"Assets/Res/JsonConfig/FightSkill.json", FightSkillJsonData.ToJsonFile());
         }
     }
+
+    public static void jsonToLua (string strJson, string path)
+    {
+        JsonData Json= JsonMapper.ToObject(strJson);
+
+
+
+        List<string> strs =new List<string>();
+        foreach (var i in strJson.Split('}')[0].Split('{')[1].Split(','))
+        {
+            strs.Add(i.Split(':')[0].Replace("\"",""));
+        }
+        string strLua = "";
+        /*foreach(JsonData i in Json)
+        {
+            if (i.IsObject)
+            {
+                foreach (var j in i)
+                {
+                    print(j.ToString());
+                }
+            }else if(i.IsArray)
+            {
+                
+            }
+        }-*/
+        print(Json.Count + "||" + strs.Count);
+        if (!File.Exists(path))
+        {
+            File.Create(path);
+        }
+        strLua = "return"+"\t";
+        strLua =strLua+"{"+"\r"+ "\t";
+        for (int i = 0; i < Json.Count;i++)
+        {
+            strLua = strLua +"{" +"\t";
+            for (int j = 0; j < strs.Count;j++)
+            {
+                int a=0;
+
+                if (int.TryParse( Json[i][j].ToString(),out  a))
+                {
+                    strLua = strLua + strs[j] + "=" + Json[i][j] + "\r" + "\t" + "\t";
+                }
+                else
+                {
+                    strLua = strLua + strs[j]+ "=" + "\"" + Json[i][j] + "\"" + "\r" + "\t" + "\t";
+                }
+            }
+            strLua = strLua + "}"+"\r"+ "\t";
+        }
+        strLua = strLua + "}"+ "\t";
+        //print(strLua);
+
+
+        File.WriteAllText(path,strLua);
+
+    }
 }
 
 public class C_HeroData
@@ -1178,7 +1238,46 @@ public class C_HeroData
         temdata.Add("MessageConfigId", MessageConfigID);
 
         return temdata;
+    }
 
+    public List<string> GetKey()
+    {
+        List<string> keys = new List<string>();
+        keys.Add("Id");
+        keys.Add("Quality");
+        keys.Add("ATKType");
+        keys.Add("Type");
+        keys.Add("StarId");
+        keys.Add("Fighting");
+        keys.Add("ExponentBit");
+        keys.Add("Level");
+        keys.Add("Vitality");
+        keys.Add("ATK");
+        keys.Add("ATKSpeed");
+        keys.Add("Skill");
+        keys.Add("HitRate");
+        keys.Add("Dodge");
+        keys.Add("CriticalStrike");
+        keys.Add("Tenacity");
+        keys.Add("Pierce");
+        keys.Add("Defense");
+        keys.Add("ATKGrow");
+        keys.Add("VitalityGrow");
+        keys.Add("ATKSpeedGrow");
+        keys.Add("GrowCoefficient");
+        keys.Add("ATKBreakLevel");
+        keys.Add("VitalityBreakLevel");
+        keys.Add("BaseStrikeDamage");
+        keys.Add("TowerATKFrequency");
+        keys.Add("SkillConfigId");
+        keys.Add("ExclusiveEquipId");
+        keys.Add("ByConfigId1");
+        keys.Add("ByConfigId2");
+        keys.Add("ByConfigId3");
+        keys.Add("ByConfigId4");
+        keys.Add("MessageConfigId");
+
+        return keys;
     }
 }
 
