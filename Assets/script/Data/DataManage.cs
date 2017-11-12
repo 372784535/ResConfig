@@ -3,7 +3,6 @@ using UnityEngine;
 using System.IO;
 using LitJson;
 using UnityEngine.UI;
-using System.Json;
 using Newtonsoft.Json.Linq;
 
 public class DataManage : MonoBehaviour
@@ -1078,7 +1077,7 @@ public class DataManage : MonoBehaviour
         }
     }
 
-    public static void jsonToLua (string strJson, string path)
+    public static string jsonToLua (string strJson, string path)
     {
         JsonData Json= JsonMapper.ToObject(strJson);
 
@@ -1103,15 +1102,26 @@ public class DataManage : MonoBehaviour
                 
             }
         }-*/
-        print(Json.Count + "||" + strs.Count);
-        if (!File.Exists(path))
+        //print(Json.Count + "||" + strs.Count);
+        /*if (!File.Exists(path))
         {
             File.Create(path);
-        }
-        strLua = "return"+"\t";
+        }*/
+        strLua = "return"+"\r"+"\t";
         strLua =strLua+"{"+"\r"+ "\t";
         for (int i = 0; i < Json.Count;i++)
         {
+            try
+            {
+                if (Json[i]["Id"] != null || Json[i]["Id"].ToString() != "")
+                {
+                    strLua = strLua + "[" + Json[i]["Id"] + "]" + "=" + "\r";
+                }
+            }
+            catch
+            {
+
+            }
             strLua = strLua +"{" +"\t";
             for (int j = 0; j < strs.Count;j++)
             {
@@ -1130,9 +1140,9 @@ public class DataManage : MonoBehaviour
         }
         strLua = strLua + "}"+ "\t";
         //print(strLua);
+        return strLua;
 
-
-        File.WriteAllText(path,strLua);
+       // File.WriteAllText(path,strLua);
 
     }
 }

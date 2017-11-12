@@ -1,0 +1,1249 @@
+﻿return	{	[221001]={	
+    Id=221001		
+    SkillName="圣剑"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=500		
+    TrajectorySpeed=300		
+    DamageType=2		
+    SkillType=3		
+    SkillRange=150		
+    SkillBaseDamage=0		
+    DamageCoefficient=6500		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223004		
+    RelevantTalentId2=223015		
+    RelevantTalentId3=-1		
+    SkillDescribe="对前方直线范围造成魔法伤害"		}	[221002]={	
+    Id=221002		
+    SkillName="圣光庇佑"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=350		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=6		
+    SkillRange=350		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223001		
+    RelevantTalentId2=223007		
+    RelevantTalentId3=223016		
+    SkillDescribe="对自身周围范围造成魔法伤害"		}	[221003]={	
+    Id=221003		
+    SkillName="裁决之剑"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=2		
+    SkillRange=550		
+    SkillBaseDamage=0		
+    DamageCoefficient=25000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=223008		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="对指定范围造成范围魔法伤害"		}	[221004]={	
+    Id=221004		
+    SkillName="圣光普照"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=5		
+    SkillRange=99999		
+    SkillBaseDamage=0		
+    DamageCoefficient=46000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1500		
+    RelevantTalentId1=223012		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="对全屏敌人造成魔法伤害"		}	[221005]={	
+    Id=221005		
+    SkillName="科技枪"		
+    ReleaseNum=3		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=900		
+    DamageType=1		
+    SkillType=9		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223020		
+    RelevantTalentId2=223031		
+    RelevantTalentId3=-1		
+    SkillDescribe="【科技枪】可以同时攻击三个敌人。"		}	[221006]={	
+    Id=221006		
+    SkillName="爆头"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=900		
+    DamageType=1		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=20000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=10000		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223017		
+    RelevantTalentId2=223023		
+    RelevantTalentId3=223032		
+    SkillDescribe="【爆头】有几率使单个敌人眩晕3秒/4秒/5秒。"		}	[221007]={	
+    Id=221007		
+    SkillName="狙击"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=900		
+    DamageType=1		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=130000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=223024		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【狙击】1秒后对瞄准敌人造成巨大伤害。对目标单位造成1300%的伤害。"		}	[221008]={	
+    Id=221008		
+    SkillName="榴弹炮"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=1		
+    SkillRange=100		
+    SkillBaseDamage=500		
+    DamageCoefficient=60000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=223028		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【榴弹炮】对目标周围发射榴弹炮，造成500+550%攻击的物理伤害。"		}	[221009]={	
+    Id=221009		
+    SkillName="荣耀打击"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=300		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223036		
+    RelevantTalentId2=223047		
+    RelevantTalentId3=-1		
+    SkillDescribe="【荣耀打击】每攻击任意敌人3次，波鲁克必将连击一次，造成两次伤害。"		}	[221010]={	
+    Id=221010		
+    SkillName="旋转的大宝剑"		
+    ReleaseNum=1		
+    Duration=20000		
+    AttackRange=300		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=6		
+    SkillRange=300		
+    SkillBaseDamage=50		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223033		
+    RelevantTalentId2=223039		
+    RelevantTalentId3=223048		
+    SkillDescribe="【旋转的大宝剑】一定几率旋转自己为中心攻击周围敌人，每秒造成100%物理伤害，持续2秒"		}	[221011]={	
+    Id=221011		
+    SkillName="冲击波"		
+    ReleaseNum=1		
+    Duration=-1		
+    AttackRange="max"		
+    TrajectorySpeed=500		
+    DamageType=1		
+    SkillType=3		
+    SkillRange=200		
+    SkillBaseDamage=100		
+    DamageCoefficient=15000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=223040		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【冲击波】对前方直线范围造成150%物理伤害。"		}	[221012]={	
+    Id=221012		
+    SkillName="震荡波"		
+    ReleaseNum=2		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=500		
+    DamageType=1		
+    SkillType=3		
+    SkillRange=300		
+    SkillBaseDamage=200		
+    DamageCoefficient=12000		
+    SpeedCut=3000		
+    SpeedCutTime=3		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=223044		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【震荡波】对前方直线范围造成2次150%物理伤害，并降低范围单位移动速度30%，持续3秒。"		}	[221013]={	
+    Id=221013		
+    SkillName="骑兵优势"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=300		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=2		
+    SkillRange=200		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【骑兵优势】溅射，对目标周围2点范围单位造成30%伤害。"		}	[221014]={	
+    Id=221014		
+    SkillName="奋力一击"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=300		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=20000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【奋力一击】技能触发概率对单个敌人造成200%伤害。"		}	[221015]={	
+    Id=221015		
+    SkillName="冲锋"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=500		
+    DamageType=1		
+    SkillType=4		
+    SkillRange=200		
+    SkillBaseDamage=0		
+    DamageCoefficient=20000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【冲锋】前方直线范围内造成200%物理伤害，伤害随着距离递减。"		}	[221016]={	
+    Id=221016		
+    SkillName="铁骑冲刺"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=500		
+    DamageType=1		
+    SkillType=4		
+    SkillRange=300		
+    SkillBaseDamage=0		
+    DamageCoefficient=20000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=1		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【铁骑冲刺】前方扇形范围内造成200%物理伤害，并击飞目标。（特效类似战争之影的大招）"		}	[221017]={	
+    Id=221017		
+    SkillName="奥术爆裂"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=2		
+    SkillRange=100		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【奥术爆裂】对目标周围小范围造成50%的溅射伤害。"		}	[221018]={	
+    Id=221018		
+    SkillName="变形术"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=0		
+    SpeedCut=3000		
+    SpeedCutTime=5		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【变形术】普通攻击有一定几率将敌人变成随机的小动物，降低其移动速度30%，持续5秒。"		}	[221019]={	
+    Id=221019		
+    SkillName="奥术冲击"		
+    ReleaseNum=8		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=3		
+    SkillRange=150		
+    SkillBaseDamage=0		
+    DamageCoefficient=2000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=300		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【奥术冲击】对直线范围敌人造成持续8段20%魔法伤害。持续2秒。"		}	[221020]={	
+    Id=221020		
+    SkillName="奥义魔爆术"		
+    ReleaseNum=8		
+    Duration=0		
+    AttackRange=800		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=7		
+    SkillRange=200		
+    SkillBaseDamage=0		
+    DamageCoefficient=2000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【奥义魔爆术】对自身周围大范围内，随机造成8次3范围的魔法伤害，每次造成200%魔法伤害。"		}	[221021]={	
+    Id=221021		
+    SkillName="双重打铁"		
+    ReleaseNum=2		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=9		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223052		
+    RelevantTalentId2=223063		
+    RelevantTalentId3=-1		
+    SkillDescribe="【双重打铁】同时攻击两个目标。"		}	[221022]={	
+    Id=221022		
+    SkillName="火星四溅"		
+    ReleaseNum=1		
+    Duration=10000		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=8		
+    SkillRange=200		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223049		
+    RelevantTalentId2=223055		
+    RelevantTalentId3=223064		
+    SkillDescribe="火星四溅】有一定的几率在地上引爆火焰，对经过的敌人造成100%魔法伤害，持续时间1秒。"		}	[221023]={	
+    Id=221023		
+    SkillName="灵感火花"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=900		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=2		
+    SkillRange=200		
+    SkillBaseDamage=0		
+    DamageCoefficient=35000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=750		
+    RelevantTalentId1=223056		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【灵感火花】对范围内敌人造成350%火焰魔法伤害。"		}	[221024]={	
+    Id=221024		
+    SkillName="百炼成钢"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=5		
+    SkillRange=99999		
+    SkillBaseDamage=0		
+    DamageCoefficient=80000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1500		
+    RelevantTalentId1=223060		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【百炼成钢】对全屏造成800%魔法伤害。"		}	[221025]={	
+    Id=221025		
+    SkillName="巨力"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=300		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=1		
+    SkillRange=300		
+    SkillBaseDamage=0		
+    DamageCoefficient=20000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【巨力】普攻增加100%。"		}	[221026]={	
+    Id=221026		
+    SkillName="震击"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=300		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=6		
+    SkillRange=300		
+    SkillBaseDamage=0		
+    DamageCoefficient=30000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【震击】技能触发额外造成自身周围范围物理伤害。"		}	[221027]={	
+    Id=221027		
+    SkillName="排山倒海"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=0		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=10		
+    SkillRange=300		
+    SkillBaseDamage=0		
+    DamageCoefficient=23000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=1		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【排山倒海】很扫自身前方扇形范围敌人，造成230%物理伤害。并击飞敌人。"		}	[221028]={	
+    Id=221028		
+    SkillName="地动山摇"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=0		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=6		
+    SkillRange=500		
+    SkillBaseDamage=0		
+    DamageCoefficient=50000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=20000		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【地动山摇】赫丘利跃向空中，对地面猛力震击，对自身范围周围造成500%伤害，并眩晕范围内目标2秒。"		}	[221029]={	
+    Id=221029		
+    SkillName="闪电追击"		
+    ReleaseNum=5		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=11		
+    SkillRange=0		
+    SkillBaseDamage=1000		
+    DamageCoefficient=15000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【闪电追击】对同一目标造成高频率伤害每秒5次15%伤害，伤害会随着攻击次数逐渐叠加提高，每次伤害提高30%"		}	[221030]={	
+    Id=221030		
+    SkillName="闪电链"		
+    ReleaseNum=5		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=12		
+    SkillRange=0		
+    SkillBaseDamage=2000		
+    DamageCoefficient=13000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【闪电链】技能触发几率释放闪电链，对5个单位造成伤害，第目标依次造成130%-110%-90%-70%-50%伤害"		}	[221031]={	
+    Id=221031		
+    SkillName="天雷之威"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=900		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=2		
+    SkillRange=300		
+    SkillBaseDamage=0		
+    DamageCoefficient=22000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=5000		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【天雷之威】对范围内造成220%魔法伤害，并眩晕0.5秒"		}	[221032]={	
+    Id=221032		
+    SkillName="万雷"		
+    ReleaseNum=10		
+    Duration=0		
+    AttackRange="max"		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=7		
+    SkillRange=300		
+    SkillBaseDamage=0		
+    DamageCoefficient=20000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=5000		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=900		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【万雷】全屏随机落下10次天雷之威（范围3），造成200%魔法伤害，并眩晕目标0.5秒"		}	[221033]={	
+    Id=221033		
+    SkillName="贪婪"		
+    ReleaseNum=5		
+    Duration=0		
+    AttackRange=900		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=9		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=50000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【贪婪】同时对5/8/10个目标造成50%魔法伤害。"		}	[221034]={	
+    Id=221034		
+    SkillName="傲慢"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=900		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=5000		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【傲慢】一定概率对某一个目标造成100%魔法伤害，并使其减速50%，持续1秒。"		}	[221035]={	
+    Id=221035		
+    SkillName="嫉妒"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=900		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=6		
+    SkillRange=900		
+    SkillBaseDamage=0		
+    DamageCoefficient=22000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=1		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【嫉妒】对范围内造成220%魔法伤害，并混乱目标（反向行走）持续1秒，可以打断目标当前技能"		}	[221036]={	
+    Id=221036		
+    SkillName="懒惰"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=99999		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=5		
+    SkillRange=99999		
+    SkillBaseDamage=0		
+    DamageCoefficient=30000		
+    SpeedCut=6000		
+    SpeedCutTime=3		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1100		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【懒惰】造成全屏300%魔法伤害，并减速目标60%移动速度，持续3秒"		}	[221037]={	
+    Id=221037		
+    SkillName="蛮力"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=600		
+    DamageType=2		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=20000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223068		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【蛮力】普攻增加100%"		}	[221038]={	
+    Id=221038		
+    SkillName="凶狠"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=600		
+    DamageType=2		
+    SkillType=1		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=30000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223065		
+    RelevantTalentId2=223071		
+    RelevantTalentId3=223080		
+    SkillDescribe="【凶狠】一定机率造成150%的伤害"		}	[221039]={	
+    Id=221039		
+    SkillName="狂风"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=1000		
+    TrajectorySpeed=500		
+    DamageType=2		
+    SkillType=3		
+    SkillRange=300		
+    SkillBaseDamage=0		
+    DamageCoefficient=15000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=1		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=223072		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【狂风】对前方10码直线范围内敌人造成150%伤害，并击飞敌人"		}	[221040]={	
+    Id=221040		
+    SkillName="龙卷风"		
+    ReleaseNum=2		
+    Duration=30000		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=8		
+    SkillRange=400		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=5000		
+    SpeedCutTime=3		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=223076		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【龙卷风】召唤龙卷风在范围内造成每秒2次100%魔法伤害，并减速敌人移动速度50%，持续3秒"		}	[221041]={	
+    Id=221041		
+    SkillName="顺劈"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=2		
+    SkillRange=100		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【顺劈】对目标造成伤害，并对周围小范围目标造成相同伤害"		}	[221042]={	
+    Id=221042		
+    SkillName="横劈"		
+    ReleaseNum=2		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=1		
+    SkillType=10		
+    SkillRange=100		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【横劈】一定概率对前方小范围敌人造成两次物理伤害"		}	[221043]={	
+    Id=221043		
+    SkillName="铁钩"		
+    ReleaseNum=2		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=600		
+    DamageType=1		
+    SkillType=2		
+    SkillRange=200		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=1		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=650		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【铁钩】甩出铁钩将对范围内的敌人造成2次100%的伤害，并击飞敌人"		}	[221044]={	
+    Id=221044		
+    SkillName="死亡咆哮"		
+    ReleaseNum=5		
+    Duration=25000		
+    AttackRange=99999		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=8		
+    SkillRange=99999		
+    SkillBaseDamage=0		
+    DamageCoefficient=10000		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=-1		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【死亡咆哮】屠夫对全屏敌人造成100%多段魔法伤害，一共5次，每秒2次"		}	[221045]={	
+    Id=221045		
+    SkillName="雪球"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=500		
+    DamageType=2		
+    SkillType=2		
+    SkillRange=200		
+    SkillBaseDamage=0		
+    DamageCoefficient=6000		
+    SpeedCut=3000		
+    SpeedCutTime=2		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223095		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【雪球】小范围溅射伤害敌人60%，并造成冰冻减速效果，降低范围2目标30%移动速度，持续2秒"		}	[221046]={	
+    Id=221046		
+    SkillName="寒风"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=13		
+    SkillRange=0		
+    SkillBaseDamage=0		
+    DamageCoefficient=0		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=2		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=0		
+    RelevantTalentId1=223081		
+    RelevantTalentId2=223087		
+    RelevantTalentId3=223096		
+    SkillDescribe="【寒风】有一定的几率将敌人冻住，敌人无法移动，持续2秒"		}	[221047]={	
+    Id=221047		
+    SkillName="暴风雪"		
+    ReleaseNum=5		
+    Duration=20000		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=8		
+    SkillRange=300		
+    SkillBaseDamage=3000		
+    DamageCoefficient=2000		
+    SpeedCut=3000		
+    SpeedCutTime=2		
+    DizzinessTime=0		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=500		
+    RelevantTalentId1=223088		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【暴风雪】召唤暴风雪造成范围内每秒5次20%伤害，并减速范围内敌人30%移动速度，持续2秒"		}	[221048]={	
+    Id=221048		
+    SkillName="冰河时代"		
+    ReleaseNum=1		
+    Duration=0		
+    AttackRange=600		
+    TrajectorySpeed=1000		
+    DamageType=2		
+    SkillType=13		
+    SkillRange=900		
+    SkillBaseDamage=0		
+    DamageCoefficient=0		
+    SpeedCut=0		
+    SpeedCutTime=0		
+    DizzinessTime=30000		
+    DisorderTime=0		
+    AttackIncrease=0		
+    AttackIncreaseTime=0		
+    IsWhetherFly=0		
+    UpATK=0		
+    UpATKTime=0		
+    RespondEnergy=0		
+    EnergyConsumption=1000		
+    RelevantTalentId1=223092		
+    RelevantTalentId2=-1		
+    RelevantTalentId3=-1		
+    SkillDescribe="【冰河时代】冰冻自身周围大范围的敌人，使敌人不能移动，持续3秒"		}	}	

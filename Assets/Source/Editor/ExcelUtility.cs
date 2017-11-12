@@ -136,13 +136,24 @@ public class ExcelUtility
 
 		//生成Json字符串
 		string json = JsonConvert.SerializeObject (table, Newtonsoft.Json.Formatting.Indented);
+        Debug.Log("路径=" + JsonPath);
+        
 		//写入文件
 		using (FileStream fileStream=new FileStream(JsonPath,FileMode.Create,FileAccess.Write)) {
 			using (TextWriter textWriter = new StreamWriter(fileStream, encoding)) {
 				textWriter.Write (json);
 			}
 		}
-	}
+        string luaStr= DataManage.jsonToLua(json, JsonPath);
+        string LuaPath = JsonPath.Replace(".json", ".lua");
+        using (FileStream fileStream = new FileStream(LuaPath, FileMode.Create, FileAccess.Write))
+        {
+            using (TextWriter textWriter = new StreamWriter(fileStream, encoding))
+            {
+                textWriter.Write(luaStr);
+            }
+        }
+    }
 
 	/// <summary>
 	/// 转换为CSV
